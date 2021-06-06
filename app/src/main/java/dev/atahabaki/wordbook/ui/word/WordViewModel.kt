@@ -20,14 +20,32 @@
 
 package dev.atahabaki.wordbook.ui.word
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.atahabaki.wordbook.data.word.WordDao
+import dev.atahabaki.wordbook.data.word.Word
+import dev.atahabaki.wordbook.data.word.WordRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class WordViewModel @Inject constructor(
-    private val wordDao: WordDao
+    private val wordRepository: WordRepository
 ): ViewModel() {
+    fun getAllWords(): LiveData<List<Word>> = wordRepository.getAllWords().asLiveData()
 
+    fun insert(word: Word) = CoroutineScope(Dispatchers.Main).launch {
+        wordRepository.insert(word)
+    }
+
+    fun update(word: Word) = CoroutineScope(Dispatchers.Main).launch {
+        wordRepository.update(word)
+    }
+
+    fun delete(word: Word) = CoroutineScope(Dispatchers.Main).launch {
+        wordRepository.delete(word)
+    }
 }
