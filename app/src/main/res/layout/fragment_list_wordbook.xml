@@ -20,10 +20,13 @@
  *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
  */
 -->
-<androidx.recyclerview.widget.RecyclerView
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.word.ListFragment"
-    tools:listitem="@layout/word_item"/>
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/words_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.word.ListFragment"
+        tools:listitem="@layout/word_item"/>
+</layout>
