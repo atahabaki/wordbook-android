@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *  WordBook - An android application for those who aims to learn a new language.
+ *  Copyright (C) 2021 A. Taha Baki
+ *
+ *  This file is part of WordBook.
+ *
+ *  WordBook is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Gneral Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  WordBook is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
+ */
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="6.35"
+    android:viewportHeight="6.3500004">
+  <path
+      android:pathData="M2.43396,1.05833C2.16265,1.05954 2.01774,1.06941 1.94045,1.1467C1.85212,1.23503 1.85208,1.41146 1.85208,2.02882L1.85208,4.3217C1.85208,4.93907 1.85212,5.11575 1.94045,5.20382C2.02878,5.29188 2.20536,5.29146 2.42569,5.07101C2.64602,4.85056 2.91029,4.40995 3.175,4.41007C3.43971,4.41018 3.7043,4.85119 3.92482,5.07152C4.14535,5.29186 4.322,5.29188 4.41007,5.20382C4.49813,5.11575 4.49792,4.93906 4.49792,4.3217L4.49792,2.02882C4.49792,1.41145 4.49813,1.23503 4.41007,1.1467C4.322,1.05837 4.14531,1.05833 3.79253,1.05833L2.55798,1.05833C2.51389,1.05833 2.47272,1.05816 2.43396,1.05833zM2.73007,1.5875C2.75332,1.58739 2.77854,1.5875 2.805,1.5875L3.54552,1.5875C3.75719,1.5875 3.8632,1.58767 3.91604,1.64331C3.96888,1.69895 3.96875,1.80994 3.96875,2.19883L3.96875,3.64319C3.96875,4.03208 3.96888,4.14324 3.91604,4.19871C3.8632,4.25418 3.75742,4.2543 3.6251,4.11551C3.49278,3.97672 3.33382,3.69855 3.175,3.69848C3.01617,3.69841 2.85761,3.97665 2.72541,4.11551C2.59322,4.25437 2.48747,4.25418 2.43448,4.19871C2.38148,4.14324 2.38125,4.03208 2.38125,3.64319L2.38125,2.19883C2.38125,1.80994 2.38148,1.69895 2.43448,1.64331C2.48085,1.59463 2.56728,1.58826 2.73007,1.5875z"
+      android:strokeLineJoin="miter"
+      android:strokeWidth="0.999999"
+      android:fillColor="#DC123C"
+      android:strokeColor="#00000000"
+      android:strokeLineCap="butt"/>
+</vector>
