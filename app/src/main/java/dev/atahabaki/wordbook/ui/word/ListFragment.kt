@@ -26,6 +26,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.adapters.WordAdapter
@@ -35,7 +36,7 @@ import dev.atahabaki.wordbook.databinding.FragmentListWordbookBinding
 class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
     private var _binding: FragmentListWordbookBinding? = null
     private val binding get() = _binding!!
-    private val adapter = WordAdapter()
+    private val wAdapter = WordAdapter()
     private val wordViewModel: WordViewModel by viewModels()
 
     override fun onCreateView(
@@ -50,6 +51,13 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.wordsList.adapter = adapter
+        binding.wordsList.apply {
+            adapter = wAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+        }
+        wordViewModel.getAllWords().observe(viewLifecycleOwner) {
+            wAdapter.submitList(it)
+        }
     }
 }
