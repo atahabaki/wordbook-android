@@ -12,6 +12,8 @@ buildscript {
         navigation_version = "2.3.5"
         fragment_version = "1.3.4"
         coroutines_version = "1.5.0"
+        lifecycle_version = "2.2.0"
+        datastore_version = "1.0.0-beta01"
     }
     repositories {
         google()
