@@ -45,7 +45,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentListWordbookBinding.inflate(inflater, container, false)
-        context ?: binding.root
+        context ?: return binding.root
         return binding.root
     }
 
