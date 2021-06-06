@@ -20,11 +20,36 @@
 
 package dev.atahabaki.wordbook.ui.word
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
+import dev.atahabaki.wordbook.adapters.WordAdapter
+import dev.atahabaki.wordbook.databinding.FragmentListWordbookBinding
 
 @AndroidEntryPoint
 class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
-    
+    private var _binding: FragmentListWordbookBinding? = null
+    private val binding get() = _binding!!
+    private val adapter = WordAdapter()
+    private val wordViewModel: WordViewModel by viewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentListWordbookBinding.inflate(inflater, container, false)
+        context ?: binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.wordsList.adapter = adapter
+    }
 }
