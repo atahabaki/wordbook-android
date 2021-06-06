@@ -17,6 +17,9 @@
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"/>
+        android:layout_gravity="bottom"
+        app:fabCradleMargin="8dp"
+        app:fabCradleRoundedCornerRadius="8dp"
+        app:fabCradleVerticalOffset="0dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
