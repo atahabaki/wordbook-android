@@ -22,13 +22,23 @@ package dev.atahabaki.wordbook.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.databinding.DataBindingUtil
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
+import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
+import dev.atahabaki.wordbook.ui.word.WordViewModel
 
 @AndroidEntryPoint
 class WordBookActivity : AppCompatActivity() {
+
+    private var _binding: ActivityWordbookBinding? = null
+    private val binding get() = _binding!!
+
+    private val wordViewModel: WordViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_wordbook)
+        _binding = DataBindingUtil.setContentView(this, R.layout.activity_wordbook)
     }
 }
