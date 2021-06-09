@@ -1,16 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *  WordBook - An android application for those who aims to learn a new language.
+ *  Copyright (C) 2021 A. Taha Baki
+ *
+ *  This file is part of WordBook.
+ *
+ *  WordBook is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  WordBook is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
+ */
+-->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.WordBook" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.WordBook" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/primaryLightColor</item>
+        <item name="colorPrimaryVariant">@color/primaryColor</item>
+        <item name="colorOnPrimary">@color/primaryTextColor</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/primaryLightColor</item>
+        <item name="colorSecondaryVariant">@color/primaryColor</item>
+        <item name="colorOnSecondary">@color/primaryTextColor</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/defaultThemeColor</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:colorBackground">@color/defaultThemeColor</item>
         <!-- Customize your theme here. -->
+        <!-- BottomAppBar -->
+        <item name="bottomAppBarStyle">@style/Theme.WordBook.BottomAppBar</item>
+        <!-- BottomNav/Sheet -->
+        <item name="navigationViewStyle">@style/Theme.WordBook.NavigationView</item>
+        <!-- Dialog -->
+        <item name="materialAlertDialogTheme">@style/Theme.WordBook.Dialog</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Theme.WordBook.Dialog.Title</item>
+        <!-- Context menu/popup -->
+        <item name="popupTheme">@style/Theme.WordBook.Popup</item>
+        <!-- Radio Button -->
+        <item name="radioButtonStyle">@style/Theme.WordBook.RadioButton</item>
+    </style>
+
+    <style name="Theme.WordBook.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.WordBook.BottomAppBar</item>
+    </style>
+
+    <style name="ThemeOverlay.WordBook.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorOnSurface">@color/defaultThemeColor</item>
+        <item name="colorSurface">@color/defaultThemeColor</item>
+        <item name="colorControlNormal">@color/primaryColor</item>
+    </style>
+
+    <style name="Theme.WordBook.NavigationView" parent="Widget.MaterialComponents.NavigationView">
+        <item name="itemIconTint">@color/primaryColor</item>
+        <item name="itemTextColor">@color/primaryTextColor</item>
+        <item name="itemShapeFillColor">@color/defaultThemeColor</item>
+        <item name="android:background">@color/defaultThemeColor</item>
+    </style>
+
+    <style name="Theme.WordBook.Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:background">@color/defaultThemeColor</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Theme.WordBook.Dialog.NegativeButton</item>
+    </style>
+
+    <style name="Theme.WordBook.Dialog.NegativeButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/primaryLightColor</item>
+        <item name="android:alpha">.5</item>
+    </style>
+
+    <style name="Theme.WordBook.Dialog.Title" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="Theme.WordBook.Popup" parent="Widget.MaterialComponents.PopupMenu.Overflow">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingEnd">2dp</item>
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:paddingRight">2dp</item>
+    </style>
+
+    <style name="Theme.WordBook.RadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.WordBook.RadioButton</item>
+    </style>
+
+    <style name="ThemeOverlay.WordBook.RadioButton" parent="">
+        <item name="colorOnSurface">@color/primaryColor</item>
+        <item name="colorSecondary">@color/primaryColor</item>
+        <item name="buttonTint">@color/primaryColor</item>
     </style>
 </resources>
