@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *  WordBook - An android application for those who aims to learn a new language.
+ *  Copyright (C) 2021 A. Taha Baki
+ *
+ *  This file is part of WordBook.
+ *
+ *  WordBook is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  WordBook is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
+ */
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="256dp"
+    android:height="256dp"
+    android:viewportWidth="6.35"
+    android:viewportHeight="6.35">
+  <path
+      android:pathData="m3.1338,1.2705c-1.0465,0.02263 -1.8787,0.88536 -1.8636,1.932 0.00062,0.01396 0.0014,0.02791 0.00232,0.04186 -0.00078,0.00031 -0.00155,0.00062 -0.00232,0.00093 0.00078,0.00031 0.00155,0.00062 0.00232,0.00093 0.01716,0.46356 0.17951,0.88177 0.45358,1.1657 0.16171,0.16752 -0.09911,0.45828 -0.33699,0.55484 0.55391,-0 0.52742,-0.2588 0.86706,-0.12341 0.44142,0.17596 0.60684,0.23909 0.93297,0.23673 1.0467,-0.00756 1.8911,-0.85832 1.891,-1.905l-0.00093,-0.05535c-0.03041,-1.0462 -0.8991,-1.8719 -1.9455,-1.8492z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="3.6"
+      android:fillColor="#00000000"
+      android:strokeLineCap="round">
+    <aapt:attr name="android:strokeColor">
+      <gradient 
+          android:gradientRadius="2.6457376"
+          android:centerX="3.1751053"
+          android:centerY="3.1749992"
+          android:type="radial">
+        <item android:offset="0" android:color="#33555555"/>
+        <item android:offset="1" android:color="#00000000"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="m3.1338,1.2705c-1.0465,0.02263 -1.8787,0.88536 -1.8636,1.932 0.00062,0.01396 0.0014,0.02791 0.00232,0.04186 -0.00078,0.00031 -0.00155,0.00062 -0.00232,0.00093 0.00078,0.00031 0.00155,0.00062 0.00232,0.00093 0.01716,0.46356 0.17951,0.88177 0.45358,1.1657 0.16171,0.16752 -0.09911,0.45828 -0.33699,0.55484 0.55391,-0 0.52742,-0.2588 0.86706,-0.12341 0.44142,0.17596 0.60684,0.23909 0.93297,0.23673 1.0467,-0.00756 1.8911,-0.85832 1.891,-1.905l-0.00093,-0.05535c-0.03041,-1.0462 -0.8991,-1.8719 -1.9455,-1.8492z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="3.6"
+      android:strokeLineCap="round">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startY="1.2699699"
+          android:startX="1.26998"
+          android:endY="5.08003"
+          android:endX="5.08004"
+          android:type="linear">
+        <item android:offset="0" android:color="#FFFFFFFF"/>
+        <item android:offset="0.24108" android:color="#FFFFFFFF"/>
+        <item android:offset="1" android:color="#FF666666"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="m3.77756,1.96009c0.152,0.08415 0.20662,0.27427 0.12247,0.42626l-0.91134,1.64619 -0.57815,0.39684 0.02942,-0.70063 0.91134,-1.64619c0.08415,-0.152 0.27427,-0.20662 0.42626,-0.12247z"
+      android:strokeLineJoin="round"
+      android:strokeWidth=".6969"
+      android:strokeLineCap="round">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startY="2.90572"
+          android:startX="2.89556"
+          android:endY="3.20947"
+          android:endX="3.44429"
+          android:type="linear">
+        <item android:offset="0" android:color="#FF000000"/>
+        <item android:offset="1" android:color="#FF333333"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+</vector>

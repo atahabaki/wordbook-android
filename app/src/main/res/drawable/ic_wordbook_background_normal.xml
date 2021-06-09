@@ -20,7 +20,12 @@
  *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
  */
 -->
-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@drawable/ic_wordbook_background_normal" />
-    <foreground android:drawable="@drawable/ic_wordbook_shadow_smaller_optimized" />
-</adaptive-icon>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="6.35"
+    android:viewportHeight="6.35">
+  <path
+      android:pathData="M1.05843,0.52929L5.29175,0.52929A0.52904,0.52904 0,0 1,5.82079 1.05833L5.82079,5.29165A0.52904,0.52904 0,0 1,5.29175 5.82069L1.05843,5.82069A0.52904,0.52904 0,0 1,0.52939 5.29165L0.52939,1.05833A0.52904,0.52904 0,0 1,1.05843 0.52929z"
+      android:fillColor="#202020"/>
+</vector>

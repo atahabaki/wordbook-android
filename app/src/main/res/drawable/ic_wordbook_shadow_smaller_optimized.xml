@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *  WordBook - An android application for those who aims to learn a new language.
+ *  Copyright (C) 2021 A. Taha Baki
+ *
+ *  This file is part of WordBook.
+ *
+ *  WordBook is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  WordBook is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
+ */
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="6.35"
+    android:viewportHeight="6.35">
+  <path
+      android:pathData="m3.1441,1.7466c-0.78486,0.01698 -1.409,0.66402 -1.3977,1.449 0.00047,0.01047 0.00105,0.02094 0.00174,0.03139 -0.00058,0.00023 -0.00116,0.00046 -0.00174,0.0007 0.00058,0.00023 0.00116,0.00046 0.00174,0.0007 0.01287,0.34767 0.13463,0.66132 0.34019,0.87426 0.12128,0.12564 -0.07433,0.34371 -0.25274,0.41613 0.41543,-0 0.39556,-0.1941 0.6503,-0.09256 0.33107,0.13197 0.45513,0.17931 0.69972,0.17755 0.78499,-0.00567 1.4183,-0.64374 1.4183,-1.4288l-0.0007,-0.04151c-0.02281,-0.78461 -0.67433,-1.4039 -1.4591,-1.3869z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2.7"
+      android:fillColor="#00000000"
+      android:strokeLineCap="round">
+    <aapt:attr name="android:strokeColor">
+      <gradient 
+          android:gradientRadius="1.8550713"
+          android:centerX="3.1751332"
+          android:centerY="3.175003"
+          android:type="radial">
+        <item android:offset="0" android:color="#FF000000"/>
+        <item android:offset="0.49167" android:color="#FF000000"/>
+        <item android:offset="1" android:color="#00000000"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="m3.1441,1.7466c-0.78486,0.01698 -1.409,0.66402 -1.3977,1.449 0.00047,0.01047 0.00105,0.02094 0.00174,0.03139 -0.00058,0.00023 -0.00116,0.00046 -0.00174,0.0007 0.00058,0.00023 0.00116,0.00046 0.00174,0.0007 0.01287,0.34767 0.13463,0.66132 0.34019,0.87426 0.12128,0.12564 -0.07433,0.34371 -0.25274,0.41613 0.41543,-0 0.39556,-0.1941 0.6503,-0.09256 0.33107,0.13197 0.45513,0.17931 0.69972,0.17755 0.78499,-0.00567 1.4183,-0.64374 1.4183,-1.4288l-0.0007,-0.04151c-0.02281,-0.78461 -0.67433,-1.4039 -1.4591,-1.3869z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2.7"
+      android:strokeLineCap="round">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startY="1.7462525"
+          android:startX="1.7462525"
+          android:endY="4.6037974"
+          android:endX="4.6037974"
+          android:type="linear">
+        <item android:offset="0" android:color="#FFFFFFFF"/>
+        <item android:offset="0.24108" android:color="#FFFFFFFF"/>
+        <item android:offset="1" android:color="#FF666666"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="m3.62694,2.26384c0.114,0.06311 0.15497,0.2057 0.09185,0.31969l-0.6835,1.23464 -0.43361,0.29763 0.02207,-0.52547 0.6835,-1.23464c0.06311,-0.114 0.2057,-0.15497 0.31969,-0.09185z"
+      android:strokeLineJoin="round"
+      android:strokeWidth=".6969"
+      android:strokeLineCap="round">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startY="2.9730651"
+          android:startX="2.9654377"
+          android:endY="3.2008777"
+          android:endX="3.376985"
+          android:type="linear">
+        <item android:offset="0" android:color="#FF000000"/>
+        <item android:offset="1" android:color="#FF333333"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+</vector>
