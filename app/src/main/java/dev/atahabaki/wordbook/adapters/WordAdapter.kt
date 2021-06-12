@@ -27,8 +27,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.databinding.WordItemBinding
+import dev.atahabaki.wordbook.utils.ItemListener
 
-class WordAdapter: ListAdapter<Word, RecyclerView.ViewHolder>(WordDiffCallback()) {
+class WordAdapter(
+    val listener: ItemListener<Word>
+): ListAdapter<Word, RecyclerView.ViewHolder>(WordDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = WordViewHolder(
         WordItemBinding.inflate(
@@ -48,6 +51,7 @@ class WordAdapter: ListAdapter<Word, RecyclerView.ViewHolder>(WordDiffCallback()
         fun bind(entry: Word) {
             binding.apply {
                 word = entry
+                itemListener = listener
                 executePendingBindings()
             }
         }
