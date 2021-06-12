@@ -58,6 +58,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
         }
         wordViewModel.getAllWords().observe(viewLifecycleOwner) {
             wAdapter.submitList(it)
+            wAdapter.notifyDataSetChanged()
         }
     }
 }
