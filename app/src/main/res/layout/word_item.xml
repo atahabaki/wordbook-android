@@ -37,6 +37,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{(v) -> itemListener.onClick(v,word)}"
         android:padding="16dp">
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/word_item_title"
@@ -68,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@{word.favorite ? @drawable/ic_favorite_filled : @drawable/ic_favorite_outline}"
+            android:onClick="@{(v) -> itemListener.onClick(v,word)}"
             app:layout_constraintTop_toTopOf="@id/word_item_title"
             app:layout_constraintBottom_toBottomOf="@id/word_item_meaning"
             app:layout_constraintEnd_toEndOf="parent"
