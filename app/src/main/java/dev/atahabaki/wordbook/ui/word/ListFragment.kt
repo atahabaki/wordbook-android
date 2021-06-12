@@ -30,13 +30,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.adapters.WordAdapter
+import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.databinding.FragmentListWordbookBinding
+import dev.atahabaki.wordbook.utils.ItemListener
 
 @AndroidEntryPoint
 class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
     private var _binding: FragmentListWordbookBinding? = null
     private val binding get() = _binding!!
-    private val wAdapter = WordAdapter()
+    private val wAdapter = WordAdapter(object: ItemListener<Word> {
+        override fun onClick(data: Word) {
+            super.onClick(data)
+            //TODO (1) implement item click...
+        }
+    })
     private val wordViewModel: WordViewModel by viewModels()
 
     override fun onCreateView(
