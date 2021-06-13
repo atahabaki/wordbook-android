@@ -26,9 +26,9 @@
     android:viewportWidth="6.35"
     android:viewportHeight="6.35">
   <path
-      android:fillColor="#FFDC123C"
-      android:pathData="m3.175,1.1619 l0.51019,1.5234 1.6065,0.01447 -1.2912,0.95597 0.48267,1.5323 -1.3082,-0.93256 -1.3082,0.93256 0.48267,-1.5323 -1.2912,-0.95597 1.6065,-0.01447z"
+      android:fillColor="#dc123c"
+      android:pathData="m3.175,0.60553 l0.63773,1.9042 2.0081,0.01808 -1.614,1.195 0.60334,1.9154 -1.6352,-1.1657 -1.6352,1.1657 0.60334,-1.9154 -1.614,-1.195 2.0081,-0.01808z"
       android:strokeLineJoin="round"
-      android:strokeWidth="1.1128"
+      android:strokeWidth="1.391"
       android:strokeLineCap="round"/>
 </vector>
