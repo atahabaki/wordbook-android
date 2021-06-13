@@ -68,7 +68,7 @@
             android:id="@+id/word_item_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@{word.favorite ? @drawable/ic_favorite_filled : @drawable/ic_favorite_outline}"
+            android:src="@{word.favorite ? @drawable/ic_bookmark_filled : @drawable/ic_bookmark_outline}"
             android:onClick="@{(v) -> itemListener.onClick(v,word)}"
             app:layout_constraintTop_toTopOf="@id/word_item_title"
             app:layout_constraintBottom_toBottomOf="@id/word_item_meaning"
