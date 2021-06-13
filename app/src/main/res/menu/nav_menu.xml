@@ -33,6 +33,10 @@
             android:icon="@drawable/ic_gear"
             android:title="@string/settings"/>
         <item
+            android:id="@+id/nav_menu_feedback"
+            android:icon="@drawable/ic_feedback"
+            android:title="@string/feedback"/>
+        <item
             android:id="@+id/nav_menu_coffee"
             android:icon="@drawable/ic_coffee"
             android:title="@string/buy_me_coffee"/>
