@@ -49,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            app:navigationIcon="@drawable/ic_menu"
             app:hideOnScroll="true"
             app:fabCradleMargin="8dp"
             app:fabCradleRoundedCornerRadius="8dp"
