@@ -44,3 +44,32 @@ data class ListSFS(
     val sorting: Sort,
     val filter: Filter
 )
+
+fun ListSFS.generateQuery(
+        query: String = "",
+        sorting: Sort = Sort.BY_FAV_DESC,
+        filter: Filter = Filter.SHOW_ALL): String {
+    var genQuery = """
+                SELECT * FROM wordbook WHERE LOWER(title) LIKE '%${query}%'
+                OR LOWER(meaning) LIKE '%${query}%' 
+                """
+    genQuery += when(filter) {
+        Filter.SHOW_ONLY_FAV -> "AND is_favorite = 1 "
+        Filter.SHOW_ONLY_NOT_FAV -> "AND is_favorite = 0 "
+        else -> " "
+    }
+    genQuery += "ORDER BY "
+    genQuery += when (sorting) {
+        Sort.BY_FAV_DESC -> "is_favorite DESC"
+        Sort.BY_FAV_ASC -> "is_favorite ASC"
+        Sort.BY_TITLE_ASC -> "title ASC"
+        Sort.BY_TITLE_DESC -> "title DESC"
+        Sort.BY_MEAN_ASC -> "meaning ASC"
+        Sort.BY_MEAN_DESC -> "meaning DESC"
+        Sort.BY_DATE_ASC -> "createdAt ASC"
+        Sort.BY_DATE_DESC -> "createdAt DESC"
+        Sort.BY_ID_ASC -> "id ASC"
+        Sort.BY_ID_DESC -> "id DESC"
+    }
+    return genQuery
+}
