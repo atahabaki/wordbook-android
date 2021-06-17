@@ -53,15 +53,12 @@ enum class Filter {
 }
 
 data class ListSFS(
-    val query: String,
-    val sorting: Sort,
-    val filter: Filter
+    val query: String = "",
+    val sorting: Sort = Sort.BY_ID_ASC,
+    val filter: Filter = Filter.SHOW_ALL
 )
 
-fun ListSFS.generateQuery(
-        query: String = "",
-        sorting: Sort = Sort.BY_FAV_DESC,
-        filter: Filter = Filter.SHOW_ALL): String {
+fun ListSFS.generateQuery(): String {
     var genQuery = """
                 SELECT * FROM wordbook WHERE LOWER(title) LIKE '%${query}%'
                 OR LOWER(meaning) LIKE '%${query}%' 
