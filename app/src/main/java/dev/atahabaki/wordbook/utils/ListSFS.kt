@@ -32,3 +32,9 @@ enum class Sort {
     BY_ID_ASC,
     BY_ID_DESC,
 }
+
+enum class Filter {
+    SHOW_ONLY_FAV,
+    SHOW_ONLY_NOT_FAV,
+    SHOW_ALL
+}
