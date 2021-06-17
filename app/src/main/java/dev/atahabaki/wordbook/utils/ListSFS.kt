@@ -86,3 +86,75 @@ fun ListSFS.generateQuery(
     }
     return genQuery
 }
+
+fun String.toListSFS(): ListSFS {
+    var query = ""
+    var sort = Sort.BY_ID_ASC
+    var filter = Filter.SHOW_ALL
+
+    val list = this.split(" ").filter { it.trim().isNotEmpty() }.toMutableList()
+    var countOfDeletedEntries = 0
+    val toTrash: MutableList<Int> = mutableListOf()
+    for ((i,word) in list.withIndex()) {
+        fun addDeleteCommand() {
+            toTrash.add(i-countOfDeletedEntries)
+            countOfDeletedEntries+=1
+        }
+        when (word) {
+            IS_FAV -> {
+                filter = Filter.SHOW_ONLY_FAV
+                addDeleteCommand()
+            }
+            IS_NOT_FAV -> {
+                filter = Filter.SHOW_ONLY_NOT_FAV
+                addDeleteCommand()
+            }
+            SORT_ID -> {
+                sort = Sort.BY_ID_ASC
+                addDeleteCommand()
+            }
+            SORT_ID_DESC -> {
+                sort = Sort.BY_ID_DESC
+                addDeleteCommand()
+            }
+            SORT_TITLE -> {
+                sort = Sort.BY_TITLE_ASC
+                addDeleteCommand()
+            }
+            SORT_TITLE_DESC -> {
+                sort = Sort.BY_TITLE_DESC
+                addDeleteCommand()
+            }
+            SORT_MEAN -> {
+                sort = Sort.BY_MEAN_ASC
+                addDeleteCommand()
+            }
+            SORT_MEAN_DESC -> {
+                sort = Sort.BY_MEAN_DESC
+                addDeleteCommand()
+            }
+            SORT_DATE -> {
+                sort = Sort.BY_DATE_ASC
+                addDeleteCommand()
+            }
+            SORT_DATE_DESC -> {
+                sort = Sort.BY_DATE_DESC
+                addDeleteCommand()
+            }
+            SORT_FAV -> {
+                sort = Sort.BY_FAV_ASC
+                addDeleteCommand()
+            }
+            SORT_FAV_DESC -> {
+                sort = Sort.BY_FAV_DESC
+                addDeleteCommand()
+            }
+        }
+    }
+    for (index in toTrash) {
+        list.removeAt(index)
+    }
+    query = list.joinToString(" ")
+
+    return ListSFS(query, sort, filter)
+}
