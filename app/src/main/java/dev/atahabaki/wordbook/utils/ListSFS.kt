@@ -38,3 +38,9 @@ enum class Filter {
     SHOW_ONLY_NOT_FAV,
     SHOW_ALL
 }
+
+data class ListSFS(
+    val query: String,
+    val sorting: Sort,
+    val filter: Filter
+)
