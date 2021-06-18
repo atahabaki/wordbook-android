@@ -50,5 +50,10 @@ class WordBookActivity : AppCompatActivity() {
         binding.bottomAppBar.setNavigationOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
+
+        binding.scrim.setOnClickListener {
+            if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_HIDDEN)
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
     }
 }
