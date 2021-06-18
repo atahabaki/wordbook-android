@@ -24,7 +24,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -40,13 +39,17 @@ import dev.atahabaki.wordbook.utils.ItemListener
 class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
     private var _binding: FragmentListWordbookBinding? = null
     private val binding get() = _binding!!
+
+    private val wordViewModel: WordViewModel by viewModels()
+
     private val wAdapter = WordAdapter(object: ItemListener<Word> {
         override fun onClick(view: View, data: Word) {
             super.onClick(view, data)
-            //TODO (1) implement item click...
+            if (view is AppCompatImageView)
+                wordViewModel.update(data.copy(isFavorite = !data.isFavorite))
+            // else {} // TODO (*) Navigate to DetailFragment
         }
     })
-    private val wordViewModel: WordViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
