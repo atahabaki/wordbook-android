@@ -34,5 +34,5 @@ data class Word(
     val meaning: String,
     @ColumnInfo(name = "is_favorite")
     val isFavorite: Boolean = false,
-    val createdAt: Long
+    val createdAt: Long = System.currentTimeMillis()
 )
