@@ -55,26 +55,21 @@
             app:fabCradleRoundedCornerRadius="8dp"
             app:fabCradleVerticalOffset="0dp"/>
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
+        <FrameLayout
+            android:id="@+id/scrim"
+            app:layout_behavior="@string/bottom_sheet_behavior"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom">
-
-            <FrameLayout
-                android:id="@+id/scrim"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
             <com.google.android.material.navigation.NavigationView
                 android:id="@+id/bottom_nav_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 app:headerLayout="@layout/nav_view_header"
-                app:menu="@menu/nav_menu"
-                app:layout_behavior="@string/bottom_sheet_behavior"
-                app:behavior_hideable="true" />
-
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                app:menu="@menu/nav_menu"/>
+        </FrameLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
