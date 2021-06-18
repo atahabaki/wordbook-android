@@ -20,6 +20,7 @@
 
 package dev.atahabaki.wordbook.data.word
 
+import androidx.sqlite.db.SupportSQLiteQuery
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -27,7 +28,7 @@ import javax.inject.Singleton
 class WordRepository @Inject constructor(
     private val wordDao: WordDao
 ) {
-    fun getAllWords() = wordDao.getAllWords()
+    fun getAllWords(query: SupportSQLiteQuery) = wordDao.getAllWords(query)
 
     suspend fun insert(word: Word) = wordDao.insert(word)
 
