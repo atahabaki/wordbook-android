@@ -22,6 +22,7 @@ package dev.atahabaki.wordbook.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -55,5 +56,19 @@ class WordBookActivity : AppCompatActivity() {
             if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_HIDDEN)
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         }
+
+        bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback() {
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                if (slideOffset <= 0.2f) binding.fab.show()
+                else binding.fab.hide()
+            }
+
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                if (newState == BottomSheetBehavior.STATE_HIDDEN ||
+                        newState == BottomSheetBehavior.STATE_COLLAPSED)
+                    binding.fab.show()
+                else binding.fab.hide()
+            }
+        })
     }
 }
