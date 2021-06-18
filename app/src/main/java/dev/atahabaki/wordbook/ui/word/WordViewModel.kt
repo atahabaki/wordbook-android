@@ -23,9 +23,14 @@ package dev.atahabaki.wordbook.ui.word
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import androidx.sqlite.db.SimpleSQLiteQuery
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.data.word.WordRepository
+import dev.atahabaki.wordbook.utils.Filter
+import dev.atahabaki.wordbook.utils.ListSFS
+import dev.atahabaki.wordbook.utils.Sort
+import dev.atahabaki.wordbook.utils.generateQuery
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,7 +40,14 @@ import javax.inject.Inject
 class WordViewModel @Inject constructor(
     private val wordRepository: WordRepository
 ): ViewModel() {
-    fun getAllWords(): LiveData<List<Word>> = wordRepository.getAllWords().asLiveData()
+    private val listSFS = ListSFS(
+        "",
+        Sort.BY_FAV_DESC,
+        Filter.SHOW_ALL
+    )
+    fun getAllWords(): LiveData<List<Word>> = wordRepository
+            .getAllWords(SimpleSQLiteQuery(listSFS.generateQuery()))
+            .asLiveData()
 
     fun insert(word: Word) = CoroutineScope(Dispatchers.Main).launch {
         wordRepository.insert(word)
