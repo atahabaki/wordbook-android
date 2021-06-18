@@ -21,12 +21,13 @@
 package dev.atahabaki.wordbook.data.word
 
 import androidx.room.*
+import androidx.sqlite.db.SupportSQLiteQuery
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface WordDao {
-    @Query("SELECT * FROM wordbook ORDER BY createdAt")
-    fun getAllWords(): Flow<List<Word>>
+    @RawQuery(observedEntities = [Word::class])
+    fun getAllWords(query: SupportSQLiteQuery): Flow<List<Word>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(word: Word)
