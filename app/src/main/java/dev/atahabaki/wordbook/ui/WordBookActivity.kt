@@ -42,7 +42,9 @@ class WordBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_wordbook)
 
-        val bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomNavView)
+        val bottomSheetBehavior = BottomSheetBehavior.from(binding.scrim)
+        bottomSheetBehavior.isHideable = true
+        bottomSheetBehavior.peekHeight = binding.bottomAppBar.height
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
         binding.bottomAppBar.setNavigationOnClickListener {
