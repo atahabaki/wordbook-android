@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/list_menu_search"
+        android:icon="@drawable/ic_search_bold"
+        android:title="@string/search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always|collapseActionView"/>
+    <item
+        android:id="@+id/list_menu_trash"
+        android:icon="@drawable/ic_trash_all"
+        android:title="@string/delete"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/list_menu_filter"
+        android:icon="@drawable/ic_filter"
+        android:title="@string/filter"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/list_menu_sort"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/sort"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item android:title="@string/by_title">
+                <menu>
+                    <item
+                        android:id="@+id/list_menu_sort_title_asc"
+                        android:title="@string/asc"/>
+                    <item
+                        android:id="@+id/list_menu_sort_title_desc"
+                        android:title="@string/desc"/>
+                </menu>
+            </item>
+            <item android:title="@string/by_meaning">
+                <menu>
+                    <item
+                        android:id="@+id/list_menu_sort_meaning_asc"
+                        android:title="@string/asc"/>
+                    <item
+                        android:id="@+id/list_menu_sort_meaning_desc"
+                        android:title="@string/desc"/>
+                </menu>
+            </item>
+        </menu>
+    </item>
+</menu>
