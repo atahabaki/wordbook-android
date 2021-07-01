@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *  WordBook - An android application for those who aims to learn a new language.
+ *  Copyright (C) 2021 A. Taha Baki
+ *
+ *  This file is part of WordBook.
+ *
+ *  WordBook is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  WordBook is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
+ */
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="6.35"
+    android:viewportHeight="6.3500004">
+  <path
+      android:pathData="m2.64583,0.52917c-1.169,0 -2.11667,0.94766 -2.11667,2.11667 0,1.169 0.94766,2.11667 2.11667,2.11667 0.46981,-0.00042 0.92614,-0.15713 1.29708,-0.44545l1.4255,1.42524c0.10365,0.10365 0.27023,0.10365 0.37387,0 0.10365,-0.10365 0.10365,-0.27049 0,-0.37414L4.31705,3.94291C4.60537,3.57197 4.76208,3.11565 4.7625,2.64583 4.7625,1.47683 3.81484,0.52917 2.64583,0.52917ZM2.64583,1.05833c0.87675,0 1.5875,0.71075 1.5875,1.5875 0,0.87675 -0.71075,1.5875 -1.5875,1.5875 -0.87675,0 -1.5875,-0.71075 -1.5875,-1.5875 0,-0.87675 0.71075,-1.5875 1.5875,-1.5875z"
+      android:strokeAlpha="0.5"
+      android:strokeLineJoin="round"
+      android:strokeWidth="3.99999"
+      android:fillColor="#FFDC123C"
+      android:strokeLineCap="round"/>
+</vector>
