@@ -22,6 +22,7 @@ package dev.atahabaki.wordbook.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -30,6 +31,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
 import dev.atahabaki.wordbook.ui.word.WordViewModel
+import dev.atahabaki.wordbook.utils.Filter
+import dev.atahabaki.wordbook.utils.Sort
 
 @AndroidEntryPoint
 class WordBookActivity : AppCompatActivity() {
@@ -70,5 +73,69 @@ class WordBookActivity : AppCompatActivity() {
                 else binding.fab.hide()
             }
         })
+
+        binding.bottomAppBar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.list_menu_search -> {
+                    true
+                }
+                R.id.list_menu_trash -> {
+                    true
+                }
+                // SortBy..
+                R.id.list_menu_sort_title_asc -> {
+                    wordViewModel.sort.value = Sort.BY_TITLE_ASC
+                    true
+                }
+                R.id.list_menu_sort_title_desc -> {
+                    wordViewModel.sort.value = Sort.BY_TITLE_DESC
+                    true
+                }
+                R.id.list_menu_sort_meaning_asc -> {
+                    wordViewModel.sort.value = Sort.BY_MEAN_ASC
+                    true
+                }
+                R.id.list_menu_sort_meaning_desc -> {
+                    wordViewModel.sort.value = Sort.BY_MEAN_DESC
+                    true
+                }
+                R.id.list_menu_sort_date_asc -> {
+                    wordViewModel.sort.value = Sort.BY_DATE_ASC
+                    true
+                }
+                R.id.list_menu_sort_date_desc -> {
+                    wordViewModel.sort.value = Sort.BY_DATE_DESC
+                    true
+                }
+                R.id.list_menu_sort_favorite_asc -> {
+                    wordViewModel.sort.value = Sort.BY_FAV_ASC
+                    true
+                }
+                R.id.list_menu_sort_favorite_desc -> {
+                    wordViewModel.sort.value = Sort.BY_FAV_DESC
+                    true
+                }
+                // Filters...
+                R.id.list_menu_filter_show_all -> {
+                    wordViewModel.filter.value = Filter.SHOW_ALL
+                    binding.bottomAppBar.menu
+                        .findItem(R.id.list_menu_filter_show_all).isChecked = true
+                    true
+                }
+                R.id.list_menu_filter_show_only_fav -> {
+                    wordViewModel.filter.value = Filter.SHOW_ONLY_FAV
+                    binding.bottomAppBar.menu
+                        .findItem(R.id.list_menu_filter_show_only_fav).isChecked = true
+                    true
+                }
+                R.id.list_menu_filter_show_only_not_fav -> {
+                    wordViewModel.filter.value = Filter.SHOW_ONLY_NOT_FAV
+                    binding.bottomAppBar.menu
+                        .findItem(R.id.list_menu_filter_show_only_not_fav).isChecked = true
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }
