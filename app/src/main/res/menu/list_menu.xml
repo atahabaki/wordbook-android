@@ -16,7 +16,21 @@
         android:id="@+id/list_menu_filter"
         android:icon="@drawable/ic_filter"
         android:title="@string/filter"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/list_menu_filter_show_all"
+                    android:title="@string/show_all"/>
+                <item
+                    android:id="@+id/list_menu_filter_show_only_fav"
+                    android:title="@string/show_only_fav"/>
+                <item
+                    android:id="@+id/list_menu_filter_show_only_not_fav"
+                    android:title="@string/show_only_not_fav"/>
+            </group>
+        </menu>
+    </item>
     <item
         android:id="@+id/list_menu_sort"
         android:icon="@drawable/ic_sort"
