@@ -34,6 +34,7 @@ import dev.atahabaki.wordbook.adapters.WordAdapter
 import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.databinding.FragmentListWordbookBinding
 import dev.atahabaki.wordbook.utils.ItemListener
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @AndroidEntryPoint
 class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
@@ -61,6 +62,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
         return binding.root
     }
 
+    @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.wordsList.apply {
@@ -68,7 +70,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        wordViewModel.getAllWords().observe(viewLifecycleOwner) {
+        wordViewModel.words.observe(viewLifecycleOwner) {
             wAdapter.submitList(it)
             wAdapter.notifyDataSetChanged()
         }
