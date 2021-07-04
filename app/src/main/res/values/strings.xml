@@ -35,4 +35,6 @@
     <string name="by_meaning">by Meaning</string>
     <string name="asc">Ascending</string>
     <string name="desc">Descending</string>
+    <string name="by_creation_date">by Date</string>
+    <string name="by_favorite">by Favorite</string>
 </resources>
