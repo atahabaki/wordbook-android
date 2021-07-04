@@ -43,6 +43,7 @@ class WordBookActivity : AppCompatActivity() {
     private val wordViewModel: WordViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_WordBook)
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_wordbook)
 
