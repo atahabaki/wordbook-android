@@ -43,6 +43,26 @@
                         android:title="@string/desc"/>
                 </menu>
             </item>
+            <item android:title="@string/by_creation_date">
+                <menu>
+                    <item
+                        android:id="@+id/list_menu_sort_date_asc"
+                        android:title="@string/asc"/>
+                    <item
+                        android:id="@+id/list_menu_sort_date_desc"
+                        android:title="@string/desc"/>
+                </menu>
+            </item>
+            <item android:title="@string/by_favorite">
+                <menu>
+                    <item
+                        android:id="@+id/list_menu_sort_favorite_asc"
+                        android:title="@string/asc"/>
+                    <item
+                        android:id="@+id/list_menu_sort_favorite_desc"
+                        android:title="@string/desc"/>
+                </menu>
+            </item>
         </menu>
     </item>
 </menu>
