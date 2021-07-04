@@ -28,11 +28,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.data.word.WordRepository
 import dev.atahabaki.wordbook.utils.Filter
-import dev.atahabaki.wordbook.utils.ListSFS
 import dev.atahabaki.wordbook.utils.Sort
 import dev.atahabaki.wordbook.utils.generateQuery
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -40,14 +43,24 @@ import javax.inject.Inject
 class WordViewModel @Inject constructor(
     private val wordRepository: WordRepository
 ): ViewModel() {
-    private val listSFS = ListSFS(
-        "",
-        Sort.BY_FAV_DESC,
-        Filter.SHOW_ALL
-    )
-    fun getAllWords(): LiveData<List<Word>> = wordRepository
-            .getAllWords(SimpleSQLiteQuery(listSFS.generateQuery()))
-            .asLiveData()
+    val query = MutableStateFlow("")
+    val sort = MutableStateFlow(Sort.BY_FAV_DESC)
+    val filter = MutableStateFlow(Filter.SHOW_ALL)
+
+    @ExperimentalCoroutinesApi
+    private val wordsFlow = combine(
+        query,
+        sort,
+        filter
+    ) { q, s, f ->
+       Triple(q, s, f)
+    }.flatMapLatest {
+        wordRepository
+            .getAllWords(SimpleSQLiteQuery(it.generateQuery()))
+    }
+
+    @ExperimentalCoroutinesApi
+    private val words: LiveData<List<Word>> = wordsFlow.asLiveData()
 
     fun insert(word: Word) = CoroutineScope(Dispatchers.Main).launch {
         wordRepository.insert(word)
