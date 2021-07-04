@@ -60,7 +60,7 @@ class WordViewModel @Inject constructor(
     }
 
     @ExperimentalCoroutinesApi
-    private val words: LiveData<List<Word>> = wordsFlow.asLiveData()
+    val words: LiveData<List<Word>> = wordsFlow.asLiveData()
 
     fun insert(word: Word) = CoroutineScope(Dispatchers.Main).launch {
         wordRepository.insert(word)
