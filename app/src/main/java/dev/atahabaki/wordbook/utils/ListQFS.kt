@@ -52,24 +52,18 @@ enum class Filter {
     SHOW_ALL
 }
 
-data class ListSFS(
-    val query: String = "",
-    val sorting: Sort = Sort.BY_ID_ASC,
-    val filter: Filter = Filter.SHOW_ALL
-)
-
-fun ListSFS.generateQuery(): String {
+fun Triple<String, Sort, Filter>.generateQuery() : String {
     var genQuery = """
-                SELECT * FROM wordbook WHERE LOWER(title) LIKE '%${query}%'
-                OR LOWER(meaning) LIKE '%${query}%' 
+                SELECT * FROM wordbook WHERE LOWER(title) LIKE '%${this.first}%'
+                OR LOWER(meaning) LIKE '%${this.first}%' 
                 """
-    genQuery += when(filter) {
+    genQuery += when(this.third) {
         Filter.SHOW_ONLY_FAV -> "AND is_favorite = 1 "
         Filter.SHOW_ONLY_NOT_FAV -> "AND is_favorite = 0 "
         else -> " "
     }
     genQuery += "ORDER BY "
-    genQuery += when (sorting) {
+    genQuery += when (this.second) {
         Sort.BY_FAV_DESC -> "is_favorite DESC"
         Sort.BY_FAV_ASC -> "is_favorite ASC"
         Sort.BY_TITLE_ASC -> "title ASC"
@@ -84,7 +78,7 @@ fun ListSFS.generateQuery(): String {
     return genQuery
 }
 
-fun String.toListSFS(): ListSFS {
+fun String.toQFS(): Triple<String, Sort, Filter> {
     var query = ""
     var sort = Sort.BY_ID_ASC
     var filter = Filter.SHOW_ALL
@@ -153,5 +147,5 @@ fun String.toListSFS(): ListSFS {
     }
     query = list.joinToString(" ")
 
-    return ListSFS(query, sort, filter)
+    return Triple(query, sort, filter)
 }
