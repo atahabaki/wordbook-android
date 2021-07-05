@@ -31,7 +31,7 @@
 
         <View
             android:id="@+id/fab_explosion_area"
-            android:background="#DC123C"
+            android:background="@color/primaryColor"
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
