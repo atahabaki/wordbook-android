@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.ViewAnimationUtils
+import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -46,12 +47,15 @@ class WordBookActivity : AppCompatActivity() {
 
     private val wordViewModel: WordViewModel by viewModels()
 
+    private lateinit var _bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
+    private val bottomSheetBehavior get() = _bottomSheetBehavior
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_WordBook)
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_wordbook)
 
-        val bottomSheetBehavior = BottomSheetBehavior.from(binding.scrim)
+        _bottomSheetBehavior = BottomSheetBehavior.from(binding.scrim)
         bottomSheetBehavior.apply {
             isHideable = true
             peekHeight = binding.bottomAppBar.height
