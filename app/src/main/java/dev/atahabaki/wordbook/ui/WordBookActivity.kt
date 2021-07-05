@@ -210,6 +210,9 @@ class WordBookActivity : AppCompatActivity() {
                 // TODO (4) make visible add fragment...
             }
         }
+        else if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED ||
+                bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED)
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         else super.onBackPressed()
     }
 }
