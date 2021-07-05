@@ -66,18 +66,23 @@ class WordBookActivity : AppCompatActivity() {
 
         binding.fab.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                val cx = binding.fab.width / 2
-                val cy = binding.fab.top + binding.fab.height / 2
-                val finalRadius = Math.hypot(
-                    binding.fabExplosionArea.width.toDouble(),
-                    binding.fabExplosionArea.height.toDouble()
-                    ).toFloat()
-                val anim = ViewAnimationUtils.createCircularReveal(
-                        binding.fabExplosionArea, cx,
-                        cy, 0f, finalRadius)
-                binding.fabExplosionArea.visibility = View.VISIBLE
-                // TODO (1) make visible add fragment on animation end...
-                anim.start()
+                var cx: Int
+                var cy: Int
+                binding.fab.apply {
+                    cx = left + width / 2
+                    cy = top + height / 2
+                }
+                binding.fabExplosionArea.apply {
+                    val finalRadius = hypot(
+                            width.toDouble(),
+                            height.toDouble()).toFloat()
+                    val anim = ViewAnimationUtils.createCircularReveal(
+                            this, cx, cy,
+                            0f, finalRadius)
+                    binding.fabExplosionArea.visibility = View.VISIBLE
+                    // TODO (1) make visible add fragment on animation end...
+                    anim.start()
+                }
             }
             else {
                 binding.fabExplosionArea.visibility = View.VISIBLE
