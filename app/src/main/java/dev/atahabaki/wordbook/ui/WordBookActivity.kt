@@ -173,7 +173,7 @@ class WordBookActivity : AppCompatActivity() {
         if (binding.fabExplosionArea.visibility == View.VISIBLE) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 val cx = binding.fab.width / 2
-                val cy = binding.fab.top + binding.fab.width / 2
+                val cy = binding.fab.top + binding.fab.height / 2
                 val initialRadius = hypot(
                     binding.fabExplosionArea.width.toDouble(),
                     binding.fabExplosionArea.height.toDouble()
