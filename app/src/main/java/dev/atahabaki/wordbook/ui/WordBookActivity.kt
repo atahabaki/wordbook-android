@@ -20,10 +20,11 @@
 
 package dev.atahabaki.wordbook.ui
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
+import android.view.ViewAnimationUtils
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -33,6 +34,7 @@ import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
 import dev.atahabaki.wordbook.ui.word.WordViewModel
 import dev.atahabaki.wordbook.utils.Filter
 import dev.atahabaki.wordbook.utils.Sort
+import kotlin.math.hypot
 
 @AndroidEntryPoint
 class WordBookActivity : AppCompatActivity() {
@@ -54,6 +56,27 @@ class WordBookActivity : AppCompatActivity() {
 
         binding.bottomAppBar.setNavigationOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+
+        binding.fabExplosionArea.visibility = View.INVISIBLE
+
+        binding.fab.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                val cx = binding.fabExplosionArea.width / 2
+                val cy = binding.fab.top + binding.fab.height / 2
+                val finalRadius = hypot(
+                    binding.fabExplosionArea.width.toDouble(),
+                    binding.fabExplosionArea.height.toDouble()
+                    ).toFloat()
+                val anim = ViewAnimationUtils.createCircularReveal(
+                        binding.fabExplosionArea, cx,
+                        cy, 0f, finalRadius)
+                binding.fabExplosionArea.visibility = View.VISIBLE
+                anim.start()
+            }
+            else {
+                binding.fabExplosionArea.visibility = View.VISIBLE
+            }
         }
 
         binding.scrim.setOnClickListener {
