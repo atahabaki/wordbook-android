@@ -172,24 +172,29 @@ class WordBookActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (binding.fabExplosionArea.visibility == View.VISIBLE) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                val cx = binding.fab.width / 2
-                val cy = binding.fab.top + binding.fab.height / 2
-                val initialRadius = hypot(
-                    binding.fabExplosionArea.width.toDouble(),
-                    binding.fabExplosionArea.height.toDouble()
-                ).toFloat()
-                val anim = ViewAnimationUtils.createCircularReveal(
-                    binding.fabExplosionArea, cx,
-                    cy, initialRadius, 0f
-                )
-                anim.addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator?) {
-                        super.onAnimationEnd(animation)
-                        binding.fabExplosionArea.visibility = View.INVISIBLE
-                        // TODO (3) make visible add fragment on animation end...
-                    }
-                })
-                anim.start()
+                var cx: Int
+                var cy: Int
+                binding.fab.apply {
+                    cx = left + width / 2
+                    cy = top + binding.fab.height / 2
+                }
+                binding.fabExplosionArea.apply {
+                    val initialRadius = hypot(
+                        width.toDouble(),
+                        height.toDouble()
+                    ).toFloat()
+                    val anim = ViewAnimationUtils.createCircularReveal(
+                        this, cx, cy,
+                        initialRadius, 0f)
+                    anim.addListener(object : AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(animation: Animator?) {
+                            super.onAnimationEnd(animation)
+                            binding.fabExplosionArea.visibility = View.INVISIBLE
+                            // TODO (3) make visible add fragment on animation end...
+                        }
+                    })
+                    anim.start()
+                }
             }
             else {
                 binding.fabExplosionArea.visibility = View.INVISIBLE
