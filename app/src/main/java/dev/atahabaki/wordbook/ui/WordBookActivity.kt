@@ -66,7 +66,7 @@ class WordBookActivity : AppCompatActivity() {
 
         binding.fab.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                val cx = binding.fabExplosionArea.width / 2
+                val cx = binding.fab.width / 2
                 val cy = binding.fab.top + binding.fab.height / 2
                 val finalRadius = Math.hypot(
                     binding.fabExplosionArea.width.toDouble(),
@@ -172,7 +172,7 @@ class WordBookActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (binding.fabExplosionArea.visibility == View.VISIBLE) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                val cx = binding.fabExplosionArea.width / 2
+                val cx = binding.fab.width / 2
                 val cy = binding.fab.top + binding.fab.width / 2
                 val initialRadius = hypot(
                     binding.fabExplosionArea.width.toDouble(),
