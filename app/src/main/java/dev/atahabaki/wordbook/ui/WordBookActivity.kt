@@ -74,10 +74,12 @@ class WordBookActivity : AppCompatActivity() {
                         binding.fabExplosionArea, cx,
                         cy, 0f, finalRadius)
                 binding.fabExplosionArea.visibility = View.VISIBLE
+                // TODO (1) make visible add fragment on animation end...
                 anim.start()
             }
             else {
                 binding.fabExplosionArea.visibility = View.VISIBLE
+                // TODO (2) make visible add fragment...
             }
         }
 
@@ -182,12 +184,14 @@ class WordBookActivity : AppCompatActivity() {
                     override fun onAnimationEnd(animation: Animator?) {
                         super.onAnimationEnd(animation)
                         binding.fabExplosionArea.visibility = View.INVISIBLE
+                        // TODO (3) make visible add fragment on animation end...
                     }
                 })
                 anim.start()
             }
             else {
                 binding.fabExplosionArea.visibility = View.INVISIBLE
+                // TODO (4) make visible add fragment...
             }
         }
         else super.onBackPressed()
