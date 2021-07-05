@@ -20,6 +20,8 @@
 
 package dev.atahabaki.wordbook.ui
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -64,7 +66,7 @@ class WordBookActivity : AppCompatActivity() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 val cx = binding.fabExplosionArea.width / 2
                 val cy = binding.fab.top + binding.fab.height / 2
-                val finalRadius = hypot(
+                val finalRadius = Math.hypot(
                     binding.fabExplosionArea.width.toDouble(),
                     binding.fabExplosionArea.height.toDouble()
                     ).toFloat()
@@ -161,5 +163,33 @@ class WordBookActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    override fun onBackPressed() {
+        if (binding.fabExplosionArea.visibility == View.VISIBLE) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                val cx = binding.fabExplosionArea.width / 2
+                val cy = binding.fab.top + binding.fab.width / 2
+                val initialRadius = hypot(
+                    binding.fabExplosionArea.width.toDouble(),
+                    binding.fabExplosionArea.height.toDouble()
+                ).toFloat()
+                val anim = ViewAnimationUtils.createCircularReveal(
+                    binding.fabExplosionArea, cx,
+                    cy, initialRadius, 0f
+                )
+                anim.addListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator?) {
+                        super.onAnimationEnd(animation)
+                        binding.fabExplosionArea.visibility = View.INVISIBLE
+                    }
+                })
+                anim.start()
+            }
+            else {
+                binding.fabExplosionArea.visibility = View.INVISIBLE
+            }
+        }
+        else super.onBackPressed()
     }
 }
