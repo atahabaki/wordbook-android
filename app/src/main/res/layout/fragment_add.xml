@@ -12,6 +12,8 @@
         style="@style/TextAppearance.MaterialComponents.Headline4"
         android:padding="16dp"
         tools:hint="Type the word..."
+        android:textColorHint="@color/white_opacity_80"
+        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -22,6 +24,8 @@
         style="@style/TextAppearance.AppCompat.Body2"
         android:padding="16dp"
         tools:hint="Type the meaning..."
+        android:textColorHint="@color/white_opacity_60"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/add_title"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
