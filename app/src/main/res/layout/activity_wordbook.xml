@@ -29,13 +29,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.WordBookActivity">
 
-        <View
-            android:id="@+id/fab_explosion_area"
-            android:background="@color/primaryColor"
-            android:layout_gravity="bottom"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
             android:layout_width="match_parent"
@@ -78,6 +71,14 @@
                 app:headerLayout="@layout/nav_view_header"
                 app:menu="@menu/nav_menu"/>
         </FrameLayout>
+
+        <View
+            android:id="@+id/fab_explosion_area"
+            android:background="@color/primaryColor"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
