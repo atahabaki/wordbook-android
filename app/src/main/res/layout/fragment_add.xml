@@ -5,25 +5,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:background="@color/primaryColor"
     xmlns:tools="http://schemas.android.com/tools">
-    <TextView
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/add_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/TextAppearance.MaterialComponents.Headline4"
         android:padding="16dp"
-        tools:hint="Type the word..."
+        android:hint="@string/type_word"
         android:textColorHint="@color/white_opacity_80"
         android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-    <TextView
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/add_meaning"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         style="@style/TextAppearance.AppCompat.Body2"
         android:padding="16dp"
-        tools:hint="Type the meaning..."
+        android:hint="@string/type_meaning"
+        android:gravity="start"
+        android:background="@color/transparent"
         android:textColorHint="@color/white_opacity_60"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/add_title"
