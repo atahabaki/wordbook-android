@@ -42,4 +42,5 @@
     <string name="show_only_not_fav">Show Only Not Favorites</string>
     <string name="type_word">Type the word...</string>
     <string name="type_meaning">Type the meaning...</string>
+    <string name="save">Save</string>
 </resources>
