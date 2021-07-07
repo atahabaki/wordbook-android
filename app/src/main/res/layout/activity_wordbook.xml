@@ -78,11 +78,13 @@
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            android:visibility="invisible"/>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/add_framer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:visibility="invisible"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
