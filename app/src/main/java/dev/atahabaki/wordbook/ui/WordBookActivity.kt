@@ -204,6 +204,7 @@ class WordBookActivity : AppCompatActivity() {
         else {
             binding.fabExplosionArea.visibility = View.VISIBLE
             binding.addFramer.visibility = View.VISIBLE
+            binding.fab.hide()
         }
     }
 
@@ -241,6 +242,7 @@ class WordBookActivity : AppCompatActivity() {
         else {
             binding.fabExplosionArea.visibility = View.INVISIBLE
             binding.addFramer.visibility = View.INVISIBLE
+            binding.fab.show()
         }
     }
 }
