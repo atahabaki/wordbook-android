@@ -171,7 +171,7 @@ class WordBookActivity : AppCompatActivity() {
         else super.onBackPressed()
     }
 
-    fun explodeFab() {
+    private fun explodeFab() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             var cx: Int
             var cy: Int
