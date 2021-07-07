@@ -75,8 +75,6 @@ class WordBookActivity : AppCompatActivity() {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
 
-        binding.fabExplosionArea.visibility = View.INVISIBLE
-
         binding.fab.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 var cx: Int
