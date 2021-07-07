@@ -96,6 +96,11 @@ class WordBookActivity : AppCompatActivity() {
                             super.onAnimationEnd(animation)
                             binding.addFramer.visibility = View.VISIBLE
                         }
+
+                        override fun onAnimationStart(animation: Animator?) {
+                            super.onAnimationStart(animation)
+                            binding.fab.hide()
+                        }
                     })
                     anim.start()
                 }
@@ -216,6 +221,7 @@ class WordBookActivity : AppCompatActivity() {
                         override fun onAnimationStart(animation: Animator?) {
                             super.onAnimationStart(animation)
                             binding.addFramer.visibility = View.INVISIBLE
+                            binding.fab.show()
                         }
                     })
                     anim.start()
