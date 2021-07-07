@@ -30,10 +30,12 @@ import android.view.ViewAnimationUtils
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.commit
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
+import dev.atahabaki.wordbook.ui.word.AddFragment
 import dev.atahabaki.wordbook.ui.word.WordViewModel
 import dev.atahabaki.wordbook.utils.Filter
 import dev.atahabaki.wordbook.utils.Sort
@@ -54,6 +56,13 @@ class WordBookActivity : AppCompatActivity() {
         setTheme(R.style.Theme_WordBook)
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_wordbook)
+
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace(R.id.add_framer, AddFragment())
+            }
+        }
 
         _bottomSheetBehavior = BottomSheetBehavior.from(binding.scrim)
         bottomSheetBehavior.apply {
