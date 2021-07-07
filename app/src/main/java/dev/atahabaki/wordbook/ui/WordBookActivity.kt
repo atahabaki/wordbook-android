@@ -209,11 +209,15 @@ class WordBookActivity : AppCompatActivity() {
                     val anim = ViewAnimationUtils.createCircularReveal(
                         this, cx, cy,
                         initialRadius, 0f)
-                    anim.addListener(object : AnimatorListenerAdapter() {
+                    anim.addListener(object: AnimatorListenerAdapter() {
                         override fun onAnimationEnd(animation: Animator?) {
                             super.onAnimationEnd(animation)
                             binding.fabExplosionArea.visibility = View.INVISIBLE
-                            // TODO (3) make visible add fragment on animation end...
+                        }
+
+                        override fun onAnimationStart(animation: Animator?) {
+                            super.onAnimationStart(animation)
+                            binding.addFramer.visibility = View.INVISIBLE
                         }
                     })
                     anim.start()
@@ -221,7 +225,7 @@ class WordBookActivity : AppCompatActivity() {
             }
             else {
                 binding.fabExplosionArea.visibility = View.INVISIBLE
-                // TODO (4) make visible add fragment...
+                binding.addFramer.visibility = View.INVISIBLE
             }
         }
         else if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED ||
