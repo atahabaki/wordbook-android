@@ -80,5 +80,9 @@
             android:layout_height="match_parent"
             android:orientation="vertical"/>
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/add_framer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
