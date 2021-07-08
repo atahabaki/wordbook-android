@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "dev.atahabaki.wordbook.data.listqfs";
+option java_multiple_files = true;
+
+message ListQFS {
+  int32 filter = 2;
+  int32 sort = 3;
+}

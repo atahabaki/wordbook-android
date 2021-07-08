@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id "com.google.protobuf" version "$protobuf_gradle_version"
 }
 
 android {
@@ -72,4 +73,20 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     // DataStore
     implementation "androidx.datastore:datastore:$datastore_version"
+    implementation  "com.google.protobuf:protobuf-javalite:$protoc_version"
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:$protoc_version"
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option 'lite'
+                }
+            }
+        }
+    }
 }

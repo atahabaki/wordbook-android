@@ -25,11 +25,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.sqlite.db.SimpleSQLiteQuery
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.atahabaki.wordbook.data.listqfs.PreferencesRepository
 import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.data.word.WordRepository
-import dev.atahabaki.wordbook.utils.Filter
-import dev.atahabaki.wordbook.utils.Sort
-import dev.atahabaki.wordbook.utils.generateQuery
+import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -41,22 +40,24 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WordViewModel @Inject constructor(
-    private val wordRepository: WordRepository
+    private val wordRepository: WordRepository,
+    private val preferencesRepository: PreferencesRepository
 ): ViewModel() {
+
     val query = MutableStateFlow("")
-    val sort = MutableStateFlow(Sort.BY_FAV_DESC)
-    val filter = MutableStateFlow(Filter.SHOW_ALL)
+
+    private val listQFS = preferencesRepository.readListQFS
 
     @ExperimentalCoroutinesApi
     private val wordsFlow = combine(
         query,
-        sort,
-        filter
-    ) { q, s, f ->
-       Triple(q, s, f)
-    }.flatMapLatest {
+        listQFS
+    ) { q, l ->
+        Pair(q, l)
+    }.flatMapLatest { (q, l) ->
+        val triple = Triple(q, l.sort.getSort(), l.filter.getFilter())
         wordRepository
-            .getAllWords(SimpleSQLiteQuery(it.generateQuery()))
+            .getAllWords(SimpleSQLiteQuery(triple.generateQuery()))
     }
 
     @ExperimentalCoroutinesApi
@@ -72,5 +73,13 @@ class WordViewModel @Inject constructor(
 
     fun delete(word: Word) = CoroutineScope(Dispatchers.Main).launch {
         wordRepository.delete(word)
+    }
+
+    fun updateSort(sort: Sort) = CoroutineScope(Dispatchers.IO).launch {
+        preferencesRepository.updateSort(sort)
+    }
+
+    fun updateFilter(filter: Filter) = CoroutineScope(Dispatchers.IO).launch {
+        preferencesRepository.updateFilter(filter)
     }
 }
