@@ -38,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="@{(v) -> itemListener.onClick(v,word)}"
+        android:background="?attr/selectableItemBackground"
         android:padding="16dp">
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/word_item_title"
@@ -68,6 +69,7 @@
             android:id="@+id/word_item_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@{word.favorite ? @drawable/ic_star_filled : @drawable/ic_star_outline}"
             android:onClick="@{(v) -> itemListener.onClick(v,word)}"
             app:layout_constraintTop_toTopOf="@id/word_item_title"
