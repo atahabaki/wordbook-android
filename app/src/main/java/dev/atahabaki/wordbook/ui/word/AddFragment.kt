@@ -26,14 +26,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.databinding.FragmentAddBinding
 
 @AndroidEntryPoint
-class AddFragment: Fragment(R.layout.fragment_add) {
+class AddFragment : Fragment(R.layout.fragment_add) {
     private var _binding: FragmentAddBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: WordViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
