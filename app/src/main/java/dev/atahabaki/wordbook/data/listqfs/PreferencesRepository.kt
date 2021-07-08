@@ -29,16 +29,6 @@ class PreferencesRepository @Inject constructor(
                 }
             }
 
-    suspend fun updateQuery(query: String)  {
-        withContext(IO) {
-            context.listQFSDataStore.updateData { curr ->
-                curr.toBuilder()
-                    .setQuery(query)
-                    .build()
-            }
-        }
-    }
-
     suspend fun updateFilter(filter: Filter)  {
         withContext(IO) {
             context.listQFSDataStore.updateData { curr ->
