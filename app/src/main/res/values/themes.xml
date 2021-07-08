@@ -103,4 +103,14 @@
         <item name="colorSecondary">@color/primaryColor</item>
         <item name="buttonTint">@color/primaryColor</item>
     </style>
+
+    <style name="Theme.WordBook.ExtendedFAB.Inverted" parent="Widget.MaterialComponents.ExtendedFloatingActionButton.Icon">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.WordBook.FloatingActionButton.Inverted</item>
+    </style>
+
+    <style name="ThemeOverlay.WordBook.FloatingActionButton.Inverted" parent="">
+        <item name="colorSecondary">@color/defaultThemeColor</item>
+        <item name="colorOnSecondary">@color/primaryColor</item>
+        <item name="colorOnSurface">@color/primaryColor</item>
+    </style>
 </resources>

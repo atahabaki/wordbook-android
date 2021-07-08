@@ -33,4 +33,8 @@
     <!--Swipe Backgrounds-->
     <color name="trash_background">@color/primaryLightColor</color>
     <color name="star_background">#ffe55f</color>
+    <color name="white">#FFF</color>
+    <color name="white_opacity_80">#CCFFFFFF</color>
+    <color name="white_opacity_60">#99FFFFFF</color>
+    <color name="black">#000</color>
 </resources>

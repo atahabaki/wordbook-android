@@ -30,10 +30,12 @@ import android.view.ViewAnimationUtils
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.commit
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
+import dev.atahabaki.wordbook.ui.word.AddFragment
 import dev.atahabaki.wordbook.ui.word.WordViewModel
 import dev.atahabaki.wordbook.utils.Filter
 import dev.atahabaki.wordbook.utils.Sort
@@ -55,6 +57,13 @@ class WordBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_wordbook)
 
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace(R.id.add_framer, AddFragment())
+            }
+        }
+
         _bottomSheetBehavior = BottomSheetBehavior.from(binding.scrim)
         bottomSheetBehavior.apply {
             isHideable = true
@@ -66,32 +75,8 @@ class WordBookActivity : AppCompatActivity() {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
 
-        binding.fabExplosionArea.visibility = View.INVISIBLE
-
         binding.fab.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                var cx: Int
-                var cy: Int
-                binding.fab.apply {
-                    cx = left + width / 2
-                    cy = top + height / 2
-                }
-                binding.fabExplosionArea.apply {
-                    val finalRadius = hypot(
-                            width.toDouble(),
-                            height.toDouble()).toFloat()
-                    val anim = ViewAnimationUtils.createCircularReveal(
-                            this, cx, cy,
-                            0f, finalRadius)
-                    binding.fabExplosionArea.visibility = View.VISIBLE
-                    // TODO (1) make visible add fragment on animation end...
-                    anim.start()
-                }
-            }
-            else {
-                binding.fabExplosionArea.visibility = View.VISIBLE
-                // TODO (2) make visible add fragment...
-            }
+            explodeFab()
         }
 
         binding.scrim.setOnClickListener {
@@ -179,40 +164,85 @@ class WordBookActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (binding.fabExplosionArea.visibility == View.VISIBLE) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                var cx: Int
-                var cy: Int
-                binding.fab.apply {
-                    cx = left + width / 2
-                    cy = top + binding.fab.height / 2
-                }
-                binding.fabExplosionArea.apply {
-                    val initialRadius = hypot(
-                        width.toDouble(),
-                        height.toDouble()
-                    ).toFloat()
-                    val anim = ViewAnimationUtils.createCircularReveal(
-                        this, cx, cy,
-                        initialRadius, 0f)
-                    anim.addListener(object : AnimatorListenerAdapter() {
-                        override fun onAnimationEnd(animation: Animator?) {
-                            super.onAnimationEnd(animation)
-                            binding.fabExplosionArea.visibility = View.INVISIBLE
-                            // TODO (3) make visible add fragment on animation end...
-                        }
-                    })
-                    anim.start()
-                }
-            }
-            else {
-                binding.fabExplosionArea.visibility = View.INVISIBLE
-                // TODO (4) make visible add fragment...
-            }
-        }
+        if (binding.fabExplosionArea.visibility == View.VISIBLE) shrinkFab()
         else if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED ||
                 bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED)
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         else super.onBackPressed()
+    }
+
+    private fun explodeFab() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            var cx: Int
+            var cy: Int
+            binding.fab.apply {
+                cx = left + width / 2
+                cy = top + height / 2
+            }
+            binding.fabExplosionArea.apply {
+                val finalRadius = hypot(
+                    width.toDouble(),
+                    height.toDouble()).toFloat()
+                val anim = ViewAnimationUtils.createCircularReveal(
+                    this, cx, cy,
+                    0f, finalRadius)
+                binding.fabExplosionArea.visibility = View.VISIBLE
+                anim.addListener(object: AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator?) {
+                        super.onAnimationEnd(animation)
+                        binding.addFramer.visibility = View.VISIBLE
+                    }
+
+                    override fun onAnimationStart(animation: Animator?) {
+                        super.onAnimationStart(animation)
+                        binding.fab.hide()
+                    }
+                })
+                anim.start()
+            }
+        }
+        else {
+            binding.fabExplosionArea.visibility = View.VISIBLE
+            binding.addFramer.visibility = View.VISIBLE
+            binding.fab.hide()
+        }
+    }
+
+    private fun shrinkFab() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            var cx: Int
+            var cy: Int
+            binding.fab.apply {
+                cx = left + width / 2
+                cy = top + binding.fab.height / 2
+            }
+            binding.fabExplosionArea.apply {
+                val initialRadius = hypot(
+                    width.toDouble(),
+                    height.toDouble()
+                ).toFloat()
+                val anim = ViewAnimationUtils.createCircularReveal(
+                    this, cx, cy,
+                    initialRadius, 0f)
+                anim.addListener(object: AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator?) {
+                        super.onAnimationEnd(animation)
+                        binding.fabExplosionArea.visibility = View.INVISIBLE
+                    }
+
+                    override fun onAnimationStart(animation: Animator?) {
+                        super.onAnimationStart(animation)
+                        binding.addFramer.visibility = View.INVISIBLE
+                        binding.fab.show()
+                    }
+                })
+                anim.start()
+            }
+        }
+        else {
+            binding.fabExplosionArea.visibility = View.INVISIBLE
+            binding.addFramer.visibility = View.INVISIBLE
+            binding.fab.show()
+        }
     }
 }
