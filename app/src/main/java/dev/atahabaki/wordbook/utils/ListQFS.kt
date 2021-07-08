@@ -33,23 +33,23 @@ const val SORT_DATE_DESC = "sort:!date"
 const val SORT_FAV = "sort:fav"
 const val SORT_FAV_DESC = "sort:!fav"
 
-enum class Sort {
-    BY_TITLE_ASC,
-    BY_TITLE_DESC,
-    BY_MEAN_ASC,
-    BY_MEAN_DESC,
-    BY_DATE_ASC,
-    BY_DATE_DESC,
-    BY_FAV_ASC,
-    BY_FAV_DESC,
-    BY_ID_ASC,
-    BY_ID_DESC,
+enum class Sort(val value: Int) {
+    BY_TITLE_ASC(1),
+    BY_TITLE_DESC(2),
+    BY_MEAN_ASC(3),
+    BY_MEAN_DESC(4),
+    BY_DATE_ASC(5),
+    BY_DATE_DESC(6),
+    BY_FAV_ASC(7),
+    BY_FAV_DESC(0),
+    BY_ID_ASC(8),
+    BY_ID_DESC(9)
 }
 
-enum class Filter {
-    SHOW_ONLY_FAV,
-    SHOW_ONLY_NOT_FAV,
-    SHOW_ALL
+enum class Filter(val value: Int) {
+    SHOW_ALL(0),
+    SHOW_ONLY_FAV(1),
+    SHOW_ONLY_NOT_FAV(2)
 }
 
 fun Triple<String, Sort, Filter>.generateQuery() : String {
