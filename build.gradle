@@ -14,8 +14,8 @@ buildscript {
         coroutines_version = "1.5.0"
         lifecycle_version = "2.2.0"
         datastore_version = "1.0.0-rc01"
-        protoc_version = "3.17.3"
-        protobuf_gradle_version = "0.8.15"
+        protoc_version = "4.0.0-rc-2"
+        protobuf_gradle_version = "0.8.16"
     }
     repositories {
         google()
