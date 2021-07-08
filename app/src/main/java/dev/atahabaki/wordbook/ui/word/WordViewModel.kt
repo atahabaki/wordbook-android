@@ -32,6 +32,8 @@ import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -41,12 +43,19 @@ class WordViewModel @Inject constructor(
     private val wordRepository: WordRepository,
     private val preferencesRepository: PreferencesRepository
 ): ViewModel() {
+
+    val query = MutableStateFlow("")
+
     private val listQFS = preferencesRepository.readListQFS
 
     @ExperimentalCoroutinesApi
-    private val wordsFlow = listQFS
-    .flatMapLatest {
-        val triple = Triple(it.query, it.sort.getSort(), it.filter.getFilter())
+    private val wordsFlow = combine(
+        query,
+        listQFS
+    ) { q, l ->
+        Pair(q, l)
+    }.flatMapLatest { (q, l) ->
+        val triple = Triple(q, l.sort.getSort(), l.filter.getFilter())
         wordRepository
             .getAllWords(SimpleSQLiteQuery(triple.generateQuery()))
     }
