@@ -29,6 +29,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
+import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.databinding.FragmentAddBinding
 
 @AndroidEntryPoint
@@ -50,5 +51,17 @@ class AddFragment : Fragment(R.layout.fragment_add) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.addSaveFab.setOnClickListener {
+            viewModel.insert(
+                    Word(
+                        title = binding.addTitle.text.toString(),
+                        meaning = binding.addMeaning.text.toString()
+                    )
+                )
+        }
     }
 }
