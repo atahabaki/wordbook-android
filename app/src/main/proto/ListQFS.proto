@@ -4,7 +4,6 @@ option java_package = "dev.atahabaki.wordbook.data.listqfs";
 option java_multiple_files = true;
 
 message ListQFS {
-  string query = 1;
   int32 filter = 2;
   int32 sort = 3;
 }
