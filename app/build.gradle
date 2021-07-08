@@ -72,4 +72,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     // DataStore
     implementation "androidx.datastore:datastore:$datastore_version"
+    implementation  "com.google.protobuf:protobuf-javalite:3.10.0"
 }
