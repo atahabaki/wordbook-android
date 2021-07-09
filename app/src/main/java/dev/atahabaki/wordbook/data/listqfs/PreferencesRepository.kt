@@ -43,7 +43,7 @@ class PreferencesRepository @Inject constructor(
         withContext(IO) {
             context.listQFSDataStore.updateData { curr ->
                 curr.toBuilder()
-                    .setFilter(sort.value)
+                    .setSort(sort.value)
                     .build()
             }
         }
