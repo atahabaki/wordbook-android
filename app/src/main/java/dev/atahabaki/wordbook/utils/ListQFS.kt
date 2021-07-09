@@ -75,8 +75,8 @@ fun Int.getFilter(): Filter = when(this) {
 
 fun Triple<String, Sort, Filter>.generateQuery() : String {
     var genQuery = """
-                SELECT * FROM wordbook WHERE LOWER(title) LIKE '%${this.first}%'
-                OR LOWER(meaning) LIKE '%${this.first}%' 
+                SELECT * FROM wordbook WHERE (LOWER(title) LIKE '%${this.first}%'
+                OR LOWER(meaning) LIKE '%${this.first}%') 
                 """
     genQuery += when(this.third) {
         Filter.SHOW_ONLY_FAV -> "AND is_favorite = 1 "
