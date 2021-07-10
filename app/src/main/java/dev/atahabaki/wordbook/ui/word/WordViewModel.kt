@@ -90,4 +90,8 @@ class WordViewModel @Inject constructor(
     fun updateFilter(filter: Filter) = CoroutineScope(Dispatchers.IO).launch {
         preferencesRepository.updateFilter(filter)
     }
+
+    sealed class Events {
+        data class ItemDeletedEvent(val word: Word): Events()
+    }
 }
