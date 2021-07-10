@@ -98,6 +98,7 @@ class WordBookActivity : AppCompatActivity() {
                         .setAction(R.string.undo) {
                             wordViewModel.insert(e.word)
                         }.setAnchorView(binding.fab).show()
+                    is WordViewModel.Events.ItemSavedEvent -> shrinkFab()
                 }
             }
         }
