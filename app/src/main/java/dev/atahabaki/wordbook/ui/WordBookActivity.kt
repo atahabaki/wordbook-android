@@ -25,6 +25,7 @@ import android.animation.AnimatorListenerAdapter
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.widget.FrameLayout
@@ -88,6 +89,16 @@ class WordBookActivity : AppCompatActivity() {
         val searchMenu = binding.bottomAppBar.menu.findItem(R.id.list_menu_search)
 
         searchMenu.setOnActionExpandListener(object: MenuItem.OnActionExpandListener {
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                binding.apply {
+                    fab.hide()
+                    bottomAppBar.hideOnScroll = false
+                }
+                return true
+            }
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                return true
+            }
         })
 
         val searchView = binding.bottomAppBar.menu.findItem(R.id.list_menu_search)
