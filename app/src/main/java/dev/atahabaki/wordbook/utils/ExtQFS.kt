@@ -21,9 +21,12 @@
 package dev.atahabaki.wordbook.utils
 
 fun Triple<String, Filter, Sort>.generateQuery() : String {
+    var query = this.first
+    query = query.replace("'","''")
+    query = query.replace("%","\\%")
     var genQuery = """
-                SELECT * FROM wordbook WHERE (LOWER(title) LIKE '%${this.first}%'
-                OR LOWER(meaning) LIKE '%${this.first}%') 
+                SELECT * FROM wordbook WHERE (LOWER(title) LIKE '%${query}%' ESCAPE '\'
+                OR LOWER(meaning) LIKE '%${query}%' ESCAPE '\') 
                 """
     genQuery += when(this.second) {
         Filter.SHOW_ONLY_FAV -> "AND is_favorite = 1 "
