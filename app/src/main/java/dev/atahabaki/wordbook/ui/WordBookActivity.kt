@@ -35,6 +35,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
@@ -44,6 +45,7 @@ import dev.atahabaki.wordbook.ui.word.WordViewModel
 import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlin.math.hypot
@@ -83,6 +85,20 @@ class WordBookActivity : AppCompatActivity() {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
                 replace(R.id.add_framer, AddFragment())
+            }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            wordViewModel.eventFlow.collect { e ->
+                when(e) {
+                    is WordViewModel.Events.ItemDeletedEvent -> Snackbar.make(
+                        binding.root,
+                        getString(R.string.item_deleted, e.word.title),
+                        Snackbar.LENGTH_SHORT)
+                        .setAction(R.string.undo) {
+                            wordViewModel.insert(e.word)
+                        }.setAnchorView(binding.fab).show()
+                }
             }
         }
 
