@@ -20,19 +20,6 @@
 
 package dev.atahabaki.wordbook.utils
 
-const val IS_FAV = "is:fav"
-const val IS_NOT_FAV = "is:!fav"
-const val SORT_ID = "sort:id"
-const val SORT_ID_DESC = "sort:!id"
-const val SORT_TITLE = "sort:title"
-const val SORT_TITLE_DESC = "sort:!title"
-const val SORT_MEAN = "sort:mean"
-const val SORT_MEAN_DESC = "sort:!mean"
-const val SORT_DATE = "sort:date"
-const val SORT_DATE_DESC = "sort:!date"
-const val SORT_FAV = "sort:fav"
-const val SORT_FAV_DESC = "sort:!fav"
-
 fun Int.getSort(): Sort = when (this) {
     Sort.BY_TITLE_ASC.value -> Sort.BY_TITLE_ASC
     Sort.BY_TITLE_DESC.value -> Sort.BY_TITLE_DESC
