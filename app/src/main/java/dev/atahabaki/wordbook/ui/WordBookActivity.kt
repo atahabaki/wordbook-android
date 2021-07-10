@@ -97,6 +97,10 @@ class WordBookActivity : AppCompatActivity() {
                 return true
             }
             override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                binding.apply {
+                    fab.show()
+                    bottomAppBar.hideOnScroll = true
+                }
                 return true
             }
         })
