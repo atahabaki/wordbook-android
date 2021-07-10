@@ -32,6 +32,7 @@ import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
@@ -46,6 +47,7 @@ class WordViewModel @Inject constructor(
 
     companion object {
         val query = MutableStateFlow("")
+        private val _eventsChannel = Channel<Events>()
     }
 
     suspend fun updateQuery(q: String) {
