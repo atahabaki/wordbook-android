@@ -105,8 +105,7 @@ class WordBookActivity : AppCompatActivity() {
             }
         })
 
-        val searchView = binding.bottomAppBar.menu.findItem(R.id.list_menu_search)
-                .actionView as SearchView
+        val searchView = searchMenu.actionView as SearchView
 
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {
