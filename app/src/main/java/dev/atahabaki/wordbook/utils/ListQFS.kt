@@ -60,51 +60,51 @@ fun String.toQFS(): Triple<String, Filter, Sort> {
             countOfDeletedEntries+=1
         }
         when (word) {
-            IS_FAV -> {
+            Filter.SHOW_ONLY_FAV.searchQuery -> {
                 filter = Filter.SHOW_ONLY_FAV
                 addDeleteCommand()
             }
-            IS_NOT_FAV -> {
+            Filter.SHOW_ONLY_NOT_FAV.searchQuery -> {
                 filter = Filter.SHOW_ONLY_NOT_FAV
                 addDeleteCommand()
             }
-            SORT_ID -> {
+            Sort.BY_ID_ASC.searchQuery -> {
                 sort = Sort.BY_ID_ASC
                 addDeleteCommand()
             }
-            SORT_ID_DESC -> {
+            Sort.BY_ID_DESC.searchQuery -> {
                 sort = Sort.BY_ID_DESC
                 addDeleteCommand()
             }
-            SORT_TITLE -> {
+            Sort.BY_TITLE_ASC.searchQuery -> {
                 sort = Sort.BY_TITLE_ASC
                 addDeleteCommand()
             }
-            SORT_TITLE_DESC -> {
+            Sort.BY_TITLE_DESC.searchQuery -> {
                 sort = Sort.BY_TITLE_DESC
                 addDeleteCommand()
             }
-            SORT_MEAN -> {
+            Sort.BY_MEAN_ASC.searchQuery -> {
                 sort = Sort.BY_MEAN_ASC
                 addDeleteCommand()
             }
-            SORT_MEAN_DESC -> {
+            Sort.BY_MEAN_DESC.searchQuery -> {
                 sort = Sort.BY_MEAN_DESC
                 addDeleteCommand()
             }
-            SORT_DATE -> {
+            Sort.BY_DATE_ASC.searchQuery -> {
                 sort = Sort.BY_DATE_ASC
                 addDeleteCommand()
             }
-            SORT_DATE_DESC -> {
+            Sort.BY_DATE_DESC.searchQuery -> {
                 sort = Sort.BY_DATE_DESC
                 addDeleteCommand()
             }
-            SORT_FAV -> {
+            Sort.BY_FAV_ASC.searchQuery -> {
                 sort = Sort.BY_FAV_ASC
                 addDeleteCommand()
             }
-            SORT_FAV_DESC -> {
+            Sort.BY_FAV_DESC.searchQuery -> {
                 sort = Sort.BY_FAV_DESC
                 addDeleteCommand()
             }
