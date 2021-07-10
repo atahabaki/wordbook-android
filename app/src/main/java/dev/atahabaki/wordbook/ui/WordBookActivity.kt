@@ -32,9 +32,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
+import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
 import dev.atahabaki.wordbook.ui.word.AddFragment
 import dev.atahabaki.wordbook.ui.word.WordViewModel
@@ -43,6 +45,8 @@ import dev.atahabaki.wordbook.utils.Sort
 import dev.atahabaki.wordbook.utils.toQFS
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlin.math.hypot
 
@@ -61,6 +65,21 @@ class WordBookActivity : AppCompatActivity() {
         setTheme(R.style.Theme_WordBook)
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_wordbook)
+
+        lifecycleScope.launch {
+            applicationContext.listQFSDataStore.data.first().apply {
+                when (filter) {
+                    Filter.SHOW_ALL.value -> binding.bottomAppBar.menu
+                        .findItem(R.id.list_menu_filter_show_all).isChecked = true
+                    Filter.SHOW_ONLY_FAV.value -> binding.bottomAppBar.menu
+                        .findItem(R.id.list_menu_filter_show_only_fav).isChecked = true
+                    Filter.SHOW_ONLY_NOT_FAV.value -> binding.bottomAppBar.menu
+                        .findItem(R.id.list_menu_filter_show_only_not_fav).isChecked = true
+                    else -> binding.bottomAppBar.menu
+                        .findItem(R.id.list_menu_filter_show_all).isChecked = true
+                }
+            }
+        }
 
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
