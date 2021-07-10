@@ -27,7 +27,9 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.adapters.WordAdapter
@@ -74,5 +76,22 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
             wAdapter.submitList(it)
             wAdapter.notifyDataSetChanged()
         }
+        setupSwipeOperations()
+    }
+
+    private fun setupSwipeOperations() {
+        ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0,
+            ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT) {
+            override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            }
+        }).attachToRecyclerView(binding.wordsList)
     }
 }
