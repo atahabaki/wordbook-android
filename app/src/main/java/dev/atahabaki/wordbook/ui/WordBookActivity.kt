@@ -162,6 +162,14 @@ class WordBookActivity : AppCompatActivity() {
                     true
                 }
                 // SortBy..
+                R.id.list_menu_sort_id_asc -> {
+                    wordViewModel.updateSort(Sort.BY_ID_ASC)
+                    true
+                }
+                R.id.list_menu_sort_id_desc -> {
+                    wordViewModel.updateSort(Sort.BY_ID_DESC)
+                    true
+                }
                 R.id.list_menu_sort_title_asc -> {
                     wordViewModel.updateSort(Sort.BY_TITLE_ASC)
                     true
