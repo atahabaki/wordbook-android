@@ -48,6 +48,10 @@ class WordViewModel @Inject constructor(
         val query = MutableStateFlow("")
     }
 
+    suspend fun updateQuery(q: String) {
+        query.emit(q)
+    }
+
     private val listQFS = preferencesRepository.readListQFS
 
     @ExperimentalCoroutinesApi
