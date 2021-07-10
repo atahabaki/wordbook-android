@@ -44,4 +44,6 @@
     <string name="type_meaning">Type the meaning...</string>
     <string name="save">Save</string>
     <string name="by_id">by ID</string>
+    <string name="item_deleted">"%1$s" deleted.</string>
+    <string name="undo">Undo</string>
 </resources>
