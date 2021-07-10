@@ -29,6 +29,7 @@ import android.view.View
 import android.view.ViewAnimationUtils
 import android.widget.FrameLayout
 import androidx.activity.viewModels
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -63,6 +64,9 @@ class WordBookActivity : AppCompatActivity() {
                 replace(R.id.add_framer, AddFragment())
             }
         }
+
+        val searchView = binding.bottomAppBar.menu.findItem(R.id.list_menu_search)
+                .actionView as SearchView
 
         _bottomSheetBehavior = BottomSheetBehavior.from(binding.scrim)
         bottomSheetBehavior.apply {
