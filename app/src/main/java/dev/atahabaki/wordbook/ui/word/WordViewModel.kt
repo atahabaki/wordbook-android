@@ -101,5 +101,6 @@ class WordViewModel @Inject constructor(
 
     sealed class Events {
         data class ItemDeletedEvent(val word: Word): Events()
+        object ItemSavedEvent: Events()
     }
 }
