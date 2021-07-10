@@ -20,9 +20,9 @@
 
 package dev.atahabaki.wordbook.utils
 
-fun String.toQFS(): Triple<String, Filter, Sort> {
+fun String.toQFS(s: Sort = Sort.BY_ID_ASC): Triple<String, Filter, Sort> {
     var query = ""
-    var sort = Sort.BY_ID_ASC
+    var sort = s
     var filter = Filter.SHOW_ALL
 
     val list = this.split(" ").filter { it.trim().isNotEmpty() }.toMutableList()
