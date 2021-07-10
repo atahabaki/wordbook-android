@@ -47,12 +47,6 @@ fun Int.getSort(): Sort = when (this) {
     else -> Sort.BY_FAV_DESC
 }
 
-enum class Filter(val value: Int) {
-    SHOW_ALL(0),
-    SHOW_ONLY_FAV(1),
-    SHOW_ONLY_NOT_FAV(2)
-}
-
 fun Int.getFilter(): Filter = when(this) {
     Filter.SHOW_ALL.value -> Filter.SHOW_ALL
     Filter.SHOW_ONLY_FAV.value -> Filter.SHOW_ONLY_FAV
