@@ -58,6 +58,16 @@
         android:title="@string/sort"
         app:showAsAction="ifRoom">
         <menu>
+            <item android:title="@string/by_id">
+                <menu>
+                    <item
+                        android:id="@+id/list_menu_sort_id_asc"
+                        android:title="@string/asc"/>
+                    <item
+                        android:id="@+id/list_menu_sort_id_desc"
+                        android:title="@string/desc"/>
+                </menu>
+            </item>
             <item android:title="@string/by_title">
                 <menu>
                     <item

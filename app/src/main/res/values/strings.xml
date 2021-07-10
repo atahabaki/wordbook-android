@@ -43,4 +43,5 @@
     <string name="type_word">Type the word...</string>
     <string name="type_meaning">Type the meaning...</string>
     <string name="save">Save</string>
+    <string name="by_id">by ID</string>
 </resources>
