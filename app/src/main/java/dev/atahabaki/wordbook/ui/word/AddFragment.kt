@@ -56,7 +56,7 @@ class AddFragment : Fragment(R.layout.fragment_add) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.addSaveFab.setOnClickListener {
-            viewModel.insert(
+            viewModel.onItemSaved(
                     Word(
                         title = binding.addTitle.text.toString(),
                         meaning = binding.addMeaning.text.toString()
