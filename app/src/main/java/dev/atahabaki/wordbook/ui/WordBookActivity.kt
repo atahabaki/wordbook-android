@@ -40,6 +40,9 @@ import dev.atahabaki.wordbook.ui.word.AddFragment
 import dev.atahabaki.wordbook.ui.word.WordViewModel
 import dev.atahabaki.wordbook.utils.Filter
 import dev.atahabaki.wordbook.utils.Sort
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
 import kotlin.math.hypot
 
 @AndroidEntryPoint
@@ -70,10 +73,16 @@ class WordBookActivity : AppCompatActivity() {
 
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {
+                CoroutineScope(Main).launch {
+                    wordViewModel.updateQuery(newText!!)
+                }
                 return true
             }
 
             override fun onQueryTextSubmit(query: String?): Boolean {
+                CoroutineScope(Main).launch {
+                    wordViewModel.updateQuery(query!!)
+                }
                 return true
             }
         })
