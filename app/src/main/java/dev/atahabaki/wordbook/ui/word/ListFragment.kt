@@ -86,6 +86,13 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                 wordViewModel.onItemDeleted(wAdapter.currentList[position])
                 wAdapter.notifyItemRemoved(position)
             }
+
+            fun toggle_favorite(position: Int) {
+                val previous = wAdapter.currentList[position]
+                wordViewModel.insert(previous.copy(isFavorite = !previous.isFavorite))
+                wAdapter.notifyItemChanged(position)
+            }
+
             override fun onMove(
                     recyclerView: RecyclerView,
                     viewHolder: RecyclerView.ViewHolder,
