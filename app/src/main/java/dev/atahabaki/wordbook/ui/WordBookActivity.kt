@@ -29,6 +29,7 @@ import android.view.View
 import android.view.ViewAnimationUtils
 import android.widget.FrameLayout
 import androidx.activity.viewModels
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -39,6 +40,9 @@ import dev.atahabaki.wordbook.ui.word.AddFragment
 import dev.atahabaki.wordbook.ui.word.WordViewModel
 import dev.atahabaki.wordbook.utils.Filter
 import dev.atahabaki.wordbook.utils.Sort
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
 import kotlin.math.hypot
 
 @AndroidEntryPoint
@@ -63,6 +67,25 @@ class WordBookActivity : AppCompatActivity() {
                 replace(R.id.add_framer, AddFragment())
             }
         }
+
+        val searchView = binding.bottomAppBar.menu.findItem(R.id.list_menu_search)
+                .actionView as SearchView
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String?): Boolean {
+                CoroutineScope(Main).launch {
+                    wordViewModel.updateQuery(newText!!)
+                }
+                return true
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                CoroutineScope(Main).launch {
+                    wordViewModel.updateQuery(query!!)
+                }
+                return true
+            }
+        })
 
         _bottomSheetBehavior = BottomSheetBehavior.from(binding.scrim)
         bottomSheetBehavior.apply {

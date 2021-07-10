@@ -44,7 +44,13 @@ class WordViewModel @Inject constructor(
     private val preferencesRepository: PreferencesRepository
 ): ViewModel() {
 
-    val query = MutableStateFlow("")
+    companion object {
+        val query = MutableStateFlow("")
+    }
+
+    suspend fun updateQuery(q: String) {
+        query.emit(q)
+    }
 
     private val listQFS = preferencesRepository.readListQFS
 
