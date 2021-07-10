@@ -85,6 +85,8 @@ class WordBookActivity : AppCompatActivity() {
             }
         }
 
+        val searchMenu = binding.bottomAppBar.menu.findItem(R.id.list_menu_search)
+
         val searchView = binding.bottomAppBar.menu.findItem(R.id.list_menu_search)
                 .actionView as SearchView
 
