@@ -36,6 +36,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -90,6 +91,8 @@ class WordViewModel @Inject constructor(
     fun updateFilter(filter: Filter) = CoroutineScope(Dispatchers.IO).launch {
         preferencesRepository.updateFilter(filter)
     }
+
+    val eventFlow = _eventsChannel.receiveAsFlow()
 
     fun onItemDeleted(word: Word) = CoroutineScope(Dispatchers.IO).launch {
         delete(word)
