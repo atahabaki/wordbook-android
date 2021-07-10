@@ -61,7 +61,7 @@ class WordViewModel @Inject constructor(
     ) { q, l ->
         Pair(q, l)
     }.flatMapLatest { (q, l) ->
-        val triple = Triple(q, l.sort.getSort(), l.filter.getFilter())
+        val triple = Triple(q, l.filter.getFilter(), l.sort.getSort())
         wordRepository
             .getAllWords(SimpleSQLiteQuery(triple.generateQuery()))
     }
