@@ -91,6 +91,11 @@ class WordViewModel @Inject constructor(
         preferencesRepository.updateFilter(filter)
     }
 
+    fun onItemDeleted(word: Word) = CoroutineScope(Dispatchers.IO).launch {
+        delete(word)
+        _eventsChannel.send(Events.ItemDeletedEvent(word))
+    }
+
     sealed class Events {
         data class ItemDeletedEvent(val word: Word): Events()
     }
