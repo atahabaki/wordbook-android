@@ -73,18 +73,18 @@ fun Int.getFilter(): Filter = when(this) {
     else -> Filter.SHOW_ALL
 }
 
-fun Triple<String, Sort, Filter>.generateQuery() : String {
+fun Triple<String, Filter, Sort>.generateQuery() : String {
     var genQuery = """
                 SELECT * FROM wordbook WHERE (LOWER(title) LIKE '%${this.first}%'
                 OR LOWER(meaning) LIKE '%${this.first}%') 
                 """
-    genQuery += when(this.third) {
+    genQuery += when(this.second) {
         Filter.SHOW_ONLY_FAV -> "AND is_favorite = 1 "
         Filter.SHOW_ONLY_NOT_FAV -> "AND is_favorite = 0 "
         else -> " "
     }
     genQuery += "ORDER BY "
-    genQuery += when (this.second) {
+    genQuery += when (this.third) {
         Sort.BY_FAV_DESC -> "is_favorite DESC"
         Sort.BY_FAV_ASC -> "is_favorite ASC"
         Sort.BY_TITLE_ASC -> "title ASC"
@@ -99,7 +99,7 @@ fun Triple<String, Sort, Filter>.generateQuery() : String {
     return genQuery
 }
 
-fun String.toQFS(): Triple<String, Sort, Filter> {
+fun String.toQFS(): Triple<String, Filter, Sort> {
     var query = ""
     var sort = Sort.BY_ID_ASC
     var filter = Filter.SHOW_ALL
@@ -168,5 +168,5 @@ fun String.toQFS(): Triple<String, Sort, Filter> {
     }
     query = list.joinToString(" ")
 
-    return Triple(query, sort, filter)
+    return Triple(query, filter, sort)
 }
