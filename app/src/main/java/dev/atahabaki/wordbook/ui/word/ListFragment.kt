@@ -82,6 +82,10 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
     private fun setupSwipeOperations() {
         ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0,
             ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT) {
+            fun delete(position: Int) {
+                wordViewModel.onItemDeleted(wAdapter.currentList[position])
+                wAdapter.notifyItemRemoved(position)
+            }
             override fun onMove(
                     recyclerView: RecyclerView,
                     viewHolder: RecyclerView.ViewHolder,
