@@ -99,6 +99,11 @@ class WordViewModel @Inject constructor(
         _eventsChannel.send(Events.ItemDeletedEvent(word))
     }
 
+    fun onItemSaved(word: Word) = CoroutineScope(Dispatchers.IO).launch {
+        insert(word)
+        _eventsChannel.send(Events.ItemSavedEvent)
+    }
+
     sealed class Events {
         data class ItemDeletedEvent(val word: Word): Events()
         object ItemSavedEvent: Events()
