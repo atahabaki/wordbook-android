@@ -28,6 +28,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewAnimationUtils
+import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
@@ -98,7 +99,12 @@ class WordBookActivity : AppCompatActivity() {
                         .setAction(R.string.undo) {
                             wordViewModel.insert(e.word)
                         }.setAnchorView(binding.fab).show()
-                    is WordViewModel.Events.ItemSavedEvent -> shrinkFab()
+                    is WordViewModel.Events.ItemSavedEvent -> {
+                        val imm = this@WordBookActivity
+                            .getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+                        shrinkFab()
+                    }
                 }
             }
         }
