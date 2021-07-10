@@ -40,9 +40,7 @@ import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
 import dev.atahabaki.wordbook.ui.word.AddFragment
 import dev.atahabaki.wordbook.ui.word.WordViewModel
-import dev.atahabaki.wordbook.utils.Filter
-import dev.atahabaki.wordbook.utils.Sort
-import dev.atahabaki.wordbook.utils.toQFS
+import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.flow.first
@@ -93,11 +91,13 @@ class WordBookActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 CoroutineScope(Main).launch {
-                    newText?.toQFS().apply {
-                        this?.let {
-                            wordViewModel.updateQuery(it.first)
-                            wordViewModel.updateFilter(it.second)
-                            wordViewModel.updateSort(it.third)
+                    applicationContext.listQFSDataStore.data.first().apply {
+                        newText?.toQFS(sort.getSort()).apply {
+                            this?.let {
+                                wordViewModel.updateQuery(it.first)
+                                wordViewModel.updateFilter(it.second)
+                                wordViewModel.updateSort(it.third)
+                            }
                         }
                     }
                 }
@@ -106,11 +106,13 @@ class WordBookActivity : AppCompatActivity() {
 
             override fun onQueryTextSubmit(query: String?): Boolean {
                 CoroutineScope(Main).launch {
-                    query?.toQFS().apply {
-                        this?.let {
-                            wordViewModel.updateQuery(it.first)
-                            wordViewModel.updateFilter(it.second)
-                            wordViewModel.updateSort(it.third)
+                    applicationContext.listQFSDataStore.data.first().apply {
+                        query?.toQFS(sort.getSort()).apply {
+                            this?.let {
+                                wordViewModel.updateQuery(it.first)
+                                wordViewModel.updateFilter(it.second)
+                                wordViewModel.updateSort(it.third)
+                            }
                         }
                     }
                 }
