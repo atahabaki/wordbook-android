@@ -140,18 +140,32 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                    requireContext().settingsDataStore.data.first().apply {
                        // Swipe from RIGHT to LEFT...
                        ColorDrawable().also {
+                           when (swipeRightAction) {
+                               SwipeOperation.DELETE.value -> it.color = ContextCompat
+                                   .getColor(requireContext(), R.color.trash_background)
+                               SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value ->
+                                   it.color = ContextCompat.getColor(
+                                       requireContext(), R.color.star_background)
+                           }
                            it.setBounds(
                                viewHolder.itemView.left, viewHolder.itemView.top,
                                viewHolder.itemView.left + dX.toInt(), viewHolder.itemView.bottom
                            )
-                       }
+                       }.draw(c)
                        // Swipe from LEFT to RIGHT...
                        ColorDrawable().also {
+                           when (swipeLeftAction) {
+                               SwipeOperation.DELETE.value -> it.color = ContextCompat
+                                               .getColor(requireContext(), R.color.trash_background)
+                               SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value ->
+                                       it.color = ContextCompat.getColor(
+                                               requireContext(), R.color.star_background)
+                           }
                            it.setBounds(
                                viewHolder.itemView.right, viewHolder.itemView.top,
                                viewHolder.itemView.right + dX.toInt(), viewHolder.itemView.bottom
                            )
-                       }
+                       }.draw(c)
                    }
                 }
                 super.onChildDraw(
