@@ -30,5 +30,13 @@
         android:id="@+id/listFragment"
         android:name="dev.atahabaki.wordbook.ui.word.ListFragment"
         android:label="fragment_list_wordbook"
-        tools:layout="@layout/fragment_list_wordbook" />
+        tools:layout="@layout/fragment_list_wordbook" >
+        <action
+            android:id="@+id/action_listFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="dev.atahabaki.wordbook.ui.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
