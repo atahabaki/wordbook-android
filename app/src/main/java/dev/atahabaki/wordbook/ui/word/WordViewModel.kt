@@ -25,16 +25,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.sqlite.db.SimpleSQLiteQuery
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.atahabaki.wordbook.data.listqfs.PreferencesRepository
+import dev.atahabaki.wordbook.data.PreferencesRepository
 import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.data.word.WordRepository
 import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -44,15 +46,15 @@ class WordViewModel @Inject constructor(
     private val preferencesRepository: PreferencesRepository
 ): ViewModel() {
 
-    companion object {
-        val query = MutableStateFlow("")
-    }
+    val query = MutableStateFlow("")
+    private val _eventsChannel = Channel<Events>()
 
     suspend fun updateQuery(q: String) {
         query.emit(q)
     }
 
     private val listQFS = preferencesRepository.readListQFS
+    private val settings = preferencesRepository.readSettings
 
     @ExperimentalCoroutinesApi
     private val wordsFlow = combine(
@@ -87,5 +89,30 @@ class WordViewModel @Inject constructor(
 
     fun updateFilter(filter: Filter) = CoroutineScope(Dispatchers.IO).launch {
         preferencesRepository.updateFilter(filter)
+    }
+
+    fun updateSwipeRight(operation: Int) = CoroutineScope(Dispatchers.IO).launch {
+        preferencesRepository.updateSwipeRightOperation(operation)
+    }
+
+    fun updateSwipeLeft(operation: Int) = CoroutineScope(Dispatchers.IO).launch {
+        preferencesRepository.updateSwipLeftOperation(operation)
+    }
+
+    val eventFlow = _eventsChannel.receiveAsFlow()
+
+    fun onItemDeleted(word: Word) = CoroutineScope(Dispatchers.IO).launch {
+        delete(word)
+        _eventsChannel.send(Events.ItemDeletedEvent(word))
+    }
+
+    fun onItemSaved(word: Word) = CoroutineScope(Dispatchers.IO).launch {
+        insert(word)
+        _eventsChannel.send(Events.ItemSavedEvent)
+    }
+
+    sealed class Events {
+        data class ItemDeletedEvent(val word: Word): Events()
+        object ItemSavedEvent: Events()
     }
 }

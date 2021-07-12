@@ -18,11 +18,15 @@
  *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package dev.atahabaki.wordbook.data.listqfs
+package dev.atahabaki.wordbook.data
 
 import android.content.Context
 import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dev.atahabaki.wordbook.data.listqfs.ListQFS
+import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
+import dev.atahabaki.wordbook.data.settings.Settings
+import dev.atahabaki.wordbook.data.settings.settingsDataStore
 import dev.atahabaki.wordbook.utils.Filter
 import dev.atahabaki.wordbook.utils.Sort
 import kotlinx.coroutines.Dispatchers.IO
@@ -64,6 +68,36 @@ class PreferencesRepository @Inject constructor(
             context.listQFSDataStore.updateData { curr ->
                 curr.toBuilder()
                     .setSort(sort.value)
+                    .build()
+            }
+        }
+    }
+
+    val readSettings: Flow<Settings>  = context.settingsDataStore.data.catch { exception ->
+        if (exception is IOException) {
+            Log.e("${context.packageName}.readSettings", exception.message.toString())
+            emit(Settings.getDefaultInstance())
+        }
+        else {
+            throw  exception
+        }
+    }
+
+    suspend fun updateSwipeRightOperation(operation: Int) {
+        withContext(IO) {
+            context.settingsDataStore.updateData { curr ->
+                curr.toBuilder()
+                    .setSwipeRightAction(operation)
+                    .build()
+            }
+        }
+    }
+
+    suspend fun updateSwipLeftOperation(operation: Int) {
+        withContext(IO) {
+            context.settingsDataStore.updateData { curr ->
+                curr.toBuilder()
+                    .setSwipeLeftAction(operation)
                     .build()
             }
         }
