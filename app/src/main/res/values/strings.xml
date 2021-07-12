@@ -48,6 +48,9 @@
     <string name="undo">Undo</string>
     <string name="swipe_delete">Delete</string>
     <string name="swipe_favorite">(Un)Mark as Favorite</string>
+    <string name="swipe_operations">Swipe Operations</string>
+    <string name="swipe_left_to">Swipe left to</string>
+    <string name="swipe_right_to">Swipe right to</string>
     <string-array name="swipe_operations">
         <item>@string/swipe_delete</item>
         <item>@string/swipe_favorite</item>
