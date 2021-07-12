@@ -25,6 +25,7 @@ import android.animation.AnimatorListenerAdapter
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewAnimationUtils
@@ -35,13 +36,19 @@ import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
 import dev.atahabaki.wordbook.ui.word.AddFragment
+import dev.atahabaki.wordbook.ui.word.ListFragmentDirections
 import dev.atahabaki.wordbook.ui.word.WordViewModel
 import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
@@ -195,6 +202,21 @@ class WordBookActivity : AppCompatActivity() {
                 else binding.fab.hide()
             }
         })
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+                as NavHostFragment
+        val navController = navHostFragment.navController
+        findViewById<NavigationView>(R.id.bottom_nav_view).setupWithNavController(navController)
+
+        binding.bottomNavView.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.nav_menu_settings -> {
+                    it.onNavDestinationSelected(navController)
+                    true
+                }
+                else -> true
+            }
+        }
 
         binding.bottomAppBar.setOnMenuItemClickListener {
             when (it.itemId) {

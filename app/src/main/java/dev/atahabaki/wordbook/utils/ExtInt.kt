@@ -40,3 +40,9 @@ fun Int.getFilter(): Filter = when(this) {
     Filter.SHOW_ONLY_NOT_FAV.value -> Filter.SHOW_ONLY_NOT_FAV
     else -> Filter.SHOW_ALL
 }
+
+fun Int.getSwipeOperation(): SwipeOperation = when(this) {
+    SwipeOperation.DELETE.value -> SwipeOperation.DELETE
+    SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE
+    else -> SwipeOperation.DELETE
+}
