@@ -26,6 +26,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,7 +44,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
     private var _binding: FragmentListWordbookBinding? = null
     private val binding get() = _binding!!
 
-    private val wordViewModel: WordViewModel by viewModels()
+    private val wordViewModel: WordViewModel by activityViewModels()
 
     private val wAdapter = WordAdapter(object: ItemListener<Word> {
         override fun onClick(view: View, data: Word) {

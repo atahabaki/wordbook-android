@@ -46,10 +46,8 @@ class WordViewModel @Inject constructor(
     private val preferencesRepository: PreferencesRepository
 ): ViewModel() {
 
-    companion object {
-        val query = MutableStateFlow("")
-        private val _eventsChannel = Channel<Events>()
-    }
+    val query = MutableStateFlow("")
+    private val _eventsChannel = Channel<Events>()
 
     suspend fun updateQuery(q: String) {
         query.emit(q)
@@ -99,7 +97,13 @@ class WordViewModel @Inject constructor(
         _eventsChannel.send(Events.ItemDeletedEvent(word))
     }
 
+    fun onItemSaved(word: Word) = CoroutineScope(Dispatchers.IO).launch {
+        insert(word)
+        _eventsChannel.send(Events.ItemSavedEvent)
+    }
+
     sealed class Events {
         data class ItemDeletedEvent(val word: Word): Events()
+        object ItemSavedEvent: Events()
     }
 }
