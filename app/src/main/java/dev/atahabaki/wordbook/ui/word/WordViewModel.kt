@@ -46,10 +46,8 @@ class WordViewModel @Inject constructor(
     private val preferencesRepository: PreferencesRepository
 ): ViewModel() {
 
-    companion object {
-        val query = MutableStateFlow("")
-        private val _eventsChannel = Channel<Events>()
-    }
+    val query = MutableStateFlow("")
+    private val _eventsChannel = Channel<Events>()
 
     suspend fun updateQuery(q: String) {
         query.emit(q)
