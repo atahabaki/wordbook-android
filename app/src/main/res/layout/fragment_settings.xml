@@ -5,6 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:context=".ui.SettingsFragment"
         android:padding="16dp">
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/settings_swipe_title"
