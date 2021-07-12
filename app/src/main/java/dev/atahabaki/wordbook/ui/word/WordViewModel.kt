@@ -25,7 +25,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.sqlite.db.SimpleSQLiteQuery
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.atahabaki.wordbook.data.listqfs.PreferencesRepository
+import dev.atahabaki.wordbook.data.PreferencesRepository
 import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.data.word.WordRepository
 import dev.atahabaki.wordbook.utils.*
@@ -54,6 +54,7 @@ class WordViewModel @Inject constructor(
     }
 
     private val listQFS = preferencesRepository.readListQFS
+    private val settings = preferencesRepository.readSettings
 
     @ExperimentalCoroutinesApi
     private val wordsFlow = combine(
@@ -88,6 +89,14 @@ class WordViewModel @Inject constructor(
 
     fun updateFilter(filter: Filter) = CoroutineScope(Dispatchers.IO).launch {
         preferencesRepository.updateFilter(filter)
+    }
+
+    fun updateSwipeRight(operation: Int) = CoroutineScope(Dispatchers.IO).launch {
+        preferencesRepository.updateSwipeRightOperation(operation)
+    }
+
+    fun updateSwipeLeft(operation: Int) = CoroutineScope(Dispatchers.IO).launch {
+        preferencesRepository.updateSwipLeftOperation(operation)
     }
 
     val eventFlow = _eventsChannel.receiveAsFlow()
