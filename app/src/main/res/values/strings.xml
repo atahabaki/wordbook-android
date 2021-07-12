@@ -46,4 +46,10 @@
     <string name="by_id">by ID</string>
     <string name="item_deleted">"%1$s" deleted.</string>
     <string name="undo">Undo</string>
+    <string name="swipe_delete">Delete</string>
+    <string name="swipe_favorite">(Un)Mark as Favorite</string>
+    <string-array name="swipe_operations">
+        <item>@string/swipe_delete</item>
+        <item>@string/swipe_favorite</item>
+    </string-array>
 </resources>
