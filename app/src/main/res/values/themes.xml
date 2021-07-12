@@ -47,6 +47,10 @@
         <item name="popupTheme">@style/Theme.WordBook.Popup</item>
         <!-- Radio Button -->
         <item name="radioButtonStyle">@style/Theme.WordBook.RadioButton</item>
+        <!--Snackbar-->
+        <item name="snackbarStyle">@style/Theme.WordBook.Snackbar</item>
+        <item name="snackbarButtonStyle">@style/Theme.WordBook.SnackbarButton</item>
+        <item name="snackbarTextViewStyle">@style/Theme.WordBook.SnackbarTextView</item>
     </style>
 
     <style name="Theme.WordBook.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
@@ -112,5 +116,22 @@
         <item name="colorSecondary">@color/defaultThemeColor</item>
         <item name="colorOnSecondary">@color/primaryColor</item>
         <item name="colorOnSurface">@color/primaryColor</item>
+    </style>
+
+    <style name="Theme.WordBook.Snackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.WordBook.Snackbar</item>
+        <item name="actionTextColorAlpha">1</item>
+    </style>
+
+    <style name="Theme.WordBook.SnackbarTextView" parent="Widget.MaterialComponents.Snackbar.TextView">
+        <item name="android:textColor">@color/negativeDefaultThemeColor</item>
+    </style>
+
+    <style name="Theme.WordBook.SnackbarButton" parent="Widget.MaterialComponents.Button.TextButton.Snackbar">
+        <item name="android:textColor">@color/primaryColor</item>
+    </style>
+
+    <style name="ThemeOverlay.WordBook.Snackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="colorOnSurface">@color/defaultThemeColor</item>
     </style>
 </resources>
