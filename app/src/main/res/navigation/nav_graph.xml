@@ -33,10 +33,10 @@
         tools:layout="@layout/fragment_list_wordbook" >
         <action
             android:id="@+id/action_listFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/nav_menu_settings" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
+        android:id="@+id/nav_menu_settings"
         android:name="dev.atahabaki.wordbook.ui.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings"/>
