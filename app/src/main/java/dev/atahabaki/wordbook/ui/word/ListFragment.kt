@@ -20,11 +20,14 @@
 
 package dev.atahabaki.wordbook.ui.word
 
+import android.graphics.Canvas
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -127,6 +130,34 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                         }
                     }
                 }
+            }
+
+            override fun onChildDraw(
+                c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
+                dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean
+            ) {
+                viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                   requireContext().settingsDataStore.data.first().apply {
+                       // Swipe from RIGHT to LEFT...
+                       ColorDrawable().also {
+                           it.setBounds(
+                               viewHolder.itemView.left, viewHolder.itemView.top,
+                               viewHolder.itemView.left + dX.toInt(), viewHolder.itemView.bottom
+                           )
+                       }
+                       // Swipe from LEFT to RIGHT...
+                       ColorDrawable().also {
+                           it.setBounds(
+                               viewHolder.itemView.right, viewHolder.itemView.top,
+                               viewHolder.itemView.right + dX.toInt(), viewHolder.itemView.bottom
+                           )
+                       }
+                   }
+                }
+                super.onChildDraw(
+                    c, recyclerView, viewHolder, dX,
+                    dY, actionState, isCurrentlyActive
+                )
             }
         }).attachToRecyclerView(binding.wordsList)
     }
