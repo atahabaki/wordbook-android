@@ -27,17 +27,21 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.adapters.WordAdapter
+import dev.atahabaki.wordbook.data.settings.settingsDataStore
 import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.databinding.FragmentListWordbookBinding
 import dev.atahabaki.wordbook.utils.ItemListener
+import dev.atahabaki.wordbook.utils.SwipeOperation
+import dev.atahabaki.wordbook.utils.getSwipeOperation
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.first
 
 @AndroidEntryPoint
 class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
@@ -103,6 +107,26 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                    requireContext().settingsDataStore.data.first().apply {
+                        // From RIGHT to LEFT...
+                        if (direction == ItemTouchHelper.RIGHT) {
+                            when(swipeLeftAction.getSwipeOperation()) {
+                                SwipeOperation.DELETE -> delete(viewHolder.adapterPosition)
+                                SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE ->
+                                    toggle_favorite(viewHolder.adapterPosition)
+                            }
+                        }
+                        // From LEFT to RIGHT...
+                        else if (direction == ItemTouchHelper.LEFT) {
+                            when(swipeRightAction.getSwipeOperation()) {
+                                SwipeOperation.DELETE -> delete(viewHolder.adapterPosition)
+                                SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE ->
+                                    toggle_favorite(viewHolder.adapterPosition)
+                            }
+                        }
+                    }
+                }
             }
         }).attachToRecyclerView(binding.wordsList)
     }
