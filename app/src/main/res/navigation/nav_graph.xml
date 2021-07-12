@@ -38,5 +38,6 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="dev.atahabaki.wordbook.ui.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"/>
 </navigation>
