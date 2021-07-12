@@ -4,14 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import dev.atahabaki.wordbook.R
+import dev.atahabaki.wordbook.data.settings.settingsDataStore
 import dev.atahabaki.wordbook.databinding.FragmentSettingsBinding
 import dev.atahabaki.wordbook.ui.word.WordViewModel
+import dev.atahabaki.wordbook.utils.getSwipeOperation
+import kotlinx.coroutines.flow.first
 
 class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
@@ -36,5 +38,15 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            requireContext().settingsDataStore.data.first().apply {
+                binding.settingsSwipeToLeftSpinner.setSelection(
+                    swipeLeftAction.getSwipeOperation().value
+                )
+                binding.settingsSwipeToRightSpinner.setSelection(
+                    swipeRightAction.getSwipeOperation().value
+                )
+            }
+        }
     }
 }
