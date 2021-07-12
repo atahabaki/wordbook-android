@@ -140,7 +140,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                    requireContext().settingsDataStore.data.first().apply {
                        // Swipe from RIGHT to LEFT...
                        ColorDrawable().also {
-                           when (swipeRightAction) {
+                           when (swipeLeftAction) {
                                SwipeOperation.DELETE.value -> it.color = ContextCompat
                                    .getColor(requireContext(), R.color.trash_background)
                                SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value ->
@@ -154,7 +154,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                        }.draw(c)
                        // Swipe from LEFT to RIGHT...
                        ColorDrawable().also {
-                           when (swipeLeftAction) {
+                           when (swipeRightAction) {
                                SwipeOperation.DELETE.value -> it.color = ContextCompat
                                                .getColor(requireContext(), R.color.trash_background)
                                SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value ->
