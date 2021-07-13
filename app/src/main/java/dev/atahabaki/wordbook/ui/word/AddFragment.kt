@@ -52,29 +52,19 @@ class AddFragment : Fragment(R.layout.fragment_add) {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add, container, false)
         viewModel.events.observe(viewLifecycleOwner, {
             if (it is WordViewModel.Events.ItemInvalid) {
-                when (it.reason) {
-                    WordValidity.WORD_INVALID_TITLE_AND_MEAN_MISSING ->
-                        MaterialAlertDialogBuilder(requireContext())
-                            .setTitle(R.string.item_invalid)
-                            .setMessage(R.string.title_meaning_missing)
-                            .setPositiveButton(R.string.ok) { dialog, _ ->
-                                dialog.dismiss()
-                            }.show()
-                    WordValidity.WORD_INVALID_TITLE_MISSING ->
-                        MaterialAlertDialogBuilder(requireContext())
-                            .setTitle(R.string.item_invalid)
-                            .setMessage(R.string.title_missing)
-                            .setPositiveButton(R.string.ok) { dialog, _ ->
-                                dialog.dismiss()
-                            }.show()
-                    WordValidity.WORD_INVALID_MEAN_MISSING ->
-                        MaterialAlertDialogBuilder(requireContext())
-                            .setTitle(R.string.item_invalid)
-                            .setMessage(R.string.meaning_missing)
-                            .setPositiveButton(R.string.ok) { dialog, _ ->
-                                dialog.dismiss()
-                            }.show()
-                }
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(R.string.item_invalid)
+                    .setMessage(when(it.reason) {
+                        WordValidity.WORD_INVALID_TITLE_AND_MEAN_MISSING ->
+                            R.string.title_meaning_missing
+                        WordValidity.WORD_INVALID_TITLE_MISSING ->
+                            R.string.title_missing
+                        WordValidity.WORD_INVALID_MEAN_MISSING ->
+                            R.string.meaning_missing
+                    })
+                    .setPositiveButton(R.string.ok) { dialog, _ ->
+                        dialog.dismiss()
+                    }.show()
             }
         })
         return binding.root
