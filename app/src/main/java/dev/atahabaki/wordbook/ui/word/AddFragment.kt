@@ -63,6 +63,12 @@ class AddFragment : Fragment(R.layout.fragment_add) {
                         dialog.dismiss()
                     }.show()
             }
+            if (it is WordViewModel.Events.ItemSavedEvent) {
+                binding.apply {
+                    addTitle.setText("")
+                    addMeaning.setText("")
+                }
+            }
         })
         return binding.root
     }
