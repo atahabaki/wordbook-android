@@ -224,7 +224,8 @@ class WordBookActivity : AppCompatActivity() {
                 R.id.list_menu_trash -> {
                     MaterialAlertDialogBuilder(this)
                         .setTitle(R.string.delete_everything)
-                        .setPositiveButton(R.string.sure_deleting_all) { dialog, _ ->
+                        .setMessage(R.string.sure_deleting_all)
+                        .setPositiveButton(R.string.ok) { dialog, _ ->
                            wordViewModel.deleteAll()
                         }
                         .setNegativeButton(R.string.cancel) { dialog, _ ->
