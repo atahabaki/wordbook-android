@@ -78,7 +78,7 @@
 
     <style name="Theme.WordBook.Dialog.NegativeButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/primaryLightColor</item>
-        <item name="android:alpha">.5</item>
+        <item name="android:alpha">1</item>
     </style>
 
     <style name="Theme.WordBook.Dialog.Title" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
