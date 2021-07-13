@@ -51,6 +51,11 @@
     <string name="swipe_operations">Swipe Operations</string>
     <string name="swipe_left_to">Swipe left to</string>
     <string name="swipe_right_to">Swipe right to</string>
+    <string name="item_invalid">Invalid entry!</string>
+    <string name="ok">OK</string>
+    <string name="title_missing">Title is missing...</string>
+    <string name="meaning_missing">Meaning is missing...</string>
+    <string name="title_meaning_missing">The title and the meaning is missing...</string>
     <string-array name="swipe_operations">
         <item>@string/swipe_delete</item>
         <item>@string/swipe_favorite</item>

@@ -21,6 +21,7 @@
 package dev.atahabaki.wordbook.ui.word
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.sqlite.db.SimpleSQLiteQuery
@@ -32,11 +33,9 @@ import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -47,7 +46,8 @@ class WordViewModel @Inject constructor(
 ): ViewModel() {
 
     val query = MutableStateFlow("")
-    private val _eventsChannel = Channel<Events>()
+    private val _eventsChannel = MutableLiveData<Events>()
+    val events: LiveData<Events> get() = _eventsChannel
 
     suspend fun updateQuery(q: String) {
         query.emit(q)
@@ -99,20 +99,29 @@ class WordViewModel @Inject constructor(
         preferencesRepository.updateSwipLeftOperation(operation)
     }
 
-    val eventFlow = _eventsChannel.receiveAsFlow()
-
-    fun onItemDeleted(word: Word) = CoroutineScope(Dispatchers.IO).launch {
+    fun onItemDeleted(word: Word) {
         delete(word)
-        _eventsChannel.send(Events.ItemDeletedEvent(word))
+        _eventsChannel.value = Events.ItemDeletedEvent(word)
     }
 
-    fun onItemSaved(word: Word) = CoroutineScope(Dispatchers.IO).launch {
-        insert(word)
-        _eventsChannel.send(Events.ItemSavedEvent)
+    fun onItemSaved(word: Word) {
+        if (word.title.isBlank() && word.meaning.isBlank())
+            _eventsChannel.value = Events.ItemInvalid(WordValidity.WORD_INVALID_TITLE_AND_MEAN_MISSING)
+        else if (word.title.isBlank() || word.meaning.isBlank()) {
+            if (word.title.isBlank())
+                _eventsChannel.value = Events.ItemInvalid(WordValidity.WORD_INVALID_TITLE_MISSING)
+            else if (word.meaning.isBlank())
+                _eventsChannel.value = Events.ItemInvalid(WordValidity.WORD_INVALID_MEAN_MISSING)
+        }
+        else {
+            insert(word)
+            _eventsChannel.value = Events.ItemSavedEvent
+        }
     }
 
     sealed class Events {
         data class ItemDeletedEvent(val word: Word): Events()
         object ItemSavedEvent: Events()
+        data class ItemInvalid(val reason: WordValidity): Events()
     }
 }
