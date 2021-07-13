@@ -32,9 +32,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.databinding.FragmentAddBinding
-import dev.atahabaki.wordbook.utils.WORD_INVALID_MEAN_MISSING
-import dev.atahabaki.wordbook.utils.WORD_INVALID_TITLE_AND_MEAN_MISSING
-import dev.atahabaki.wordbook.utils.WORD_INVALID_TITLE_MISSING
 import dev.atahabaki.wordbook.utils.WordValidity
 
 @AndroidEntryPoint
