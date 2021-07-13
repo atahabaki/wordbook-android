@@ -35,4 +35,6 @@ class WordRepository @Inject constructor(
     suspend fun update(word: Word) = wordDao.update(word)
 
     suspend fun delete(word: Word) = wordDao.delete(word)
+
+    suspend fun deleteAll() = wordDao.deleteAll()
 }
