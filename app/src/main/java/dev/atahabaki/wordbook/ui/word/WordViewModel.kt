@@ -106,12 +106,12 @@ class WordViewModel @Inject constructor(
 
     fun onItemSaved(word: Word) {
         if (word.title.isBlank() && word.meaning.isBlank())
-            _eventsChannel.value = Events.ItemInvalid(WORD_INVALID_TITLE_AND_MEAN_MISSING)
+            _eventsChannel.value = Events.ItemInvalid(WordValidity.WORD_INVALID_TITLE_AND_MEAN_MISSING)
         else if (word.title.isBlank() || word.meaning.isBlank()) {
             if (word.title.isBlank())
-                _eventsChannel.value = Events.ItemInvalid(WORD_INVALID_TITLE_MISSING)
+                _eventsChannel.value = Events.ItemInvalid(WordValidity.WORD_INVALID_TITLE_MISSING)
             else if (word.meaning.isBlank())
-                _eventsChannel.value = Events.ItemInvalid(WORD_INVALID_MEAN_MISSING)
+                _eventsChannel.value = Events.ItemInvalid(WordValidity.WORD_INVALID_MEAN_MISSING)
         }
         else {
             insert(word)
@@ -122,6 +122,6 @@ class WordViewModel @Inject constructor(
     sealed class Events {
         data class ItemDeletedEvent(val word: Word): Events()
         object ItemSavedEvent: Events()
-        data class ItemInvalid(val reason: String): Events()
+        data class ItemInvalid(val reason: WordValidity): Events()
     }
 }

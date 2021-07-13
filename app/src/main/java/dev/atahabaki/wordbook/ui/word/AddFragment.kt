@@ -35,6 +35,7 @@ import dev.atahabaki.wordbook.databinding.FragmentAddBinding
 import dev.atahabaki.wordbook.utils.WORD_INVALID_MEAN_MISSING
 import dev.atahabaki.wordbook.utils.WORD_INVALID_TITLE_AND_MEAN_MISSING
 import dev.atahabaki.wordbook.utils.WORD_INVALID_TITLE_MISSING
+import dev.atahabaki.wordbook.utils.WordValidity
 
 @AndroidEntryPoint
 class AddFragment : Fragment(R.layout.fragment_add) {
@@ -52,21 +53,21 @@ class AddFragment : Fragment(R.layout.fragment_add) {
         viewModel.events.observe(viewLifecycleOwner, {
             if (it is WordViewModel.Events.ItemInvalid) {
                 when (it.reason) {
-                    WORD_INVALID_TITLE_AND_MEAN_MISSING ->
+                    WordValidity.WORD_INVALID_TITLE_AND_MEAN_MISSING ->
                         MaterialAlertDialogBuilder(requireContext())
                             .setTitle(R.string.item_invalid)
                             .setMessage(R.string.title_meaning_missing)
                             .setPositiveButton(R.string.ok) { dialog, _ ->
                                 dialog.dismiss()
                             }.show()
-                    WORD_INVALID_TITLE_MISSING ->
+                    WordValidity.WORD_INVALID_TITLE_MISSING ->
                         MaterialAlertDialogBuilder(requireContext())
                             .setTitle(R.string.item_invalid)
                             .setMessage(R.string.title_missing)
                             .setPositiveButton(R.string.ok) { dialog, _ ->
                                 dialog.dismiss()
                             }.show()
-                    WORD_INVALID_MEAN_MISSING ->
+                    WordValidity.WORD_INVALID_MEAN_MISSING ->
                         MaterialAlertDialogBuilder(requireContext())
                             .setTitle(R.string.item_invalid)
                             .setMessage(R.string.meaning_missing)
