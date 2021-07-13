@@ -22,3 +22,6 @@ package dev.atahabaki.wordbook.utils
 
 const val DICTIONARY_TABLE_NAME = "wordbook"
 const val DATABASE_NAME = "wordbook.db"
+const val WORD_INVALID_TITLE_AND_MEAN_MISSING = "title+meaning"
+const val WORD_INVALID_TITLE_MISSING = "title"
+const val WORD_INVALID_MEAN_MISSING = "meaning"
