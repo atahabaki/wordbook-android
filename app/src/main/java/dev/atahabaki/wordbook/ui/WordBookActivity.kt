@@ -40,6 +40,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,6 +52,7 @@ import dev.atahabaki.wordbook.ui.word.WordViewModel
 import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.NonCancellable.cancel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlin.math.hypot
@@ -220,6 +222,15 @@ class WordBookActivity : AppCompatActivity() {
                     true
                 }
                 R.id.list_menu_trash -> {
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle(R.string.delete_everything)
+                        .setMessage(R.string.sure_deleting_all)
+                        .setPositiveButton(R.string.ok) { dialog, _ ->
+                           wordViewModel.deleteAll()
+                        }
+                        .setNegativeButton(R.string.cancel) { dialog, _ ->
+                            dialog.dismiss()
+                        }.show()
                     true
                 }
                 // SortBy..

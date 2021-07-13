@@ -37,4 +37,7 @@ interface WordDao {
 
     @Delete
     suspend fun delete(word: Word)
+
+    @Query("DELETE FROM wordbook")
+    suspend fun deleteAll()
 }

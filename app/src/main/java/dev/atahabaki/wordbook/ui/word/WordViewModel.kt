@@ -83,6 +83,10 @@ class WordViewModel @Inject constructor(
         wordRepository.delete(word)
     }
 
+    fun deleteAll() = CoroutineScope(Dispatchers.Main).launch {
+        wordRepository.deleteAll()
+    }
+
     fun updateSort(sort: Sort) = CoroutineScope(Dispatchers.IO).launch {
         preferencesRepository.updateSort(sort)
     }
