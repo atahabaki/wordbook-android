@@ -25,7 +25,6 @@ import android.animation.AnimatorListenerAdapter
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewAnimationUtils
@@ -35,9 +34,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -48,12 +46,10 @@ import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
 import dev.atahabaki.wordbook.ui.word.AddFragment
-import dev.atahabaki.wordbook.ui.word.ListFragmentDirections
 import dev.atahabaki.wordbook.ui.word.WordViewModel
 import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlin.math.hypot
@@ -96,25 +92,24 @@ class WordBookActivity : AppCompatActivity() {
             }
         }
 
-        lifecycleScope.launchWhenStarted {
-            wordViewModel.eventFlow.collect { e ->
-                when(e) {
-                    is WordViewModel.Events.ItemDeletedEvent -> Snackbar.make(
-                        binding.root,
-                        getString(R.string.item_deleted, e.word.title),
-                        Snackbar.LENGTH_SHORT)
-                        .setAction(R.string.undo) {
-                            wordViewModel.insert(e.word)
-                        }.setAnchorView(binding.fab).show()
-                    is WordViewModel.Events.ItemSavedEvent -> {
-                        val imm = this@WordBookActivity
-                            .getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
-                        shrinkFab()
-                    }
+        wordViewModel.events.observe(this, { e ->
+            when (e) {
+                is WordViewModel.Events.ItemDeletedEvent -> Snackbar.make(
+                    binding.root,
+                    getString(R.string.item_deleted, e.word.title),
+                    Snackbar.LENGTH_SHORT
+                )
+                    .setAction(R.string.undo) {
+                        wordViewModel.insert(e.word)
+                    }.setAnchorView(binding.fab).show()
+                is WordViewModel.Events.ItemSavedEvent -> {
+                    val imm = this@WordBookActivity
+                        .getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+                    shrinkFab()
                 }
             }
-        }
+        })
 
         val searchMenu = binding.bottomAppBar.menu.findItem(R.id.list_menu_search)
 
