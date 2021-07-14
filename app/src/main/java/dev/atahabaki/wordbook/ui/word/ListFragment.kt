@@ -58,6 +58,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
             super.onClick(view, data)
             if (view is AppCompatImageView)
                 wordViewModel.update(data.copy(isFavorite = !data.isFavorite))
+            else wordViewModel.onItemClicked(data)
             // else {} // TODO (*) Navigate to DetailFragment
         }
     })
