@@ -121,50 +121,6 @@ class WordBookActivity : AppCompatActivity() {
             }
         })
 
-        val searchMenu = binding.bottomAppBar.menu.findItem(R.id.list_menu_search)
-
-        searchMenu.setOnActionExpandListener(object: MenuItem.OnActionExpandListener {
-            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-                binding.apply {
-                    fab.hide()
-                    bottomAppBar.hideOnScroll = false
-                }
-                return true
-            }
-            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-                binding.apply {
-                    fab.show()
-                    bottomAppBar.hideOnScroll = true
-                }
-                return true
-            }
-        })
-
-        val searchView = searchMenu.actionView as SearchView
-
-        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-            private fun search(query: String?) = CoroutineScope(Main).launch {
-                applicationContext.listQFSDataStore.data.first().apply {
-                    query?.toQFS(sort.getSort()).apply {
-                        this?.let {
-                            wordViewModel.updateQuery(it.first)
-                            wordViewModel.updateFilter(it.second)
-                            wordViewModel.updateSort(it.third)
-                        }
-                    }
-                }
-            }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                search(newText)
-                return true
-            }
-
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                search(query)
-                return true
-            }
-        })
-
         _bottomSheetBehavior = BottomSheetBehavior.from(binding.scrim)
         bottomSheetBehavior.apply {
             isHideable = true
@@ -317,6 +273,52 @@ class WordBookActivity : AppCompatActivity() {
                 bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED)
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         else super.onBackPressed()
+    }
+
+    private fun handleSearch() {
+        val searchMenu = binding.bottomAppBar.menu.findItem(R.id.list_menu_search)
+
+        searchMenu.setOnActionExpandListener(object: MenuItem.OnActionExpandListener {
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                binding.apply {
+                    fab.hide()
+                    bottomAppBar.hideOnScroll = false
+                }
+                return true
+            }
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                binding.apply {
+                    fab.show()
+                    bottomAppBar.hideOnScroll = true
+                }
+                return true
+            }
+        })
+
+        val searchView = searchMenu.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            private fun search(query: String?) = CoroutineScope(Main).launch {
+                applicationContext.listQFSDataStore.data.first().apply {
+                    query?.toQFS(sort.getSort()).apply {
+                        this?.let {
+                            wordViewModel.updateQuery(it.first)
+                            wordViewModel.updateFilter(it.second)
+                            wordViewModel.updateSort(it.third)
+                        }
+                    }
+                }
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                search(newText)
+                return true
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                search(query)
+                return true
+            }
+        })
     }
 
     private fun explodeFab() {
