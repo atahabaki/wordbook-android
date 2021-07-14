@@ -206,6 +206,19 @@ class WordBookActivity : AppCompatActivity() {
             }
         })
 
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when ((destination as FragmentNavigator.Destination).className) {
+                ListFragment::class.qualifiedName -> binding.apply {
+                    fab.show()
+                    bottomAppBar.replaceMenu(R.menu.list_menu)
+                }
+                else -> binding.apply {
+                    fab.hide()
+                    bottomAppBar.replaceMenu(R.menu.empty_menu)
+                }
+            }
+        }
+
         binding.bottomNavView.setNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.nav_menu_settings -> {
