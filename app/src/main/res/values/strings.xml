@@ -21,7 +21,8 @@
  */
 -->
 <resources>
-    <string name="app_name">WordBook</string>
+    <string name="app_name">@string/wordbook</string>
+    <string name="wordbook">WordBook</string>
     <string name="by_author">by <b>@atahabaki</b></string>
     <string name="bookmarks">Bookmarks</string>
     <string name="settings">Settings</string>
@@ -59,7 +60,6 @@
     <string name="delete_everything">Delete everything?</string>
     <string name="sure_deleting_all">Everything will be deleted, and there\'s no way to undo this operation. Do you still want to do this?</string>
     <string name="cancel">Cancel</string>
-    <string name="wordbook">WordBook</string>
     <string-array name="swipe_operations">
         <item>@string/swipe_delete</item>
         <item>@string/swipe_favorite</item>
