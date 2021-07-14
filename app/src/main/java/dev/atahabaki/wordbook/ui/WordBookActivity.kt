@@ -48,9 +48,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
-import dev.atahabaki.wordbook.ui.word.AddFragment
-import dev.atahabaki.wordbook.ui.word.ListFragment
-import dev.atahabaki.wordbook.ui.word.WordViewModel
+import dev.atahabaki.wordbook.ui.word.*
 import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
@@ -113,10 +111,17 @@ class WordBookActivity : AppCompatActivity() {
                         wordViewModel.insert(e.word)
                     }.setAnchorView(binding.fab).show()
                 is WordViewModel.Events.ItemSavedEvent -> {
-                    val imm = this@WordBookActivity
-                        .getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+                    hideKeyboard()
                     shrinkFab()
+                }
+                is WordViewModel.Events.ItemEditedEvent -> {
+                    hideKeyboard()
+                    navController.navigateUp()
+                }
+                is WordViewModel.Events.ItemSelectedEvent -> {
+                    navController.navigate(
+                        ListFragmentDirections.actionNavMenuWordbookToEditFragment(e.word)
+                    )
                 }
             }
         })
@@ -167,11 +172,17 @@ class WordBookActivity : AppCompatActivity() {
                 ListFragment::class.qualifiedName -> binding.apply {
                     fab.show()
                     bottomAppBar.replaceMenu(R.menu.list_menu)
+                    bottomAppBar.performShow()
                     handleSearch()
+                }
+                EditFragment::class.qualifiedName -> binding.apply {
+                    fab.hide()
+                    bottomAppBar.performHide()
                 }
                 else -> binding.apply {
                     fab.hide()
                     bottomAppBar.replaceMenu(R.menu.empty_menu)
+                    bottomAppBar.performShow()
                 }
             }
         }
@@ -274,6 +285,12 @@ class WordBookActivity : AppCompatActivity() {
                 bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED)
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         else super.onBackPressed()
+    }
+
+    private fun hideKeyboard() {
+        val imm = this@WordBookActivity
+            .getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
 
     private fun handleSearch() {
