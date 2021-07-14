@@ -8,8 +8,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.databinding.FragmentEditBinding
+import dev.atahabaki.wordbook.utils.WordValidity
 
 class EditFragment: Fragment(R.layout.fragment_edit) {
     private var _binding: FragmentEditBinding? = null
@@ -24,6 +26,23 @@ class EditFragment: Fragment(R.layout.fragment_edit) {
         savedInstanceState: Bundle?
     ): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit, container, false)
+        viewModel.events.observe(viewLifecycleOwner, {
+            if (it is WordViewModel.Events.ItemInvalid) {
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(R.string.item_invalid)
+                    .setMessage(when(it.reason) {
+                        WordValidity.WORD_INVALID_TITLE_AND_MEAN_MISSING ->
+                            R.string.title_meaning_missing
+                        WordValidity.WORD_INVALID_TITLE_MISSING ->
+                            R.string.title_missing
+                        WordValidity.WORD_INVALID_MEAN_MISSING ->
+                            R.string.meaning_missing
+                    })
+                    .setPositiveButton(R.string.ok) { dialog, _ ->
+                        dialog.dismiss()
+                    }.show()
+            }
+        })
         return binding.root
     }
 
