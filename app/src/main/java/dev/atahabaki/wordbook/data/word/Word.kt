@@ -20,12 +20,15 @@
 
 package dev.atahabaki.wordbook.data.word
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import dev.atahabaki.wordbook.utils.DICTIONARY_TABLE_NAME
+import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = DICTIONARY_TABLE_NAME)
+@Parcelize
 data class Word(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -35,4 +38,4 @@ data class Word(
     @ColumnInfo(name = "is_favorite")
     val isFavorite: Boolean = false,
     val createdAt: Long = System.currentTimeMillis()
-)
+) : Parcelable
