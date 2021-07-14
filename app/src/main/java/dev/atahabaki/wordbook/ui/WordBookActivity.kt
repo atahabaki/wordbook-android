@@ -73,6 +73,11 @@ class WordBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_wordbook)
 
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+                as NavHostFragment
+        val navController = navHostFragment.navController
+        findViewById<NavigationView>(R.id.bottom_nav_view).setupWithNavController(navController)
+
         lifecycleScope.launch {
             applicationContext.listQFSDataStore.data.first().apply {
                 when (filter) {
@@ -191,11 +196,6 @@ class WordBookActivity : AppCompatActivity() {
                 else binding.fab.hide()
             }
         })
-
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-                as NavHostFragment
-        val navController = navHostFragment.navController
-        findViewById<NavigationView>(R.id.bottom_nav_view).setupWithNavController(navController)
 
         binding.bottomNavView.setNavigationItemSelectedListener {
             when(it.itemId) {
