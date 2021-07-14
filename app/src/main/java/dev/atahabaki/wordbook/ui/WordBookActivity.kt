@@ -136,33 +136,24 @@ class WordBookActivity : AppCompatActivity() {
         val searchView = searchMenu.actionView as SearchView
 
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-            override fun onQueryTextChange(newText: String?): Boolean {
-                CoroutineScope(Main).launch {
-                    applicationContext.listQFSDataStore.data.first().apply {
-                        newText?.toQFS(sort.getSort()).apply {
-                            this?.let {
-                                wordViewModel.updateQuery(it.first)
-                                wordViewModel.updateFilter(it.second)
-                                wordViewModel.updateSort(it.third)
-                            }
+            private fun search(query: String?) = CoroutineScope(Main).launch {
+                applicationContext.listQFSDataStore.data.first().apply {
+                    query?.toQFS(sort.getSort()).apply {
+                        this?.let {
+                            wordViewModel.updateQuery(it.first)
+                            wordViewModel.updateFilter(it.second)
+                            wordViewModel.updateSort(it.third)
                         }
                     }
                 }
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                search(newText)
                 return true
             }
 
             override fun onQueryTextSubmit(query: String?): Boolean {
-                CoroutineScope(Main).launch {
-                    applicationContext.listQFSDataStore.data.first().apply {
-                        query?.toQFS(sort.getSort()).apply {
-                            this?.let {
-                                wordViewModel.updateQuery(it.first)
-                                wordViewModel.updateFilter(it.second)
-                                wordViewModel.updateSort(it.third)
-                            }
-                        }
-                    }
-                }
+                search(query)
                 return true
             }
         })
