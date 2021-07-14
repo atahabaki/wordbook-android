@@ -118,9 +118,14 @@ class WordViewModel @Inject constructor(
                 _eventsChannel.value = Events.ItemInvalid(WordValidity.WORD_INVALID_MEAN_MISSING)
         }
         else {
-            if (update) update(word)
-            else insert(word)
-            _eventsChannel.value = Events.ItemSavedEvent
+            if (update) {
+                update(word)
+                _eventsChannel.value = Events.ItemEditedEvent
+            }
+            else {
+                insert(word)
+                _eventsChannel.value = Events.ItemSavedEvent
+            }
         }
     }
 
@@ -131,6 +136,7 @@ class WordViewModel @Inject constructor(
     sealed class Events {
         data class ItemDeletedEvent(val word: Word): Events()
         object ItemSavedEvent: Events()
+        object ItemEditedEvent: Events()
         data class ItemSelectedEvent(val word: Word): Events()
         data class ItemInvalid(val reason: WordValidity): Events()
     }
