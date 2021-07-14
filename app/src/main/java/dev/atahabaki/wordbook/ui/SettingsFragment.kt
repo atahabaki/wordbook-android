@@ -70,30 +70,22 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
             }
         }
         binding.settingsSwipeToLeftSpinner
-                .onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                wordViewModel.updateSwipeLeft(position)
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) = Unit
-        }
+                .onItemSelectedListener = updateSwipeOption(true)
         binding.settingsSwipeToRightSpinner
-            .onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                wordViewModel.updateSwipeRight(position)
-            }
+            .onItemSelectedListener = updateSwipeOption(false)
+    }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) = Unit
+    private fun updateSwipeOption(isLeft: Boolean) = object: AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(
+            parent: AdapterView<*>?,
+            view: View?,
+            position: Int,
+            id: Long
+        ) {
+            if (isLeft) wordViewModel.updateSwipeLeft(position)
+            else wordViewModel.updateSwipeRight(position)
         }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) = Unit
     }
 }
