@@ -126,6 +126,7 @@ class WordViewModel @Inject constructor(
     sealed class Events {
         data class ItemDeletedEvent(val word: Word): Events()
         object ItemSavedEvent: Events()
+        data class ItemSelectedEvent(val word: Word): Events()
         data class ItemInvalid(val reason: WordValidity): Events()
     }
 }
