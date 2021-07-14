@@ -116,6 +116,9 @@ class WordBookActivity : AppCompatActivity() {
                     imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
                     shrinkFab()
                 }
+                is WordViewModel.Events.ItemEditedEvent -> {
+                    navController.navigateUp()
+                }
                 is WordViewModel.Events.ItemSelectedEvent -> {
                     navController.navigate(
                         ListFragmentDirections.actionNavMenuWordbookToEditFragment(e.word)
