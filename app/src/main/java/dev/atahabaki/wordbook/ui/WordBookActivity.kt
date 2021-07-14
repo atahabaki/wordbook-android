@@ -50,6 +50,7 @@ import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
 import dev.atahabaki.wordbook.ui.word.AddFragment
 import dev.atahabaki.wordbook.ui.word.ListFragment
+import dev.atahabaki.wordbook.ui.word.ListFragmentDirections
 import dev.atahabaki.wordbook.ui.word.WordViewModel
 import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
@@ -117,6 +118,11 @@ class WordBookActivity : AppCompatActivity() {
                         .getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
                     shrinkFab()
+                }
+                is WordViewModel.Events.ItemSelectedEvent -> {
+                    navController.navigate(
+                        ListFragmentDirections.actionNavMenuWordbookToEditFragment(e.word)
+                    )
                 }
             }
         })
