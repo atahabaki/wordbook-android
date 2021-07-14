@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *  WordBook - An android application for those who aims to learn a new language.
+ *  Copyright (C) 2021 A. Taha Baki
+ *
+ *  This file is part of WordBook.
+ *
+ *  WordBook is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  WordBook is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
+ */
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="6.35"
+    android:viewportHeight="6.3500004">
+  <path
+      android:pathData="M1.05833,0.52917C0.76518,0.52917 0.52917,0.76518 0.52917,1.05833L0.52917,1.32292L1.5875,1.32292L1.5875,1.05833C1.5875,0.76518 1.35149,0.52917 1.05833,0.52917zM0.52917,1.85208L0.52917,4.49792L1.5875,4.49792L1.5875,1.85208L0.52917,1.85208zM0.52917,5.02708L0.52917,5.29167C0.52917,5.58483 0.76518,5.82083 1.05833,5.82083C1.35149,5.82083 1.5875,5.58483 1.5875,5.29167L1.5875,5.02708L0.52917,5.02708z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="3.99999"
+      android:fillColor="#dc123c"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M3.175,0.52917C2.88184,0.52917 2.64583,0.76518 2.64583,1.05833L2.64583,1.32292L3.70417,1.32292L3.70417,1.05833C3.70417,0.76518 3.46816,0.52917 3.175,0.52917zM2.64583,1.85208L2.64583,4.49792L3.70417,4.49792L3.70417,1.85208L2.64583,1.85208zM2.64583,5.02708L2.64583,5.29167C2.64583,5.58483 2.88184,5.82083 3.175,5.82083C3.46816,5.82083 3.70417,5.58483 3.70417,5.29167L3.70417,5.02708L2.64583,5.02708z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="3.99999"
+      android:fillColor="#dc123c"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M4.10155,0.67957C3.81766,0.75272 3.64801,1.04015 3.72116,1.32404L3.78719,1.58025 4.81204,1.31616 4.74602,1.05995C4.67287,0.77606 4.38543,0.60641 4.10155,0.67957ZM3.91923,2.09268 L4.57946,4.65481 5.60432,4.39072 4.94409,1.82859ZM4.71151,5.16724 L4.77753,5.42345C4.85068,5.70734 5.13812,5.87699 5.422,5.80384 5.70589,5.73068 5.87554,5.44325 5.80238,5.15936L5.73636,4.90315Z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="1.05833"
+      android:fillColor="#dc123c"
+      android:strokeLineCap="round"/>
+</vector>
