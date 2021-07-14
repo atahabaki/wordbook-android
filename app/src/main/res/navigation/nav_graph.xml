@@ -24,10 +24,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/listFragment">
+    app:startDestination="@id/nav_menu_wordbook">
 
     <fragment
-        android:id="@+id/listFragment"
+        android:id="@+id/nav_menu_wordbook"
         android:name="dev.atahabaki.wordbook.ui.word.ListFragment"
         android:label="fragment_list_wordbook"
         tools:layout="@layout/fragment_list_wordbook" >

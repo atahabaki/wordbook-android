@@ -59,6 +59,7 @@
     <string name="delete_everything">Delete everything?</string>
     <string name="sure_deleting_all">Everything will be deleted, and there\'s no way to undo this operation. Do you still want to do this?</string>
     <string name="cancel">Cancel</string>
+    <string name="wordbook">WordBook</string>
     <string-array name="swipe_operations">
         <item>@string/swipe_delete</item>
         <item>@string/swipe_favorite</item>

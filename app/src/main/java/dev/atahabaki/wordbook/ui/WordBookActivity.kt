@@ -178,7 +178,7 @@ class WordBookActivity : AppCompatActivity() {
 
         binding.bottomNavView.setNavigationItemSelectedListener {
             when(it.itemId) {
-                R.id.nav_menu_settings -> {
+                R.id.nav_menu_settings, R.id.nav_menu_wordbook -> {
                     it.onNavDestinationSelected(navController)
                     true
                 }
