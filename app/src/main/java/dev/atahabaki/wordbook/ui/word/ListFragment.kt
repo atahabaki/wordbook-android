@@ -95,7 +95,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                 wAdapter.notifyItemRemoved(position)
             }
 
-            fun toggle_favorite(position: Int) {
+            fun toggleFavorite(position: Int) {
                 val previous = wAdapter.currentList[position]
                 wordViewModel.insert(previous.copy(isFavorite = !previous.isFavorite))
                 wAdapter.notifyItemChanged(position)
@@ -117,7 +117,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                             when(swipeLeftAction.getSwipeOperation()) {
                                 SwipeOperation.DELETE -> delete(viewHolder.adapterPosition)
                                 SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE ->
-                                    toggle_favorite(viewHolder.adapterPosition)
+                                    toggleFavorite(viewHolder.adapterPosition)
                             }
                         }
                         // From LEFT to RIGHT...
@@ -125,7 +125,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                             when(swipeRightAction.getSwipeOperation()) {
                                 SwipeOperation.DELETE -> delete(viewHolder.adapterPosition)
                                 SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE ->
-                                    toggle_favorite(viewHolder.adapterPosition)
+                                    toggleFavorite(viewHolder.adapterPosition)
                             }
                         }
                     }

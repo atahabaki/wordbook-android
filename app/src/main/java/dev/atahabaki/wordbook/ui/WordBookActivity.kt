@@ -73,6 +73,11 @@ class WordBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_wordbook)
 
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+                as NavHostFragment
+        val navController = navHostFragment.navController
+        findViewById<NavigationView>(R.id.bottom_nav_view).setupWithNavController(navController)
+
         lifecycleScope.launch {
             applicationContext.listQFSDataStore.data.first().apply {
                 when (filter) {
@@ -136,33 +141,24 @@ class WordBookActivity : AppCompatActivity() {
         val searchView = searchMenu.actionView as SearchView
 
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-            override fun onQueryTextChange(newText: String?): Boolean {
-                CoroutineScope(Main).launch {
-                    applicationContext.listQFSDataStore.data.first().apply {
-                        newText?.toQFS(sort.getSort()).apply {
-                            this?.let {
-                                wordViewModel.updateQuery(it.first)
-                                wordViewModel.updateFilter(it.second)
-                                wordViewModel.updateSort(it.third)
-                            }
+            private fun search(query: String?) = CoroutineScope(Main).launch {
+                applicationContext.listQFSDataStore.data.first().apply {
+                    query?.toQFS(sort.getSort()).apply {
+                        this?.let {
+                            wordViewModel.updateQuery(it.first)
+                            wordViewModel.updateFilter(it.second)
+                            wordViewModel.updateSort(it.third)
                         }
                     }
                 }
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                search(newText)
                 return true
             }
 
             override fun onQueryTextSubmit(query: String?): Boolean {
-                CoroutineScope(Main).launch {
-                    applicationContext.listQFSDataStore.data.first().apply {
-                        query?.toQFS(sort.getSort()).apply {
-                            this?.let {
-                                wordViewModel.updateQuery(it.first)
-                                wordViewModel.updateFilter(it.second)
-                                wordViewModel.updateSort(it.third)
-                            }
-                        }
-                    }
-                }
+                search(query)
                 return true
             }
         })
@@ -200,11 +196,6 @@ class WordBookActivity : AppCompatActivity() {
                 else binding.fab.hide()
             }
         })
-
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-                as NavHostFragment
-        val navController = navHostFragment.navController
-        findViewById<NavigationView>(R.id.bottom_nav_view).setupWithNavController(navController)
 
         binding.bottomNavView.setNavigationItemSelectedListener {
             when(it.itemId) {
