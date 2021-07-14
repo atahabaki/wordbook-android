@@ -167,6 +167,7 @@ class WordBookActivity : AppCompatActivity() {
                 ListFragment::class.qualifiedName -> binding.apply {
                     fab.show()
                     bottomAppBar.replaceMenu(R.menu.list_menu)
+                    handleSearch()
                 }
                 else -> binding.apply {
                     fab.hide()
