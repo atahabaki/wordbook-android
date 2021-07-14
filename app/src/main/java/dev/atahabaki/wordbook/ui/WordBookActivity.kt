@@ -36,6 +36,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
@@ -48,6 +49,7 @@ import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
 import dev.atahabaki.wordbook.ui.word.AddFragment
+import dev.atahabaki.wordbook.ui.word.ListFragment
 import dev.atahabaki.wordbook.ui.word.WordViewModel
 import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
@@ -185,14 +187,21 @@ class WordBookActivity : AppCompatActivity() {
 
         bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                if (slideOffset <= 0.2f) binding.fab.show()
+                if ((slideOffset <= 0.2f) &&
+                            (navController.currentDestination as FragmentNavigator.Destination)
+                            .className == ListFragment::class.qualifiedName) {
+                    binding.fab.show()
+                }
                 else binding.fab.hide()
             }
 
             override fun onStateChanged(bottomSheet: View, newState: Int) {
-                if (newState == BottomSheetBehavior.STATE_HIDDEN ||
-                        newState == BottomSheetBehavior.STATE_COLLAPSED)
+                if ((newState == BottomSheetBehavior.STATE_HIDDEN ||
+                            newState == BottomSheetBehavior.STATE_COLLAPSED) &&
+                            (navController.currentDestination as FragmentNavigator.Destination)
+                            .className == ListFragment::class.qualifiedName) {
                     binding.fab.show()
+                }
                 else binding.fab.hide()
             }
         })
