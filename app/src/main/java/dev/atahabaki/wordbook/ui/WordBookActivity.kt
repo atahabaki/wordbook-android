@@ -48,10 +48,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
-import dev.atahabaki.wordbook.ui.word.AddFragment
-import dev.atahabaki.wordbook.ui.word.ListFragment
-import dev.atahabaki.wordbook.ui.word.ListFragmentDirections
-import dev.atahabaki.wordbook.ui.word.WordViewModel
+import dev.atahabaki.wordbook.ui.word.*
 import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
@@ -173,11 +170,17 @@ class WordBookActivity : AppCompatActivity() {
                 ListFragment::class.qualifiedName -> binding.apply {
                     fab.show()
                     bottomAppBar.replaceMenu(R.menu.list_menu)
+                    bottomAppBar.performShow()
                     handleSearch()
+                }
+                EditFragment::class.qualifiedName -> binding.apply {
+                    fab.hide()
+                    bottomAppBar.performHide()
                 }
                 else -> binding.apply {
                     fab.hide()
                     bottomAppBar.replaceMenu(R.menu.empty_menu)
+                    bottomAppBar.performShow()
                 }
             }
         }
