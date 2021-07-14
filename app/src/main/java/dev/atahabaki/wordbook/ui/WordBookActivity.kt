@@ -111,12 +111,11 @@ class WordBookActivity : AppCompatActivity() {
                         wordViewModel.insert(e.word)
                     }.setAnchorView(binding.fab).show()
                 is WordViewModel.Events.ItemSavedEvent -> {
-                    val imm = this@WordBookActivity
-                        .getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+                    hideKeyboard()
                     shrinkFab()
                 }
                 is WordViewModel.Events.ItemEditedEvent -> {
+                    hideKeyboard()
                     navController.navigateUp()
                 }
                 is WordViewModel.Events.ItemSelectedEvent -> {
@@ -286,6 +285,12 @@ class WordBookActivity : AppCompatActivity() {
                 bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED)
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         else super.onBackPressed()
+    }
+
+    private fun hideKeyboard() {
+        val imm = this@WordBookActivity
+            .getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
 
     private fun handleSearch() {
