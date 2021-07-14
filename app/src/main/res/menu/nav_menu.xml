@@ -23,9 +23,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
         <item
-            android:id="@+id/nav_menu_bookmarks"
-            android:icon="@drawable/ic_bookmark_filled"
-            android:title="@string/bookmarks"/>
+            android:id="@+id/nav_menu_wordbook"
+            android:icon="@drawable/ic_books"
+            android:title="@string/wordbook"/>
     </group>
     <group>
         <item
