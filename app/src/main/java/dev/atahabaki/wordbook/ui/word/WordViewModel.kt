@@ -123,6 +123,10 @@ class WordViewModel @Inject constructor(
         }
     }
 
+    fun onItemClicked(word: Word) {
+        _eventsChannel.value = Events.ItemSelectedEvent(word)
+    }
+
     sealed class Events {
         data class ItemDeletedEvent(val word: Word): Events()
         object ItemSavedEvent: Events()
