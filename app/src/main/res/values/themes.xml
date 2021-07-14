@@ -53,6 +53,7 @@
         <item name="snackbarTextViewStyle">@style/Theme.WordBook.SnackbarTextView</item>
         <!--FAB-->
         <item name="floatingActionButtonStyle">@style/Theme.WordBook.FAB</item>
+        <item name="extendedFloatingActionButtonStyle">@style/Theme.WordBook.ExtendedFAB</item>
     </style>
 
     <style name="Theme.WordBook.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
@@ -118,6 +119,10 @@
         <item name="colorSecondary">@color/primaryColor</item>
         <item name="colorOnSecondary">@color/defaultThemeColor</item>
         <item name="colorOnSurface">@color/defaultThemeColor</item>
+    </style>
+
+    <style name="Theme.WordBook.ExtendedFAB" parent="Widget.MaterialComponents.ExtendedFloatingActionButton.Icon">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.WordBook.FloatingActionButton</item>
     </style>
 
     <style name="Theme.WordBook.ExtendedFAB.Inverted" parent="Widget.MaterialComponents.ExtendedFloatingActionButton.Icon">
