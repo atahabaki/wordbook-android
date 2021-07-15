@@ -142,8 +142,7 @@ class WordBookActivity : AppCompatActivity() {
         }
 
         binding.scrim.setOnClickListener {
-            if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_HIDDEN)
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            hideBottomNavView()
         }
 
         bottomSheetBehavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback() {
@@ -285,6 +284,11 @@ class WordBookActivity : AppCompatActivity() {
                 bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED)
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         else super.onBackPressed()
+    }
+
+    private fun hideBottomNavView() {
+        if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_HIDDEN)
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
     private fun hideKeyboard() {
