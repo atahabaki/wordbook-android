@@ -19,4 +19,8 @@
     <string name="show_all">Hepsini göster</string>
     <string name="show_only_fav">Sadece yıldızlıları göster</string>
     <string name="show_only_not_fav">Sadece yıldızsızları göster</string>
+    <string name="type_word">Kelimeyi yazınız...</string>
+    <string name="type_meaning">Anlamını yazınız...</string>
+    <string name="save">Kaydet...</string>
+    <string name="by_id">Numaraya (ID) göre</string>
 </resources>
