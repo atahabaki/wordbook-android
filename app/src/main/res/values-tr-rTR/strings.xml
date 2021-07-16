@@ -30,4 +30,12 @@
     <string name="swipe_left_to">Sağa kaydırınca</string>
     <string name="swipe_right_to">Sola kaydırınca</string>
     <string name="swipe_favorite">Yıldızla/Yıldızı kaldır</string>
+    <string name="meaning_missing">Anlamı eksik...</string>
+    <string name="title_meaning_missing">Kelime ve anlamı eksk...</string>
+    <string name="title_missing">Kelime eksik...</string>
+    <string name="ok">Tamam</string>
+    <string name="item_invalid">Geçersiz</string>
+    <string name="delete_everything">Her şeyi sil</string>
+    <string name="sure_deleting_all">Her şey silinecek ve geri getirmenin imkanı yok. Yine de silmek istiyor musunuz?</string>
+    <string name="cancel">İptal</string>
 </resources>
