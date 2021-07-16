@@ -19,9 +19,9 @@
     <string name="show_all">Hepsini göster</string>
     <string name="show_only_fav">Sadece yıldızlıları göster</string>
     <string name="show_only_not_fav">Sadece yıldızsızları göster</string>
-    <string name="type_word">Kelimeyi yazınız...</string>
-    <string name="type_meaning">Anlamını yazınız...</string>
-    <string name="save">Kaydet...</string>
+    <string name="type_word">Kelimeyi yazınız…</string>
+    <string name="type_meaning">Anlamını yazınız…</string>
+    <string name="save">Kaydet…</string>
     <string name="by_id">Numaraya (ID) göre</string>
     <string name="item_deleted">%1$s silindi.</string>
     <string name="undo">Geri al</string>
@@ -30,9 +30,9 @@
     <string name="swipe_left_to">Sağa kaydırınca</string>
     <string name="swipe_right_to">Sola kaydırınca</string>
     <string name="swipe_favorite">Yıldızla/Yıldızı kaldır</string>
-    <string name="meaning_missing">Anlamı eksik...</string>
-    <string name="title_meaning_missing">Kelime ve anlamı eksk...</string>
-    <string name="title_missing">Kelime eksik...</string>
+    <string name="meaning_missing">Anlamı eksik…</string>
+    <string name="title_meaning_missing">Kelime ve anlamı eksk…</string>
+    <string name="title_missing">Kelime eksik…</string>
     <string name="ok">Tamam</string>
     <string name="item_invalid">Geçersiz</string>
     <string name="delete_everything">Her şeyi sil</string>
