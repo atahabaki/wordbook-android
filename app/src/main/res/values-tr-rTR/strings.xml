@@ -6,4 +6,17 @@
     <string name="buy_me_coffee">Bana bi\' kahve ısmarla</string>
     <string name="feedback">Geri bildirim gönder</string>
     <string name="wordbook">Kişisel Sözlük</string>
+    <string name="search">Ayarlar</string>
+    <string name="delete">Hepsini Sil</string>
+    <string name="filter">Filtrele</string>
+    <string name="sort">Sırala</string>
+    <string name="by_title">Başlığa göre</string>
+    <string name="by_meaning">Anlama göre</string>
+    <string name="asc">Artan (A-Z)</string>
+    <string name="desc">Azalan (Z-A)</string>
+    <string name="by_creation_date">Tarihe  göre</string>
+    <string name="by_favorite">Yıldıza göre</string>
+    <string name="show_all">Hepsini göster</string>
+    <string name="show_only_fav">Sadece yıldızlıları göster</string>
+    <string name="show_only_not_fav">Sadece yıldızsızları göster</string>
 </resources>
