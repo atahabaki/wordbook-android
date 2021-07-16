@@ -12,6 +12,8 @@
 #   public *;
 #}
 
+-keep class dev.atahabaki.wordbook.data.*.** {*;}
+
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
 #-keepattributes SourceFile,LineNumberTable
