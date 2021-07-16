@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">@string/wordbook</string>
+    <string name="by_author"><b>@atahabaki</b> tarafından</string>
+    <string name="settings">Ayarlar</string>
+    <string name="buy_me_coffee">Bana bi\' kahve ısmarla</string>
+    <string name="feedback">Geri bildirim gönder</string>
+    <string name="wordbook">Kişisel Sözlük</string>
+</resources>
