@@ -23,4 +23,11 @@
     <string name="type_meaning">Anlamını yazınız...</string>
     <string name="save">Kaydet...</string>
     <string name="by_id">Numaraya (ID) göre</string>
+    <string name="item_deleted">%1$s silindi.</string>
+    <string name="undo">Geri al</string>
+    <string name="swipe_delete">Sil</string>
+    <string name="swipe_operations">Kaydırma İşlemleri</string>
+    <string name="swipe_left_to">Sağa kaydırınca</string>
+    <string name="swipe_right_to">Sola kaydırınca</string>
+    <string name="swipe_favorite">Yıldızla/Yıldızı kaldır</string>
 </resources>
