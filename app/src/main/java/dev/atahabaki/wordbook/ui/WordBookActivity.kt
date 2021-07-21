@@ -195,6 +195,10 @@ class WordBookActivity : AppCompatActivity() {
                     gotoURL(FEEDBACK_URI)
                     true
                 }
+                R.id.nav_menu_coffee -> {
+                    gotoURL(COFFEE_URI)
+                    true
+                }
                 else -> true
             }
         }
