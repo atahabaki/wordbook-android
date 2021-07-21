@@ -34,7 +34,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
@@ -52,7 +51,6 @@ import dev.atahabaki.wordbook.ui.word.*
 import dev.atahabaki.wordbook.utils.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.NonCancellable.cancel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlin.math.hypot
@@ -191,6 +189,14 @@ class WordBookActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.nav_menu_settings, R.id.nav_menu_wordbook -> {
                     it.onNavDestinationSelected(navController)
+                    true
+                }
+                R.id.nav_menu_feedback -> {
+                    gotoURL(FEEDBACK_URI)
+                    true
+                }
+                R.id.nav_menu_coffee -> {
+                    gotoURL(COFFEE_URI)
                     true
                 }
                 else -> true
