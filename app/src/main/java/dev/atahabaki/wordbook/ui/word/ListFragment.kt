@@ -28,6 +28,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -135,10 +136,10 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
             }
         }
 
-        private fun getSwipeColor(compare: Int): Int = when (compare) {
+        private fun getSwipeColor(compare: Int, @ColorRes default: Int): Int = when (compare) {
             SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.color.star_background
             SwipeOperation.DELETE.value -> R.color.trash_background
-            else -> R.color.trash_background
+            else -> default
         }
 
         override fun onChildDraw(
@@ -150,7 +151,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                    if (dX > 0) {
                        val bg = ColorDrawable(ContextCompat.getColor(
                            viewHolder.itemView.context,
-                           getSwipeColor(swipeLeftAction)))
+                           getSwipeColor(swipeLeftAction, R.color.trash_background)))
                        bg.setBounds(
                            viewHolder.itemView.left, viewHolder.itemView.top,
                            viewHolder.itemView.left + dX.toInt(), viewHolder.itemView.bottom
@@ -177,7 +178,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                    else if (dX < 0) {
                        val bg = ColorDrawable(ContextCompat.getColor(
                            viewHolder.itemView.context,
-                           getSwipeColor(swipeRightAction)))
+                           getSwipeColor(swipeRightAction, R.color.star_background)))
                        bg.setBounds(
                            viewHolder.itemView.right + dX.toInt(), viewHolder.itemView.top,
                            viewHolder.itemView.right, viewHolder.itemView.bottom
