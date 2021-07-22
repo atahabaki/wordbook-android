@@ -47,6 +47,7 @@ import dev.atahabaki.wordbook.utils.SwipeOperation
 import dev.atahabaki.wordbook.utils.getSwipeOperation
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
+import kotlin.math.abs
 
 @AndroidEntryPoint
 class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
@@ -169,7 +170,8 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                            viewHolder.itemView.left + margin + icon.intrinsicWidth,
                            viewHolder.itemView.bottom - margin
                        )
-                       icon.draw(c)
+                       if (dX > margin + icon.intrinsicWidth)
+                           icon.draw(c)
                    }
                    else if (dX < 0) {
                        val bg = ColorDrawable(ContextCompat.getColor(
@@ -201,7 +203,8 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                            viewHolder.itemView.right - margin,
                            viewHolder.itemView.bottom - margin
                        )
-                       icon.draw(c)
+                       if (abs(dX) > margin + icon.intrinsicWidth)
+                           icon.draw(c)
                    }
                }
             }
