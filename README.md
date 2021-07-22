@@ -4,5 +4,5 @@
 [![Discord Channel Link](https://img.shields.io/static/v1?style=flat&logoColor=violet&logo=Discord&label=Discord&message=WordBook%20App&color=5865f2&logoColor=5865f2&logoWidth=20)](https://discord.gg/dwwhBxbHUX)
 
 # WordBook
-Personal dictionary application for android platform...
+An android app for linguists...
 
