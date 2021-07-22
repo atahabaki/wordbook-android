@@ -21,6 +21,8 @@
 package dev.atahabaki.wordbook.ui.word
 
 import android.graphics.Canvas
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -158,6 +160,9 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                                SwipeOperation.DELETE.value -> R.drawable.ic_trash_all
                                else -> R.drawable.ic_trash_all
                            })!!
+                       icon.colorFilter = PorterDuffColorFilter(
+                               ContextCompat.getColor(viewHolder.itemView.context, R.color.defaultThemeColor),
+                               PorterDuff.Mode.SRC_IN)
                        val margin = (viewHolder.itemView.height - icon.intrinsicHeight)/2
                        icon.setBounds(
                            viewHolder.itemView.left + margin, viewHolder.itemView.top + margin,
@@ -186,6 +191,9 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                                SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.drawable.ic_star_filled
                                else -> R.drawable.ic_star_filled
                            })!!
+                       icon.colorFilter = PorterDuffColorFilter(
+                               ContextCompat.getColor(viewHolder.itemView.context, R.color.defaultThemeColor),
+                               PorterDuff.Mode.SRC_IN)
                        val margin = (viewHolder.itemView.height - icon.intrinsicHeight)/2
                        icon.setBounds(
                            viewHolder.itemView.right - margin - icon.intrinsicWidth,
