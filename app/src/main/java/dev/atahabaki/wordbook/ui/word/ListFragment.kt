@@ -29,6 +29,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -142,6 +143,12 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
             else -> default
         }
 
+        private fun getSwipeDrawable(compare: Int, @DrawableRes default: Int): Int = when(compare) {
+            SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.drawable.ic_star_filled
+            SwipeOperation.DELETE.value -> R.drawable.ic_trash_all
+            else -> default
+        }
+
         override fun onChildDraw(
             c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
             dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean
@@ -158,11 +165,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                        )
                        bg.draw(c)
                        val icon = ContextCompat.getDrawable(viewHolder.itemView.context,
-                           when (swipeLeftAction) {
-                               SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.drawable.ic_star_filled
-                               SwipeOperation.DELETE.value -> R.drawable.ic_trash_all
-                               else -> R.drawable.ic_trash_all
-                           })!!
+                           getSwipeDrawable(swipeLeftAction, R.drawable.ic_trash_all))!!
                        icon.colorFilter = PorterDuffColorFilter(
                                ContextCompat.getColor(viewHolder.itemView.context, R.color.defaultThemeColor),
                                PorterDuff.Mode.SRC_IN)
@@ -185,11 +188,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                        )
                        bg.draw(c)
                        val icon = ContextCompat.getDrawable(viewHolder.itemView.context,
-                           when (swipeRightAction) {
-                               SwipeOperation.DELETE.value -> R.drawable.ic_trash_all
-                               SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.drawable.ic_star_filled
-                               else -> R.drawable.ic_star_filled
-                           })!!
+                           getSwipeDrawable(swipeRightAction, R.drawable.ic_star_filled))!!
                        icon.colorFilter = PorterDuffColorFilter(
                                ContextCompat.getColor(viewHolder.itemView.context, R.color.defaultThemeColor),
                                PorterDuff.Mode.SRC_IN)
