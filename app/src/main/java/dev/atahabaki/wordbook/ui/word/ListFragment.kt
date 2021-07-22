@@ -143,7 +143,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                    if (dX > 0) {
                        val bg = ColorDrawable(ContextCompat.getColor(
                            viewHolder.itemView.context,
-                           when (swipeRightAction) {
+                           when (swipeLeftAction) {
                                SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.color.star_background
                                SwipeOperation.DELETE.value -> R.color.trash_background
                                else -> R.color.trash_background
@@ -155,7 +155,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                        )
                        bg.draw(c)
                        val icon = ContextCompat.getDrawable(viewHolder.itemView.context,
-                           when (swipeRightAction) {
+                           when (swipeLeftAction) {
                                SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.drawable.ic_star_filled
                                SwipeOperation.DELETE.value -> R.drawable.ic_trash_all
                                else -> R.drawable.ic_trash_all
@@ -171,10 +171,10 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                        )
                        icon.draw(c)
                    }
-                   else if (dX < 0) { // LEFT 2 RIGHT...
+                   else if (dX < 0) {
                        val bg = ColorDrawable(ContextCompat.getColor(
                            viewHolder.itemView.context,
-                           when (swipeLeftAction) {
+                           when (swipeRightAction) {
                                SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.color.star_background
                                SwipeOperation.DELETE.value -> R.color.trash_background
                                else -> R.color.trash_background
@@ -186,7 +186,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                        )
                        bg.draw(c)
                        val icon = ContextCompat.getDrawable(viewHolder.itemView.context,
-                           when (swipeLeftAction) {
+                           when (swipeRightAction) {
                                SwipeOperation.DELETE.value -> R.drawable.ic_trash_all
                                SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.drawable.ic_star_filled
                                else -> R.drawable.ic_star_filled
