@@ -135,6 +135,12 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
             }
         }
 
+        private fun getSwipeColor(compare: Int): Int = when (compare) {
+            SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.color.star_background
+            SwipeOperation.DELETE.value -> R.color.trash_background
+            else -> R.color.trash_background
+        }
+
         override fun onChildDraw(
             c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
             dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean
@@ -144,12 +150,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                    if (dX > 0) {
                        val bg = ColorDrawable(ContextCompat.getColor(
                            viewHolder.itemView.context,
-                           when (swipeLeftAction) {
-                               SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.color.star_background
-                               SwipeOperation.DELETE.value -> R.color.trash_background
-                               else -> R.color.trash_background
-                           }
-                       ))
+                           getSwipeColor(swipeLeftAction)))
                        bg.setBounds(
                            viewHolder.itemView.left, viewHolder.itemView.top,
                            viewHolder.itemView.left + dX.toInt(), viewHolder.itemView.bottom
@@ -176,12 +177,7 @@ class ListFragment: Fragment(R.layout.fragment_list_wordbook) {
                    else if (dX < 0) {
                        val bg = ColorDrawable(ContextCompat.getColor(
                            viewHolder.itemView.context,
-                           when (swipeRightAction) {
-                               SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> R.color.star_background
-                               SwipeOperation.DELETE.value -> R.color.trash_background
-                               else -> R.color.trash_background
-                           }
-                       ))
+                           getSwipeColor(swipeRightAction)))
                        bg.setBounds(
                            viewHolder.itemView.right + dX.toInt(), viewHolder.itemView.top,
                            viewHolder.itemView.right, viewHolder.itemView.bottom
