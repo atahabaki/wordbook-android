@@ -63,15 +63,16 @@
         An &lt;a href="https://github.com/atahabaki/wordbook-android">
         open-source&lt;/a> easy to use android application for linguists by
         &lt;a href="https://instagram.com/atahabaki">&lt;b>@atahabaki&lt;/b>&lt;/a>.
-        &lt;br/>&lt;br/>
+        <br/><br/>
         &lt;b>LICENSE&lt;/b> can be
         found &lt;a href="https://github.com/atahabaki/wordbook-android/blob/dev/LICENSE">here&lt;/a>.
-        &lt;br/>&lt;br/>
+        <br/><br/>
         You can get the &lt;b>source code&lt;/b> from
         &lt;a href="https://github.com/atahabaki/wordbook-android">here&lt;/a>.
-        &lt;br/>&lt;br/>
+        <br/><br/>
         &lt;b>Copyright © 2021 A. Taha Baki&lt;/b>
     </string>
+    <string name="app_full_name">WordBook: Personal Dictionary App</string>
     <string-array name="swipe_operations">
         <item>@string/swipe_delete</item>
         <item>@string/swipe_favorite</item>
