@@ -21,9 +21,12 @@
 package dev.atahabaki.wordbook.ui
 
 import android.os.Bundle
+import android.text.Spanned
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
@@ -42,6 +45,17 @@ class AboutFragment: Fragment(R.layout.fragment_about) {
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
         context ?: return binding.root
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val content: Spanned = HtmlCompat.fromHtml(
+            getString(R.string.app_description), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        binding.aboutDescription.apply{
+            text = content
+            movementMethod = LinkMovementMethod.getInstance()
+        }
     }
 
     override fun onDestroyView() {
