@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *  WordBook - An android application for those who aims to learn a new language.
+ *  Copyright (C) 2021 A. Taha Baki
+ *
+ *  This file is part of WordBook.
+ *
+ *  WordBook is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  WordBook is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
+ */
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="6.35"
+    android:viewportHeight="6.3500004">
+  <path
+      android:pathData="M3.175,0.52917A2.64583,2.64583 0,0 0,0.52917 3.175A2.64583,2.64583 0,0 0,3.175 5.82083A2.64583,2.64583 0,0 0,5.82083 3.175A2.64583,2.64583 0,0 0,3.175 0.52917zM3.175,1.05833A2.11667,2.11667 0,0 1,5.29167 3.175A2.11667,2.11667 0,0 1,3.175 5.29167A2.11667,2.11667 0,0 1,1.05833 3.175A2.11667,2.11667 0,0 1,3.175 1.05833z"
+      android:strokeAlpha="0"
+      android:strokeLineJoin="round"
+      android:strokeWidth="200"
+      android:fillColor="#dc123c"
+      android:strokeColor="#00000000"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M3.175,2.64583L3.175,2.64583A0.26458,0.26458 0,0 1,3.43958 2.91042L3.43958,4.49792A0.26458,0.26458 0,0 1,3.175 4.7625L3.175,4.7625A0.26458,0.26458 0,0 1,2.91042 4.49792L2.91042,2.91042A0.26458,0.26458 0,0 1,3.175 2.64583z"
+      android:strokeAlpha="0"
+      android:strokeLineJoin="round"
+      android:strokeWidth="52.9167"
+      android:fillColor="#dc123c"
+      android:strokeColor="#00000000"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M3.175,1.85208m-0.26458,0a0.26458,0.26458 0,1 1,0.52917 0a0.26458,0.26458 0,1 1,-0.52917 0"
+      android:strokeAlpha="0"
+      android:strokeLineJoin="round"
+      android:strokeWidth="52.9167"
+      android:fillColor="#dc123c"
+      android:strokeLineCap="round"/>
+</vector>
