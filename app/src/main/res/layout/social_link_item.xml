@@ -23,6 +23,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="dev.atahabaki.wordbook.data.about.SocialLink"/>
+        <import type="dev.atahabaki.wordbook.utils.ItemListener"/>
+        <variable
+            name="itemListener"
+            type="dev.atahabaki.wordbook.utils.ItemListener"/>
+        <variable
+            name="socialLink"
+            type="dev.atahabaki.wordbook.data.about.SocialLink"/>
+    </data>
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
