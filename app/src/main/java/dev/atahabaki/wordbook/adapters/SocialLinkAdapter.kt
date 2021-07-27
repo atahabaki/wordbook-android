@@ -45,6 +45,8 @@ class SocialLinkAdapter(
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(entry: SocialLink) {
             binding.apply {
+                itemListener = listener
+                socialLink = entry
                 executePendingBindings()
             }
         }
