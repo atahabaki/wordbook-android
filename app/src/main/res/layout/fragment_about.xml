@@ -53,5 +53,15 @@
             style="?attr/textAppearanceBody2"
             android:linksClickable="true"
             tools:text="@string/app_description"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/social_links"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="10"
+            tools:listitem="@layout/social_link_item"
+            app:layout_constraintTop_toBottomOf="@id/about_description"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
