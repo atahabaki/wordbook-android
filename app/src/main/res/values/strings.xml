@@ -74,6 +74,27 @@
     </string>
     <string name="app_full_name">WordBook: Personal Dictionary App</string>
     <string name="about">About</string>
+    <string name="twitter" translatable="false">Twitter</string>
+    <string name="twitter_uri" translatable="false">https://twitter.com/atahabaki</string>
+    <string name="instagram" translatable="false">Instagram</string>
+    <string name="instagram_uri" translatable="false">https://instagram.com/atahabaki</string>
+    <string name="buymeacoffee" translatable="false">Buy me a coffee</string>
+    <string name="buymeacoffee_uri" translatable="false">https://buymeacoff.ee/atahabaki</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="github_uri" translatable="false">https://github.com/atahabaki</string>
+    <string name="reddit" translatable="false">Reddit</string>
+    <string name="reddit_uri" translatable="false">https://reddit.com/u/atahabaki</string>
+    <string name="linkedin" translatable="false">LinkedIn</string>
+    <string name="linkedin_uri" translatable="false">https://www.linkedin.com/in/atahabaki/</string>
+    <string name="youtube" translatable="false">YouTube</string>
+    <string name="youtube_uri" translatable="false">
+        https://www.youtube.com/channel/UCOuCRtPG5Ou99B_nbmLyt4w</string>
+    <string name="medium" translatable="false">Medium</string>
+    <string name="medium_uri" translatable="false">https://atahabaki.medium.com/</string>
+    <string name="discord" translatable="false">Discord</string>
+    <string name="discord_uri" translatable="false">https://discord.com/invite/JDJqVF3uJg</string>
+    <string name="telegram" translatable="false">Telegram</string>
+    <string name="telegram_uri" translatable="false">https://t.me/atahabakiClub</string>
     <string-array name="swipe_operations">
         <item>@string/swipe_delete</item>
         <item>@string/swipe_favorite</item>
