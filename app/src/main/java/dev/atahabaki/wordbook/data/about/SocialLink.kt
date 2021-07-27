@@ -1,4 +1,4 @@
-package dev.atahabaki.wordbook.data
+package dev.atahabaki.wordbook.data.about
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
