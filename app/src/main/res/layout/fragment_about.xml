@@ -51,6 +51,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             style="?attr/textAppearanceBody2"
-            android:text="@string/app_description"/>
+            android:linksClickable="true"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
