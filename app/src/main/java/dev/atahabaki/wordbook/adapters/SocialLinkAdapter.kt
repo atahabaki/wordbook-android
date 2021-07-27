@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.atahabaki.wordbook.data.about.SocialLink
+import dev.atahabaki.wordbook.databinding.SocialLinkItemBinding
 import dev.atahabaki.wordbook.utils.ItemListener
 
 class SocialLinkAdapter(
@@ -37,6 +38,16 @@ class SocialLinkAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         TODO("Not yet implemented")
+    }
+
+    inner class SocialLinkViewHolder(
+        private val binding: SocialLinkItemBinding
+    ): RecyclerView.ViewHolder(binding.root) {
+        fun bind(entry: SocialLink) {
+            binding.apply {
+                executePendingBindings()
+            }
+        }
     }
 
     class SocialLinkDiffCallback: DiffUtil.ItemCallback<SocialLink>() {
