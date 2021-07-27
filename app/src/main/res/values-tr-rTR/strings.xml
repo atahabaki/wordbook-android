@@ -74,4 +74,5 @@
         &lt;b>Copyright © 2021 A. Taha Baki&lt;/b>
     </string>
     <string name="app_full_name">WordBook: Kişisel Sözlük Uygulaması</string>
+    <string name="about">Hakkında</string>
 </resources>
