@@ -29,6 +29,10 @@
     </group>
     <group>
         <item
+            android:id="@+id/nav_menu_about"
+            android:icon="@drawable/ic_info"
+            android:title="@string/about"/>
+        <item
             android:id="@+id/nav_menu_settings"
             android:icon="@drawable/ic_gear"
             android:title="@string/settings"/>
