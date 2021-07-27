@@ -20,9 +20,32 @@
 
 package dev.atahabaki.wordbook.ui
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
+import dev.atahabaki.wordbook.databinding.FragmentAboutBinding
 
 @AndroidEntryPoint
-class AboutFragment: Fragment(R.layout.fragment_about)
+class AboutFragment: Fragment(R.layout.fragment_about) {
+    private var _binding: FragmentAboutBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentAboutBinding.inflate(inflater, container, false)
+        context ?: return binding.root
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
