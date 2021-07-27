@@ -43,7 +43,7 @@ class SocialLinkAdapter(
             )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        (holder as SocialLinkViewHolder).bind(getItem(position))
     }
 
     inner class SocialLinkViewHolder(
