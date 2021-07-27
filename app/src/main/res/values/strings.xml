@@ -73,6 +73,7 @@
         &lt;b>Copyright © 2021 A. Taha Baki&lt;/b>
     </string>
     <string name="app_full_name">WordBook: Personal Dictionary App</string>
+    <string name="about">About</string>
     <string-array name="swipe_operations">
         <item>@string/swipe_delete</item>
         <item>@string/swipe_favorite</item>
