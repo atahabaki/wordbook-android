@@ -26,6 +26,7 @@
     <data>
         <import type="dev.atahabaki.wordbook.data.about.SocialLink"/>
         <import type="dev.atahabaki.wordbook.utils.ItemListener"/>
+        <import type="androidx.core.content.ContextCompat"/>
         <variable
             name="itemListener"
             type="dev.atahabaki.wordbook.utils.ItemListener"/>
@@ -51,6 +52,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 tools:src="@drawable/ic_github"
+                android:src="@{ContextCompat.getDrawable(context, socialLink.drawable)}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
@@ -59,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="@string/github"
+                android:text="@{socialLink.name}"
                 style="?attr/textAppearanceBody2"
                 android:textColor="@color/primaryColor"
                 app:layout_constraintTop_toBottomOf="@id/social_image"
