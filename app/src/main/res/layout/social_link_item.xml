@@ -38,6 +38,7 @@
         android:onClick="@{ (v) -> itemListener.onClick(v, socialLink) }"
         android:background="?attr/selectableItemBackground"
         android:padding="8dp"
+        android:contentDescription="@{context.getString(socialLink.name)}"
         android:layout_margin="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -47,6 +48,7 @@
             android:layout_height="30dp"
             tools:src="@drawable/ic_github"
             android:src="@{ContextCompat.getDrawable(context, socialLink.drawable)}"
+            android:contentDescription="@{context.getString(socialLink.name)}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
