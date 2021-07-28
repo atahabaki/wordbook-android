@@ -54,6 +54,8 @@
         <!--FAB-->
         <item name="floatingActionButtonStyle">@style/Theme.WordBook.FAB</item>
         <item name="extendedFloatingActionButtonStyle">@style/Theme.WordBook.ExtendedFAB</item>
+        <!--Card-->
+        <item name="materialCardViewStyle">@style/Theme.WordBook.Card</item>
     </style>
 
     <style name="Theme.WordBook.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
@@ -135,5 +137,15 @@
 
     <style name="Theme.WordBook.ExtendedFAB" parent="Widget.MaterialComponents.ExtendedFloatingActionButton.Icon">
         <item name="materialThemeOverlay">@style/ThemeOverlay.WordBook.FloatingActionButton</item>
+    </style>
+
+    <style name="Theme.WordBook.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.WordBook.Card</item>
+    </style>
+
+    <style name="ThemeOverlay.WordBook.Card" parent="">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorSurface">@color/defaultThemeColor</item>
+        <item name="colorOnSurface">@color/defaultThemeColor</item>
     </style>
 </resources>
