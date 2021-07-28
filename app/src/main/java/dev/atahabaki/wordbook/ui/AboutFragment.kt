@@ -20,6 +20,8 @@
 
 package dev.atahabaki.wordbook.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
@@ -30,12 +32,23 @@ import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
+import dev.atahabaki.wordbook.adapters.SocialLinkAdapter
+import dev.atahabaki.wordbook.data.about.SocialLink
 import dev.atahabaki.wordbook.databinding.FragmentAboutBinding
+import dev.atahabaki.wordbook.utils.ItemListener
 
 @AndroidEntryPoint
 class AboutFragment: Fragment(R.layout.fragment_about) {
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
+
+    private val sAdapter = SocialLinkAdapter(object: ItemListener<SocialLink> {
+        override fun onClick(view: View, data: SocialLink) {
+            startActivity(Intent(Intent.ACTION_VIEW).also {
+                it.data = Uri.parse(getString(data.uri))
+            })
+        }
+    })
 
     override fun onCreateView(
         inflater: LayoutInflater,
