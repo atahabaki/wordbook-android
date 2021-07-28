@@ -43,6 +43,7 @@
         app:contentPaddingRight="16dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="5dp"
+        android:onClick="@{ (v) -> itemListener.onClick(v, socialLink) }"
         android:background="@color/defaultThemeColor">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
