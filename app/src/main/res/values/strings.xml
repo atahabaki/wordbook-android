@@ -55,7 +55,7 @@
     <string name="ok">OK</string>
     <string name="title_missing">Title is missing…</string>
     <string name="meaning_missing">Meaning is missing…</string>
-    <string name="title_meaning_missing">The title and the meaning is missing…</string>
+    <string name="title_meaning_missing">The title and the meaning are missing…</string>
     <string name="delete_everything">Delete everything?</string>
     <string name="sure_deleting_all">Everything will be deleted, and there\'s no way to undo this operation. Do you still want to do this?</string>
     <string name="cancel">Cancel</string>
