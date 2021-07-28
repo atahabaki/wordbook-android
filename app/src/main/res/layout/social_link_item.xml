@@ -34,38 +34,32 @@
             name="socialLink"
             type="dev.atahabaki.wordbook.data.about.SocialLink"/>
     </data>
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:contentPadding="16dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="5dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:onClick="@{ (v) -> itemListener.onClick(v, socialLink) }"
-        android:background="@color/defaultThemeColor">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="?attr/selectableItemBackground"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/social_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            tools:src="@drawable/ic_github"
+            android:src="@{ContextCompat.getDrawable(context, socialLink.drawable)}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/social_name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/social_image"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                tools:src="@drawable/ic_github"
-                android:src="@{ContextCompat.getDrawable(context, socialLink.drawable)}"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/social_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="@string/github"
-                android:text="@{socialLink.name}"
-                style="?attr/textAppearanceBody2"
-                android:textColor="@color/primaryColor"
-                app:layout_constraintTop_toBottomOf="@id/social_image"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+            android:layout_height="wrap_content"
+            tools:text="@string/github"
+            android:text="@{socialLink.name}"
+            style="?attr/textAppearanceBody2"
+            android:textColor="@color/primaryColor"
+            app:layout_constraintTop_toBottomOf="@id/social_image"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
