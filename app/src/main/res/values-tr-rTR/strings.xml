@@ -48,8 +48,8 @@
     <string name="undo">Geri al</string>
     <string name="swipe_delete">Sil</string>
     <string name="swipe_operations">Kaydırma İşlemleri</string>
-    <string name="swipe_left_to">Sağa kaydırınca</string>
-    <string name="swipe_right_to">Sola kaydırınca</string>
+    <string name="swipe_left_to">Soldan sağa kaydırınca</string>
+    <string name="swipe_right_to">Sağdan sola kaydırınca</string>
     <string name="swipe_favorite">Yıldızla/Yıldızı kaldır</string>
     <string name="meaning_missing">Anlamı eksik…</string>
     <string name="title_meaning_missing">Kelime ve anlamı eksk…</string>
