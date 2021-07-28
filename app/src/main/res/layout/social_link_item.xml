@@ -37,10 +37,8 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:contentPaddingBottom="16dp"
-        app:contentPaddingTop="16dp"
-        app:contentPaddingLeft="16dp"
-        app:contentPaddingRight="16dp"
+        android:layout_margin="8dp"
+        app:contentPadding="16dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="5dp"
         android:onClick="@{ (v) -> itemListener.onClick(v, socialLink) }"
