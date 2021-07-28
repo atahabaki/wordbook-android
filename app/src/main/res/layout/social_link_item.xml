@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *  WordBook - An android application for those who aims to learn a new language.
+ *  Copyright (C) 2021 A. Taha Baki
+ *
+ *  This file is part of WordBook.
+ *
+ *  WordBook is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  WordBook is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
+ */
+-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="dev.atahabaki.wordbook.data.about.SocialLink"/>
+        <import type="dev.atahabaki.wordbook.utils.ItemListener"/>
+        <import type="androidx.core.content.ContextCompat"/>
+        <variable
+            name="itemListener"
+            type="dev.atahabaki.wordbook.utils.ItemListener"/>
+        <variable
+            name="socialLink"
+            type="dev.atahabaki.wordbook.data.about.SocialLink"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:onClick="@{ (v) -> itemListener.onClick(v, socialLink) }"
+        android:background="?attr/selectableItemBackground"
+        android:padding="8dp"
+        android:contentDescription="@{context.getString(socialLink.name)}"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/social_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            tools:src="@drawable/ic_github"
+            android:src="@{ContextCompat.getDrawable(context, socialLink.drawable)}"
+            android:contentDescription="@{context.getString(socialLink.name)}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

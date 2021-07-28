@@ -16,6 +16,7 @@ buildscript {
         datastore_version = "1.0.0-rc01"
         protoc_version = "4.0.0-rc-2"
         protobuf_gradle_version = "0.8.16"
+        flexbox_version = "3.0.0"
     }
     repositories {
         google()

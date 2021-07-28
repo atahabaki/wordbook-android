@@ -35,12 +35,11 @@
             android:id="@+id/action_listFragment_to_settingsFragment"
             app:destination="@id/nav_menu_settings" />
         <action
+            android:id="@+id/action_nav_menu_wordbook_to_aboutFragment"
+            app:destination="@id/nav_menu_about" />
+        <action
             android:id="@+id/action_nav_menu_wordbook_to_editFragment"
-            app:destination="@id/editFragment"
-            app:enterAnim="@anim/scalefade_in"
-            app:exitAnim="@anim/scalefade_out"
-            app:popEnterAnim="@anim/scalefade_in"
-            app:popExitAnim="@anim/scalefade_out" />
+            app:destination="@id/editFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_menu_settings"
@@ -56,4 +55,9 @@
             android:name="word"
             app:argType="dev.atahabaki.wordbook.data.word.Word" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_menu_about"
+        android:name="dev.atahabaki.wordbook.ui.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>

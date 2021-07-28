@@ -59,4 +59,20 @@
     <string name="delete_everything">Her şeyi sil</string>
     <string name="sure_deleting_all">Her şey silinecek ve geri getirmenin imkanı yok. Yine de silmek istiyor musunuz?</string>
     <string name="cancel">İptal</string>
+    <string name="app_description">
+        &lt;a href="https://bio.link/atahabaki">&lt;b>@atahabaki&lt;/b>&lt;/a>
+        tarafından dil bilimciler ve yabancı dil öğrenenler için
+        &lt;a href="https://github.com/atahabaki/wordbook-android">açık kaynaklı&lt;/a>
+        kullanımı kolay bir android uygulaması.
+        &lt;br/>&lt;br/>
+        &lt;b>LİSANS&lt;/b>, &lt;a href="https://github.com/atahabaki/wordbook-android/blob/dev/LICENSE">
+        burada&lt;/a> bulunabilir.
+        &lt;br/>&lt;br/>
+        &lt;b>Kaynak kodunu&lt;/b>, &lt;a href="https://github.com/atahabaki/wordbook-android">
+        buradan&lt;/a> edinebilirsiniz.
+        &lt;br/>&lt;br/>
+        &lt;b>Copyright © 2021 A. Taha Baki&lt;/b>
+    </string>
+    <string name="app_full_name">WordBook: Kişisel Sözlük Uygulaması</string>
+    <string name="about">Hakkında</string>
 </resources>
