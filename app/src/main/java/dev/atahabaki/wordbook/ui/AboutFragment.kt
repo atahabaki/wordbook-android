@@ -30,12 +30,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.adapters.SocialLinkAdapter
 import dev.atahabaki.wordbook.data.about.SocialLink
 import dev.atahabaki.wordbook.databinding.FragmentAboutBinding
 import dev.atahabaki.wordbook.utils.ItemListener
+import dev.atahabaki.wordbook.utils.SOCIAL_LINKS
 
 @AndroidEntryPoint
 class AboutFragment: Fragment(R.layout.fragment_about) {
@@ -69,6 +72,15 @@ class AboutFragment: Fragment(R.layout.fragment_about) {
             text = content
             movementMethod = LinkMovementMethod.getInstance()
         }
+        sAdapter.submitList(SOCIAL_LINKS)
+        binding.socialLinks.apply {
+            layoutManager = FlexboxLayoutManager(requireContext()).apply {
+                justifyContent = JustifyContent.SPACE_EVENLY
+            }
+            setHasFixedSize(true)
+            adapter = sAdapter
+        }
+        sAdapter.notifyDataSetChanged()
     }
 
     override fun onDestroyView() {
