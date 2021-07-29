@@ -15,4 +15,16 @@ class ExtQFSUnitTest {
                 OR LOWER(meaning) LIKE '%welcome%' ESCAPE '\')  ORDER BY id ASC
         """.trimIndent())
     }
+
+    @Test
+    fun `show only fav, order by fav desc, well = returns correct SQL_QUERY_STRING`() {
+        assertThat(Triple(
+            "well",
+            Filter.SHOW_ONLY_FAV,
+            Sort.BY_FAV_DESC
+        ).generateQuery()).isEqualTo("""
+                SELECT * FROM wordbook WHERE (LOWER(title) LIKE '%well%' ESCAPE '\'
+                OR LOWER(meaning) LIKE '%well%' ESCAPE '\') AND is_favorite = 1 ORDER BY is_favorite DESC
+        """.trimIndent())
+    }
 }
