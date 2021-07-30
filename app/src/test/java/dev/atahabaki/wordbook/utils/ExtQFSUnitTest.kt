@@ -12,7 +12,7 @@ class ExtQFSUnitTest {
            Sort.BY_ID_ASC
         ).generateQuery()).isEqualTo("""
                 SELECT * FROM wordbook WHERE (LOWER(title) LIKE '%welcome%' ESCAPE '\'
-                OR LOWER(meaning) LIKE '%welcome%' ESCAPE '\')  ORDER BY id ASC
+                OR LOWER(meaning) LIKE '%welcome%' ESCAPE '\') ORDER BY id ASC
         """.trimIndent())
     }
 
@@ -36,7 +36,7 @@ class ExtQFSUnitTest {
             Sort.BY_FAV_DESC
         ).generateQuery()).isEqualTo("""
                 SELECT * FROM wordbook WHERE (LOWER(title) LIKE '%''%' ESCAPE '\'
-                OR LOWER(meaning) LIKE '%''%' ESCAPE '\')  ORDER BY is_favorite DESC
+                OR LOWER(meaning) LIKE '%''%' ESCAPE '\') ORDER BY is_favorite DESC
         """.trimIndent())
     }
 
@@ -48,7 +48,7 @@ class ExtQFSUnitTest {
             Sort.BY_FAV_DESC
         ).generateQuery()).isEqualTo("""
                 SELECT * FROM wordbook WHERE (LOWER(title) LIKE '%\%%' ESCAPE '\'
-                OR LOWER(meaning) LIKE '%\%%' ESCAPE '\')  ORDER BY is_favorite DESC
+                OR LOWER(meaning) LIKE '%\%%' ESCAPE '\') ORDER BY is_favorite DESC
         """.trimIndent())
     }
 }
