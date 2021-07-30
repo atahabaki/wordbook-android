@@ -39,4 +39,16 @@ class ExtQFSUnitTest {
                 OR LOWER(meaning) LIKE '%''%' ESCAPE '\')  ORDER BY is_favorite DESC
         """.trimIndent())
     }
+
+    @Test
+    fun `all, fav desc, escape (percent_sign) sql special chars on query`() {
+        assertThat(Triple(
+            "%",
+            Filter.SHOW_ALL,
+            Sort.BY_FAV_DESC
+        ).generateQuery()).isEqualTo("""
+                SELECT * FROM wordbook WHERE (LOWER(title) LIKE '%\%%' ESCAPE '\'
+                OR LOWER(meaning) LIKE '%\%%' ESCAPE '\')  ORDER BY is_favorite DESC
+        """.trimIndent())
+    }
 }
