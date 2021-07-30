@@ -11,4 +11,11 @@ class ExtStringUnitTest {
             "is:fav sort:id well".toQFS()
         ).isEqualTo(Triple("well", Filter.SHOW_ONLY_FAV, Sort.BY_ID_ASC))
     }
+
+    @Test
+    fun `care only about the last statement`() {
+        assertThat(
+            "is:fav is:!fav sort:id sort:fav well".toQFS()
+        ).isEqualTo(Triple("well", Filter.SHOW_ONLY_NOT_FAV, Sort.BY_FAV_ASC))
+    }
 }
