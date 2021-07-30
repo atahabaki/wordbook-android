@@ -24,4 +24,19 @@ class ExtIntUnitTest {
     fun `getFilter(not in range) returns SHOW_ALL`() {
         assertThat(300.getFilter()).isEqualTo(Filter.SHOW_ALL)
     }
+
+    @Test
+    fun `getSwipeOperation(0) returns DELETE`() {
+        assertThat(0.getSwipeOperation()).isEqualTo(SwipeOperation.DELETE)
+    }
+
+    @Test
+    fun `getSwipeOperation(1) returns STAR`() {
+        assertThat(0.getSwipeOperation()).isEqualTo(SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE)
+    }
+
+    @Test
+    fun `getSwipeOperation(not in range) returns DELETE`() {
+        assertThat(300.getSwipeOperation()).isEqualTo(SwipeOperation.DELETE)
+    }
 }
