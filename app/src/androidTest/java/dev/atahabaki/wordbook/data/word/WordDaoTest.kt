@@ -14,4 +14,16 @@ import org.junit.runner.RunWith
 class WordDaoTest {
     private lateinit var db: AppDatabase
     private lateinit var dao: WordDao
+
+    @Before
+    fun setup() {
+        db = Room.inMemoryDatabaseBuilder(
+            InstrumentationRegistry.getInstrumentation().context,
+            AppDatabase::class.java
+        ).allowMainThreadQueries().build()
+        dao = db.wordDao()
+    }
+
+    @After
+    fun closeDB() = db.close()
 }
