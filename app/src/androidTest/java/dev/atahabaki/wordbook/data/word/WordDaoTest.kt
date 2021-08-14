@@ -1,12 +1,20 @@
 package dev.atahabaki.wordbook.data.word
 
 import androidx.room.Room
+import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
+import com.google.common.truth.Truth.assertThat
 import dev.atahabaki.wordbook.data.AppDatabase
+import dev.atahabaki.wordbook.utils.Filter
+import dev.atahabaki.wordbook.utils.Sort
+import dev.atahabaki.wordbook.utils.generateQuery
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
@@ -26,4 +34,15 @@ class WordDaoTest {
 
     @After
     fun closeDB() = db.close()
+
+    @Test
+    fun testInsertWord() = runBlocking {
+        val word = Word(1, "Salut", "Hi", true)
+        dao.insert(word)
+        assertThat(dao.getAllWords(
+                    SimpleSQLiteQuery(
+                        Triple("", Filter.SHOW_ALL, Sort.BY_ID_ASC).generateQuery()
+                    )
+                ).first()[0]).isEqualTo(word)
+    }
 }
