@@ -70,4 +70,17 @@ class WordDaoTest {
                     )
                 ).first()[0]).isEqualTo(word)
     }
+
+    @Test
+    fun testDeleteWord()= runBlockingTest {
+        val word = Word(1, "Salut", "Hi", true,
+                System.currentTimeMillis())
+        dao.insert(word)
+        dao.delete(word)
+        assertThat(dao.getAllWords(
+                SimpleSQLiteQuery(
+                    Triple("", Filter.SHOW_ALL, Sort.BY_ID_ASC).generateQuery()
+                )
+            ).first()).doesNotContain(word)
+    }
 }
