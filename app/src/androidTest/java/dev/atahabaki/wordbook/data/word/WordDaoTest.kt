@@ -20,6 +20,7 @@
 
 package dev.atahabaki.wordbook.data.word
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -31,15 +32,19 @@ import dev.atahabaki.wordbook.utils.Filter
 import dev.atahabaki.wordbook.utils.Sort
 import dev.atahabaki.wordbook.utils.generateQuery
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @SmallTest
 class WordDaoTest {
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
+
     private lateinit var db: AppDatabase
     private lateinit var dao: WordDao
 
@@ -56,7 +61,7 @@ class WordDaoTest {
     fun closeDB() = db.close()
 
     @Test
-    fun testInsertWord() = runBlocking {
+    fun testInsertWord() = runBlockingTest {
         val word = Word(1, "Salut", "Hi", true)
         dao.insert(word)
         assertThat(dao.getAllWords(
