@@ -83,4 +83,21 @@ class WordDaoTest {
                 )
             ).first()).doesNotContain(word)
     }
+
+    @Test
+    fun testUpdate() = runBlockingTest {
+        val word = Word(1, "Salut", "Hi", true,
+            System.currentTimeMillis())
+        dao.insert(word)
+        val update = word.copy(meaning="greetings")
+        dao.update(update)
+        assertThat(dao.getAllWords(
+            SimpleSQLiteQuery(
+                Triple("", Filter.SHOW_ALL, Sort.BY_ID_ASC).generateQuery()
+            )
+        ).first()).apply {
+            contains(update)
+            doesNotContain(word)
+        }
+    }
 }
