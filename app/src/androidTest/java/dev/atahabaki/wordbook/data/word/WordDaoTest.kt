@@ -100,4 +100,29 @@ class WordDaoTest {
             doesNotContain(word)
         }
     }
+
+    @Test
+    fun testDeleteAll() = runBlockingTest {
+        val word1 = Word(1, "Salut", "Hi", true,
+            System.currentTimeMillis())
+        val word2 = Word(2, "Bonjour", "Hello", true,
+            System.currentTimeMillis())
+        val word3 = Word(3, "Bonsoire", "Good night", true,
+            System.currentTimeMillis())
+        dao.apply {
+            insert(word1)
+            insert(word2)
+            insert(word3)
+            deleteAll()
+            assertThat(getAllWords(
+                        SimpleSQLiteQuery(
+                            Triple("", Filter.SHOW_ALL, Sort.BY_ID_ASC).generateQuery()
+                        )
+                    ).first()).apply {
+                        doesNotContain(word1)
+                        doesNotContain(word2)
+                        doesNotContain(word3)
+                    }
+        }
+    }
 }
