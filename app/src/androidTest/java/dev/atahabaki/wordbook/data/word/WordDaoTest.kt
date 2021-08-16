@@ -125,4 +125,28 @@ class WordDaoTest {
                     }
         }
     }
+
+    @Test
+    fun testGetAllWords() = runBlockingTest {
+        val word1 = Word(1, "Salut", "Hi", true,
+            System.currentTimeMillis())
+        val word2 = Word(2, "Bonjour", "Hello", true,
+            System.currentTimeMillis())
+        val word3 = Word(3, "Bonsoire", "Good night", true,
+            System.currentTimeMillis())
+        dao.apply {
+            insert(word1)
+            insert(word2)
+            insert(word3)
+            assertThat(getAllWords(
+                SimpleSQLiteQuery(
+                    Triple("", Filter.SHOW_ALL, Sort.BY_ID_ASC).generateQuery()
+                )
+            ).first()).apply {
+                contains(word1)
+                contains(word2)
+                contains(word3)
+            }
+        }
+    }
 }
