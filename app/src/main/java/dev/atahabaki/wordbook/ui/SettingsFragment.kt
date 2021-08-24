@@ -25,16 +25,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import dev.atahabaki.wordbook.R
-import dev.atahabaki.wordbook.data.settings.settingsDataStore
 import dev.atahabaki.wordbook.databinding.FragmentSettingsBinding
 import dev.atahabaki.wordbook.ui.word.WordViewModel
-import dev.atahabaki.wordbook.utils.getSwipeOperation
-import kotlinx.coroutines.flow.first
 
 class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
@@ -59,20 +56,17 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            requireContext().settingsDataStore.data.first().apply {
-                binding.settingsSwipeToLeftSpinner.setSelection(
-                    swipeLeftAction.getSwipeOperation().value
-                )
-                binding.settingsSwipeToRightSpinner.setSelection(
-                    swipeRightAction.getSwipeOperation().value
-                )
-            }
-        }
-        binding.settingsSwipeToLeftSpinner
-                .onItemSelectedListener = updateSwipeOption(true)
-        binding.settingsSwipeToRightSpinner
-            .onItemSelectedListener = updateSwipeOption(false)
+        binding.settingsSwipeToRightComplete.setAdapter(ArrayAdapter(requireContext(),
+                    R.layout.swipe_setting_item,
+                    resources.getStringArray(R.array.swipe_operations)))
+        binding.settingsSwipeToRightComplete.onItemSelectedListener = updateSwipeOption(false)
+        binding.settingsSwipeToRightComplete.onItemClickListener = updateSwipeOptionClick(false)
+
+        binding.settingsSwipeToLeftComplete.setAdapter(ArrayAdapter(requireContext(),
+            R.layout.swipe_setting_item,
+            resources.getStringArray(R.array.swipe_operations)))
+        binding.settingsSwipeToLeftComplete.onItemSelectedListener = updateSwipeOption(true)
+        binding.settingsSwipeToLeftComplete.onItemClickListener = updateSwipeOptionClick(true)
     }
 
     private fun updateSwipeOption(isLeft: Boolean) = object: AdapterView.OnItemSelectedListener {
@@ -87,5 +81,11 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
         }
 
         override fun onNothingSelected(parent: AdapterView<*>?) = Unit
+    }
+    private fun updateSwipeOptionClick(isLeft: Boolean) = object: AdapterView.OnItemClickListener {
+        override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+            if (isLeft) wordViewModel.updateSwipeLeft(p2)
+            else wordViewModel.updateSwipeRight(p2)
+        }
     }
 }
