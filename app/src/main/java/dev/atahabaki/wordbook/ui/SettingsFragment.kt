@@ -25,11 +25,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.AutoCompleteTextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import dev.atahabaki.wordbook.R
+import dev.atahabaki.wordbook.adapters.FilterFreeAdapter
 import dev.atahabaki.wordbook.data.settings.settingsDataStore
 import dev.atahabaki.wordbook.databinding.FragmentSettingsBinding
 import dev.atahabaki.wordbook.ui.word.WordViewModel
@@ -59,33 +62,42 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapter = FilterFreeAdapter<String>(requireContext(),
+                R.layout.swipe_setting_item,
+                resources.getStringArray(R.array.swipe_operations))
+        val dropDownBackground =
+            ResourcesCompat.getDrawable(resources, R.drawable.dropdown_background, null)
+
+        binding.settingsSwipeToRightComplete.setDropDownBackgroundDrawable(dropDownBackground)
+        binding.settingsSwipeToRightComplete.setAdapter(adapter)
+        binding.settingsSwipeToRightComplete
+                .onItemClickListener = updateSwipeOptionClick(
+                    false,
+                    binding.settingsSwipeToRightComplete)
+
+        binding.settingsSwipeToLeftComplete.setDropDownBackgroundDrawable(dropDownBackground)
+        binding.settingsSwipeToLeftComplete.setAdapter(adapter)
+        binding.settingsSwipeToLeftComplete
+                .onItemClickListener = updateSwipeOptionClick(
+                    true,
+                    binding.settingsSwipeToLeftComplete)
+
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             requireContext().settingsDataStore.data.first().apply {
-                binding.settingsSwipeToLeftSpinner.setSelection(
-                    swipeLeftAction.getSwipeOperation().value
+                binding.settingsSwipeToLeftComplete.setText(
+                    resources.getString(swipeLeftAction.getSwipeOperation().operation)
                 )
-                binding.settingsSwipeToRightSpinner.setSelection(
-                    swipeRightAction.getSwipeOperation().value
+                binding.settingsSwipeToRightComplete.setText(
+                    resources.getString(swipeRightAction.getSwipeOperation().operation)
                 )
             }
         }
-        binding.settingsSwipeToLeftSpinner
-                .onItemSelectedListener = updateSwipeOption(true)
-        binding.settingsSwipeToRightSpinner
-            .onItemSelectedListener = updateSwipeOption(false)
     }
 
-    private fun updateSwipeOption(isLeft: Boolean) = object: AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(
-            parent: AdapterView<*>?,
-            view: View?,
-            position: Int,
-            id: Long
-        ) {
-            if (isLeft) wordViewModel.updateSwipeLeft(position)
-            else wordViewModel.updateSwipeRight(position)
+    private fun updateSwipeOptionClick(isLeft: Boolean, focused: AutoCompleteTextView) =
+        AdapterView.OnItemClickListener { _, _, i, _ ->
+            focused.clearFocus()
+            if (isLeft) wordViewModel.updateSwipeLeft(i)
+            else wordViewModel.updateSwipeRight(i)
         }
-
-        override fun onNothingSelected(parent: AdapterView<*>?) = Unit
-    }
 }

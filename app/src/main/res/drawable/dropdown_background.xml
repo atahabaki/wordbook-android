@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
 /*
  *  WordBook - An android application for those who aims to learn a new language.
  *  Copyright (C) 2021 A. Taha Baki
@@ -17,13 +19,11 @@
  *  You should have received a copy of the GNU General Public License
  *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-package dev.atahabaki.wordbook.utils
-
-import androidx.annotation.StringRes
-import dev.atahabaki.wordbook.R
-
-enum class SwipeOperation(val value: Int, @StringRes val operation: Int) {
-    DELETE(0, R.string.swipe_delete),
-    MARK_OR_UNMARK_AS_FAVORITE(1, R.string.swipe_favorite)
-}
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid
+        android:color="@color/defaultThemeColor"/>
+    <corners
+        android:bottomRightRadius="10dp"
+        android:bottomLeftRadius="10dp"/>
+</shape>

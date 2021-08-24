@@ -18,12 +18,28 @@
  *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package dev.atahabaki.wordbook.utils
+package dev.atahabaki.wordbook.adapters
 
-import androidx.annotation.StringRes
-import dev.atahabaki.wordbook.R
+import android.content.Context
+import android.widget.ArrayAdapter
+import android.widget.Filter
+import androidx.annotation.LayoutRes
 
-enum class SwipeOperation(val value: Int, @StringRes val operation: Int) {
-    DELETE(0, R.string.swipe_delete),
-    MARK_OR_UNMARK_AS_FAVORITE(1, R.string.swipe_favorite)
+class FilterFreeAdapter<T: Any>(context: Context, @LayoutRes layout: Int, val array: Array<T>):
+    ArrayAdapter<T>(context, layout, array) {
+    override fun getFilter(): Filter {
+        return FreeFilter()
+    }
+
+    inner class FreeFilter : Filter() {
+        override fun performFiltering(p0: CharSequence?): FilterResults = FilterResults().also {
+            it.values = array
+            it.count = array.size
+        }
+
+        override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+            notifyDataSetChanged()
+        }
+
+    }
 }
