@@ -28,10 +28,14 @@ import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.adapters.FilterFreeAdapter
+import dev.atahabaki.wordbook.data.settings.settingsDataStore
 import dev.atahabaki.wordbook.databinding.FragmentSettingsBinding
 import dev.atahabaki.wordbook.ui.word.WordViewModel
+import dev.atahabaki.wordbook.utils.getSwipeOperation
+import kotlinx.coroutines.flow.first
 
 class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
@@ -66,6 +70,17 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
         binding.settingsSwipeToLeftComplete.setAdapter(adapter)
         binding.settingsSwipeToLeftComplete.onItemSelectedListener = updateSwipeOption(true)
         binding.settingsSwipeToLeftComplete.onItemClickListener = updateSwipeOptionClick(true)
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            requireContext().settingsDataStore.data.first().apply {
+                binding.settingsSwipeToLeftComplete.setText(
+                    resources.getString(swipeLeftAction.getSwipeOperation().operation)
+                )
+                binding.settingsSwipeToRightComplete.setText(
+                    resources.getString(swipeRightAction.getSwipeOperation().operation)
+                )
+            }
+        }
     }
 
     private fun updateSwipeOption(isLeft: Boolean) = object: AdapterView.OnItemSelectedListener {
