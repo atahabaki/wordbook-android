@@ -20,7 +20,10 @@
 
 package dev.atahabaki.wordbook.utils
 
-enum class SwipeOperation(val value: Int, val operation: String) {
-    DELETE(0, "delete"),
-    MARK_OR_UNMARK_AS_FAVORITE(1, "(un)mark as fav")
+import androidx.annotation.StringRes
+import dev.atahabaki.wordbook.R
+
+enum class SwipeOperation(val value: Int, @StringRes val operation: Int) {
+    DELETE(0, R.string.swipe_delete),
+    MARK_OR_UNMARK_AS_FAVORITE(1, R.string.swipe_favorite)
 }
