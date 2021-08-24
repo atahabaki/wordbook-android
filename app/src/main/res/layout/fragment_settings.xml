@@ -49,6 +49,10 @@
             android:layout_height="wrap_content"
             android:paddingVertical="20dp"
             android:hint="@string/swipe_right_to"
+            app:boxCornerRadiusBottomStart="0dp"
+            app:boxCornerRadiusBottomEnd="0dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
             app:layout_constraintStart_toStartOf="@id/settings_swipe_title"
             app:layout_constraintEnd_toEndOf="@id/settings_swipe_title"
             app:layout_constraintTop_toBottomOf="@id/settings_swipe_title">
@@ -68,6 +72,10 @@
             android:layout_height="wrap_content"
             android:paddingVertical="20dp"
             android:hint="@string/swipe_left_to"
+            app:boxCornerRadiusBottomStart="0dp"
+            app:boxCornerRadiusBottomEnd="0dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
             app:layout_constraintEnd_toEndOf="@id/settings_swipe_to_right_spinner"
             app:layout_constraintStart_toStartOf="@id/settings_swipe_to_right_spinner"
             app:layout_constraintTop_toBottomOf="@id/settings_swipe_to_right_spinner">
