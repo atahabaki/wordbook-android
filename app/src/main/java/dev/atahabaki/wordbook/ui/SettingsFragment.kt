@@ -25,11 +25,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import dev.atahabaki.wordbook.R
+import dev.atahabaki.wordbook.adapters.FilterFreeAdapter
 import dev.atahabaki.wordbook.databinding.FragmentSettingsBinding
 import dev.atahabaki.wordbook.ui.word.WordViewModel
 
@@ -56,7 +56,7 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = ArrayAdapter(requireContext(),
+        val adapter = FilterFreeAdapter<String>(requireContext(),
                 R.layout.swipe_setting_item,
                 resources.getStringArray(R.array.swipe_operations))
         binding.settingsSwipeToRightComplete.setAdapter(adapter)
