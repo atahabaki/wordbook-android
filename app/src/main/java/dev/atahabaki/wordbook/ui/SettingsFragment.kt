@@ -96,10 +96,9 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
         override fun onNothingSelected(parent: AdapterView<*>?) = Unit
     }
-    private fun updateSwipeOptionClick(isLeft: Boolean) = object: AdapterView.OnItemClickListener {
-        override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-            if (isLeft) wordViewModel.updateSwipeLeft(p2)
-            else wordViewModel.updateSwipeRight(p2)
+    private fun updateSwipeOptionClick(isLeft: Boolean) =
+        AdapterView.OnItemClickListener { _, _, i, _ ->
+            if (isLeft) wordViewModel.updateSwipeLeft(i)
+            else wordViewModel.updateSwipeRight(i)
         }
-    }
 }
