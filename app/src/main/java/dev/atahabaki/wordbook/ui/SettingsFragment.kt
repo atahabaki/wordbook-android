@@ -56,15 +56,14 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.settingsSwipeToRightComplete.setAdapter(ArrayAdapter(requireContext(),
-                    R.layout.swipe_setting_item,
-                    resources.getStringArray(R.array.swipe_operations)))
+        val adapter = ArrayAdapter(requireContext(),
+                R.layout.swipe_setting_item,
+                resources.getStringArray(R.array.swipe_operations))
+        binding.settingsSwipeToRightComplete.setAdapter(adapter)
         binding.settingsSwipeToRightComplete.onItemSelectedListener = updateSwipeOption(false)
         binding.settingsSwipeToRightComplete.onItemClickListener = updateSwipeOptionClick(false)
 
-        binding.settingsSwipeToLeftComplete.setAdapter(ArrayAdapter(requireContext(),
-            R.layout.swipe_setting_item,
-            resources.getStringArray(R.array.swipe_operations)))
+        binding.settingsSwipeToLeftComplete.setAdapter(adapter)
         binding.settingsSwipeToLeftComplete.onItemSelectedListener = updateSwipeOption(true)
         binding.settingsSwipeToLeftComplete.onItemClickListener = updateSwipeOptionClick(true)
     }
