@@ -25,6 +25,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -63,9 +64,14 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
         val adapter = FilterFreeAdapter<String>(requireContext(),
                 R.layout.swipe_setting_item,
                 resources.getStringArray(R.array.swipe_operations))
+        val dropDownBackground =
+            ResourcesCompat.getDrawable(resources, R.drawable.dropdown_background, null)
+
+        binding.settingsSwipeToRightComplete.setDropDownBackgroundDrawable(dropDownBackground)
         binding.settingsSwipeToRightComplete.setAdapter(adapter)
         binding.settingsSwipeToRightComplete.onItemClickListener = updateSwipeOptionClick(false)
 
+        binding.settingsSwipeToLeftComplete.setDropDownBackgroundDrawable(dropDownBackground)
         binding.settingsSwipeToLeftComplete.setAdapter(adapter)
         binding.settingsSwipeToLeftComplete.onItemClickListener = updateSwipeOptionClick(true)
 
