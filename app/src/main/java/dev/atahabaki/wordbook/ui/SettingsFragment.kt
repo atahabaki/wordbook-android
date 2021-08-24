@@ -64,11 +64,9 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
                 R.layout.swipe_setting_item,
                 resources.getStringArray(R.array.swipe_operations))
         binding.settingsSwipeToRightComplete.setAdapter(adapter)
-        binding.settingsSwipeToRightComplete.onItemSelectedListener = updateSwipeOption(false)
         binding.settingsSwipeToRightComplete.onItemClickListener = updateSwipeOptionClick(false)
 
         binding.settingsSwipeToLeftComplete.setAdapter(adapter)
-        binding.settingsSwipeToLeftComplete.onItemSelectedListener = updateSwipeOption(true)
         binding.settingsSwipeToLeftComplete.onItemClickListener = updateSwipeOptionClick(true)
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
@@ -83,19 +81,6 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
         }
     }
 
-    private fun updateSwipeOption(isLeft: Boolean) = object: AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(
-            parent: AdapterView<*>?,
-            view: View?,
-            position: Int,
-            id: Long
-        ) {
-            if (isLeft) wordViewModel.updateSwipeLeft(position)
-            else wordViewModel.updateSwipeRight(position)
-        }
-
-        override fun onNothingSelected(parent: AdapterView<*>?) = Unit
-    }
     private fun updateSwipeOptionClick(isLeft: Boolean) =
         AdapterView.OnItemClickListener { _, _, i, _ ->
             if (isLeft) wordViewModel.updateSwipeLeft(i)
