@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:padding="20dp"
             android:text="@string/swipe_operations"
+            android:textColor="@color/primaryColor"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
