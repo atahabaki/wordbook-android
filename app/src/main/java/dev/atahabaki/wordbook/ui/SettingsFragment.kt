@@ -25,6 +25,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.AutoCompleteTextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -69,11 +70,17 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
         binding.settingsSwipeToRightComplete.setDropDownBackgroundDrawable(dropDownBackground)
         binding.settingsSwipeToRightComplete.setAdapter(adapter)
-        binding.settingsSwipeToRightComplete.onItemClickListener = updateSwipeOptionClick(false)
+        binding.settingsSwipeToRightComplete
+                .onItemClickListener = updateSwipeOptionClick(
+                    false,
+                    binding.settingsSwipeToRightComplete)
 
         binding.settingsSwipeToLeftComplete.setDropDownBackgroundDrawable(dropDownBackground)
         binding.settingsSwipeToLeftComplete.setAdapter(adapter)
-        binding.settingsSwipeToLeftComplete.onItemClickListener = updateSwipeOptionClick(true)
+        binding.settingsSwipeToLeftComplete
+                .onItemClickListener = updateSwipeOptionClick(
+                    true,
+                    binding.settingsSwipeToLeftComplete)
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             requireContext().settingsDataStore.data.first().apply {
@@ -87,8 +94,9 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
         }
     }
 
-    private fun updateSwipeOptionClick(isLeft: Boolean) =
+    private fun updateSwipeOptionClick(isLeft: Boolean, focused: AutoCompleteTextView) =
         AdapterView.OnItemClickListener { _, _, i, _ ->
+            focused.clearFocus()
             if (isLeft) wordViewModel.updateSwipeLeft(i)
             else wordViewModel.updateSwipeRight(i)
         }
