@@ -80,13 +80,13 @@ class WordBookActivity : AppCompatActivity() {
             applicationContext.listQFSDataStore.data.first().apply {
                 when (filter) {
                     Filter.SHOW_ALL.value -> binding.bottomAppBar.menu
-                        .findItem(R.id.list_menu_filter_show_all).isChecked = true
+                        .findItem(R.id.list_menu_filter_show_all)?.isChecked = true
                     Filter.SHOW_ONLY_FAV.value -> binding.bottomAppBar.menu
-                        .findItem(R.id.list_menu_filter_show_only_fav).isChecked = true
+                        .findItem(R.id.list_menu_filter_show_only_fav)?.isChecked = true
                     Filter.SHOW_ONLY_NOT_FAV.value -> binding.bottomAppBar.menu
-                        .findItem(R.id.list_menu_filter_show_only_not_fav).isChecked = true
+                        .findItem(R.id.list_menu_filter_show_only_not_fav)?.isChecked = true
                     else -> binding.bottomAppBar.menu
-                        .findItem(R.id.list_menu_filter_show_all).isChecked = true
+                        .findItem(R.id.list_menu_filter_show_all)?.isChecked = true
                 }
             }
         }
