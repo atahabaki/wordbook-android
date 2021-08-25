@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *  WordBook - An android application for those who aims to learn a new language.
+ *  Copyright (C) 2021 A. Taha Baki
+ *
+ *  This file is part of WordBook.
+ *
+ *  WordBook is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  WordBook is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
+ */
+-->
+<shortcuts
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="settings"
+        android:enabled="true"
+        android:icon="@drawable/ic_gear"
+        android:shortcutShortLabel="@string/settings"
+        android:shortcutLongLabel="@string/settings"
+        android:shortcutDisabledMessage="@string/settings">
+        <intent
+            android:data="wordbook://settings"
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="dev.atahabaki.wordbook"
+            android:targetClass="dev.atahabaki.wordbook.ui.WordBookActivity"/>
+    </shortcut>
+    <shortcut
+        android:shortcutId="wordbook"
+        android:enabled="true"
+        android:icon="@drawable/ic_books"
+        android:shortcutShortLabel="@string/wordbook"
+        android:shortcutLongLabel="@string/wordbook"
+        android:shortcutDisabledMessage="@string/wordbook">
+        <intent
+            android:data="wordbook://wordbook"
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="dev.atahabaki.wordbook"
+            android:targetClass="dev.atahabaki.wordbook.ui.WordBookActivity"/>
+    </shortcut>
+</shortcuts>
