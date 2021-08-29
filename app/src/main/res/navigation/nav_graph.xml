@@ -39,7 +39,9 @@
             app:destination="@id/nav_menu_about" />
         <action
             android:id="@+id/action_nav_menu_wordbook_to_editFragment"
-            app:destination="@id/editFragment" />
+            app:destination="@id/editFragment"
+            app:enterAnim="@anim/scalefade_in"
+            app:popEnterAnim="@anim/scalefade_in"/>
         <deepLink app:uri="wordbook://wordbook" />
     </fragment>
     <fragment
