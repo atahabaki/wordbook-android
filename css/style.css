@@ -3,11 +3,56 @@
   margin: 0;
   border: 0;
   outline: none;
+  text-decoration: none;
   box-sizing: border-box;
 }
 
 .hidden {
   display: none;
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  z-index: 10;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  background: linear-gradient(35deg, rgba(220,18,20,.5), rgba(0,0,0,.5));
+}
+
+#nav .head {
+  top: 0;
+  left: 0;
+  display: inline;
+}
+
+#nav .other {
+  top: 0;
+  right: 0;
+  display: inline;
+}
+
+#nav a {
+  font-size: 1.25em;
+  display: block;
+  padding: 14px 16px;
+  font-size: 17px;
+}
+
+#nav a:first-child {
+  float: left;
+}
+
+#nav a:not(:first-child) {
+  float: right;
+  text-align: right;
+}
+
+#nav a:link:visited, a:link, a:visited {
+  color: #fff;
 }
 
 #greeter {
