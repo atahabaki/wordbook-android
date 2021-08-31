@@ -200,7 +200,9 @@ class WordBookActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_menu_wordbook -> {
-                    it.onNavDestinationSelected(navController)
+                    it.onNavDestinationSelected(navController,
+                        R.anim.rise_up,
+                        R.anim.leap_of_faith)
                     true
                 }
                 R.id.nav_menu_feedback -> {
