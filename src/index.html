@@ -29,5 +29,10 @@
     </div>
   </div>
   <video class="hidden" width="382" height="676" src="videos/usage.mp4" controls />
+  <script>
+    var images = document.querySelectorAll(".gallery img");
+    images.forEach(el => el.addEventListener("click", e =>
+          console.log(e.srcElement.classList.toggle("preview"))))
+  </script>
 </body>
 </html>
