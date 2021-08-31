@@ -11,12 +11,15 @@
 }
 
 .gallery {
+  background: wheat;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   align-content: center;
+  flex-wrap: wrap;
   position: relative;
+  padding: 10px;
   width: 100%;
   height: 100vh;
 }
@@ -24,10 +27,13 @@
 .gallery .image-container {
   display: inline-block;
   margin: 1vw;
+  max-width: 250px;
+  max-height: 250px;
 }
 
 .gallery .image-container img {
-  height: 300px;
+  max-width: 250px;
+  max-height: 250px;
   object-fit: cover;
   display: inline-block;
   filter: blur(.5px) grayscale(50%);
@@ -35,6 +41,8 @@
 }
 
 .gallery .image-container img.preview {
+  max-width: auto;
+  max-height: 100vh;
   position: fixed;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
