@@ -10,6 +10,32 @@
   display: none;
 }
 
+#greeter {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url(../images/background_image.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#greeter .center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#greeter .center h1, h3 {
+  color: #fff;
+  font-family: 'Noto Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#greeter .center h1 {
+  font-size: 5em;
+}
+
 .gallery-container {
   background: #f5deb3;
   padding: 2px;
