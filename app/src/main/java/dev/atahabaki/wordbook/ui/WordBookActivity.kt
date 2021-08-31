@@ -193,7 +193,13 @@ class WordBookActivity : AppCompatActivity() {
                             R.anim.exit_from_left)
                     true
                 }
-                R.id.nav_menu_settings, R.id.nav_menu_wordbook -> {
+                R.id.nav_menu_settings -> {
+                    it.onNavDestinationSelected(navController,
+                        R.anim.enter_from_right,
+                        R.anim.exit_from_right)
+                    true
+                }
+                R.id.nav_menu_wordbook -> {
                     it.onNavDestinationSelected(navController)
                     true
                 }
