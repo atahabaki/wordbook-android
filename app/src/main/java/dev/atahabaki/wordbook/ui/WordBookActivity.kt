@@ -187,7 +187,13 @@ class WordBookActivity : AppCompatActivity() {
         binding.bottomNavView.setNavigationItemSelectedListener {
             hideBottomNavView()
             when(it.itemId) {
-                R.id.nav_menu_about, R.id.nav_menu_settings, R.id.nav_menu_wordbook -> {
+                R.id.nav_menu_about -> {
+                    it.onNavDestinationSelected(navController,
+                            R.anim.enter_from_left,
+                            R.anim.exit_from_left)
+                    true
+                }
+                R.id.nav_menu_settings, R.id.nav_menu_wordbook -> {
                     it.onNavDestinationSelected(navController)
                     true
                 }
