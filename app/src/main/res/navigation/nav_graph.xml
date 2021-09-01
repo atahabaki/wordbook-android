@@ -49,6 +49,10 @@
             android:name="showFab"
             app:argType="boolean"
             android:defaultValue="true" />
+        <argument
+            android:name="showAppBar"
+            app:argType="boolean"
+            android:defaultValue="true"/>
     </fragment>
     <fragment
         android:id="@+id/nav_menu_settings"
@@ -60,6 +64,10 @@
             android:name="showFab"
             app:argType="boolean"
             android:defaultValue="false" />
+        <argument
+            android:name="showAppBar"
+            app:argType="boolean"
+            android:defaultValue="true"/>
     </fragment>
     <fragment
         android:id="@+id/editFragment"
@@ -73,6 +81,10 @@
         <argument
             android:name="word"
             app:argType="dev.atahabaki.wordbook.data.word.Word" />
+        <argument
+            android:name="showAppBar"
+            app:argType="boolean"
+            android:defaultValue="false"/>
     </fragment>
     <fragment
         android:id="@+id/nav_menu_about"
@@ -83,5 +95,9 @@
             android:name="showFab"
             app:argType="boolean"
             android:defaultValue="false" />
+        <argument
+            android:name="showAppBar"
+            app:argType="boolean"
+            android:defaultValue="true"/>
     </fragment>
 </navigation>
