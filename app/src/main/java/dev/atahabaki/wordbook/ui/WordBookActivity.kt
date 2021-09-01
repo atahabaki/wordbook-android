@@ -165,19 +165,20 @@ class WordBookActivity : AppCompatActivity() {
         })
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            binding.fab.apply {
+                if (arguments?.getBoolean("showFab")!!) show()
+                else hide()
+            }
             when ((destination as FragmentNavigator.Destination).className) {
                 ListFragment::class.qualifiedName -> binding.apply {
-                    fab.show()
                     bottomAppBar.replaceMenu(R.menu.list_menu)
                     bottomAppBar.performShow()
                     handleSearch()
                 }
                 EditFragment::class.qualifiedName -> binding.apply {
-                    fab.hide()
                     bottomAppBar.performHide()
                 }
                 else -> binding.apply {
-                    fab.hide()
                     bottomAppBar.replaceMenu(R.menu.empty_menu)
                     bottomAppBar.performShow()
                 }
