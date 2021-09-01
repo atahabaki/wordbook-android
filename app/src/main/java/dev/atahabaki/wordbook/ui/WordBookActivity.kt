@@ -169,18 +169,17 @@ class WordBookActivity : AppCompatActivity() {
                 if (arguments?.getBoolean("showFab")!!) show()
                 else hide()
             }
+            binding.bottomAppBar.apply {
+                if (arguments?.getBoolean("showAppBar")!!) performShow()
+                else performHide()
+            }
             when ((destination as FragmentNavigator.Destination).className) {
                 ListFragment::class.qualifiedName -> binding.apply {
                     bottomAppBar.replaceMenu(R.menu.list_menu)
-                    bottomAppBar.performShow()
                     handleSearch()
-                }
-                EditFragment::class.qualifiedName -> binding.apply {
-                    bottomAppBar.performHide()
                 }
                 else -> binding.apply {
                     bottomAppBar.replaceMenu(R.menu.empty_menu)
-                    bottomAppBar.performShow()
                 }
             }
         }
