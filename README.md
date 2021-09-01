@@ -9,7 +9,7 @@
 [![Buy me a coffee Link](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00.svg?style=for-the-badge&logo=Buy-Me-A-Coffee&logoColor=black)](https://buymeacoff.ee/atahabaki)
   
 # WordBook
-An android app for linguists...
+A simple, easy-to-use, open-source personal dictionary app for linguists, and language learners. It allows you to jot down as you learn new words, idioms, proverbs... It's simply a dictionary at your fingertips.
 
 ## Screenshots
 
