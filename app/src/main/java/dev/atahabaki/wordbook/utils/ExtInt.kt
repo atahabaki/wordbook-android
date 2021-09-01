@@ -46,3 +46,9 @@ fun Int.getSwipeOperation(): SwipeOperation = when(this) {
     SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE.value -> SwipeOperation.MARK_OR_UNMARK_AS_FAVORITE
     else -> SwipeOperation.DELETE
 }
+
+fun Int.getMenuRef(): MenuRef = when(this) {
+    MenuRef.EMPTY_MENU.num -> MenuRef.EMPTY_MENU
+    MenuRef.LIST_MENU.num -> MenuRef.LIST_MENU
+    else -> MenuRef.EMPTY_MENU
+}
