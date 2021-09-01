@@ -172,15 +172,13 @@ class WordBookActivity : AppCompatActivity() {
             binding.bottomAppBar.apply {
                 if (arguments?.getBoolean("showAppBar")!!) performShow()
                 else performHide()
+                replaceMenu(arguments?.getInt("menuRef")!!.getMenuRef().menu)
             }
             when ((destination as FragmentNavigator.Destination).className) {
                 ListFragment::class.qualifiedName -> binding.apply {
-                    bottomAppBar.replaceMenu(R.menu.list_menu)
                     handleSearch()
                 }
-                else -> binding.apply {
-                    bottomAppBar.replaceMenu(R.menu.empty_menu)
-                }
+                else -> Unit
             }
         }
 
