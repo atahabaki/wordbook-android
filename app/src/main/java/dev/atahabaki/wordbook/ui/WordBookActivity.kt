@@ -118,7 +118,7 @@ class WordBookActivity : AppCompatActivity() {
                 }
                 is WordViewModel.Events.ItemSelectedEvent -> {
                     navController.navigate(
-                        ListFragmentDirections.actionNavMenuWordbookToEditFragment(e.word)
+                        ListFragmentDirections.actionNavMenuWordbookToEditFragment(word= e.word)
                     )
                 }
             }
@@ -165,22 +165,18 @@ class WordBookActivity : AppCompatActivity() {
         })
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            when ((destination as FragmentNavigator.Destination).className) {
-                ListFragment::class.qualifiedName -> binding.apply {
-                    fab.show()
-                    bottomAppBar.replaceMenu(R.menu.list_menu)
-                    bottomAppBar.performShow()
-                    handleSearch()
-                }
-                EditFragment::class.qualifiedName -> binding.apply {
-                    fab.hide()
-                    bottomAppBar.performHide()
-                }
-                else -> binding.apply {
-                    fab.hide()
-                    bottomAppBar.replaceMenu(R.menu.empty_menu)
-                    bottomAppBar.performShow()
-                }
+            binding.fab.apply {
+                if (arguments?.getBoolean("showFab")!!) show()
+                else hide()
+            }
+            binding.bottomAppBar.apply {
+                if (arguments?.getBoolean("showAppBar")!!) performShow()
+                else performHide()
+                replaceMenu(arguments?.getInt("menuRef")!!.getMenuRef().menu)
+            }
+            if ((destination as FragmentNavigator.Destination).className ==
+                    ListFragment::class.qualifiedName) {
+                handleSearch()
             }
         }
 

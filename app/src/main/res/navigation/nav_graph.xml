@@ -45,6 +45,18 @@
             app:exitAnim="@anim/scalefade_out"
             app:popExitAnim="@anim/scalefade_out"/>
         <deepLink app:uri="wordbook://wordbook" />
+        <argument
+            android:name="showFab"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <argument
+            android:name="showAppBar"
+            app:argType="boolean"
+            android:defaultValue="true"/>
+        <argument
+            android:name="menuRef"
+            app:argType="integer"
+            android:defaultValue="1"/>
     </fragment>
     <fragment
         android:id="@+id/nav_menu_settings"
@@ -52,6 +64,18 @@
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings">
         <deepLink app:uri="wordbook://settings" />
+        <argument
+            android:name="showFab"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="showAppBar"
+            app:argType="boolean"
+            android:defaultValue="true"/>
+        <argument
+            android:name="menuRef"
+            app:argType="integer"
+            android:defaultValue="0"/>
     </fragment>
     <fragment
         android:id="@+id/editFragment"
@@ -59,12 +83,33 @@
         android:label="EditFragment"
         tools:layout="@layout/fragment_edit">
         <argument
+            android:name="showFab"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
             android:name="word"
             app:argType="dev.atahabaki.wordbook.data.word.Word" />
+        <argument
+            android:name="showAppBar"
+            app:argType="boolean"
+            android:defaultValue="false"/>
     </fragment>
     <fragment
         android:id="@+id/nav_menu_about"
         android:name="dev.atahabaki.wordbook.ui.AboutFragment"
         android:label="fragment_about"
-        tools:layout="@layout/fragment_about" />
+        tools:layout="@layout/fragment_about">
+        <argument
+            android:name="showFab"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="showAppBar"
+            app:argType="boolean"
+            android:defaultValue="true"/>
+        <argument
+            android:name="menuRef"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
 </navigation>
