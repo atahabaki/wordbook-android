@@ -174,11 +174,9 @@ class WordBookActivity : AppCompatActivity() {
                 else performHide()
                 replaceMenu(arguments?.getInt("menuRef")!!.getMenuRef().menu)
             }
-            when ((destination as FragmentNavigator.Destination).className) {
-                ListFragment::class.qualifiedName -> binding.apply {
-                    handleSearch()
-                }
-                else -> Unit
+            if ((destination as FragmentNavigator.Destination).className ==
+                    ListFragment::class.qualifiedName) {
+                handleSearch()
             }
         }
 
