@@ -118,7 +118,7 @@ class WordBookActivity : AppCompatActivity() {
                 }
                 is WordViewModel.Events.ItemSelectedEvent -> {
                     navController.navigate(
-                        ListFragmentDirections.actionNavMenuWordbookToEditFragment(e.word)
+                        ListFragmentDirections.actionNavMenuWordbookToEditFragment(word= e.word)
                     )
                 }
             }
