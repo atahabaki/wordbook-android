@@ -53,6 +53,10 @@
             android:name="showAppBar"
             app:argType="boolean"
             android:defaultValue="true"/>
+        <argument
+            android:name="menuRef"
+            app:argType="integer"
+            android:defaultValue="1"/>
     </fragment>
     <fragment
         android:id="@+id/nav_menu_settings"
@@ -68,6 +72,10 @@
             android:name="showAppBar"
             app:argType="boolean"
             android:defaultValue="true"/>
+        <argument
+            android:name="menuRef"
+            app:argType="integer"
+            android:defaultValue="0"/>
     </fragment>
     <fragment
         android:id="@+id/editFragment"
@@ -99,5 +107,9 @@
             android:name="showAppBar"
             app:argType="boolean"
             android:defaultValue="true"/>
+        <argument
+            android:name="menuRef"
+            app:argType="integer"
+            android:defaultValue="0"/>
     </fragment>
 </navigation>
