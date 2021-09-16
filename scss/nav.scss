@@ -1,0 +1,125 @@
+@import 'colors.scss';
+
+@mixin position($position, $top, $left, $right, $bottom) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+
+@mixin positionTopLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  & #menutoggler {
+    @include positionTopLeft();
+    z-index: 100;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    &:checked ~ .menu {
+      visibility: visible;
+      & > div {
+        transform: scale(1);
+        transition-duration: .3s;
+        & > div {
+          opacity: 1;
+          transition: opacity .3s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        }
+      }
+    }
+    &:checked:hover + .hamburger > div {
+      transform: rotate(225deg);
+    }
+    &:checked + .hamburger > div {
+      transform: rotate(135deg);
+      &:after, &:before {
+        top: 0;
+        transform: rotate(90deg);
+      }
+    }
+  }
+  & .hamburger {
+    @include positionTopLeft();
+    z-index: 99;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: lighten($color: rgba($crimson, .35), $amount: 50);
+    border-radius: 50%;
+    & > div {
+      position: relative;
+      width: 100%;
+      height: 2px;
+      background: $white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .3s all ease-in;
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        z-index: 99;
+        top: -10px;
+        width: 100%;
+        height: 2px;
+        background: inherit;
+      }
+      &:after {
+        top: 10px;
+      }
+    }
+  }
+  & .menu {
+    @include position(fixed, 0, 0, auto, auto);
+    width: 100%;
+    height: 100%;
+    z-index: 98;
+    background: rgba($color: #000000, $alpha: .5);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    & > div {
+      background: rgba($crimson, .85);
+      width: 4000px;
+      height: 4000px;
+      border-radius: 50%;
+      display: flex;
+      flex: none;
+      transform: scale(0);
+      align-items: center;
+      justify-content: center;
+      transition: all .3s ease-in;
+      & > div {
+        text-align: center;
+        max-width: 90vw;
+        max-height: 100vh;
+        opacity: 0;
+        transition: opacity .3s ease-in;
+        & > ul > li {
+          list-style: none;
+          color: $white;
+          font-size: 1.5rem;
+          padding: 1rem;
+          & > a {
+            color: inherit;
+          }
+        }
+      }
+    }
+  }
+}
