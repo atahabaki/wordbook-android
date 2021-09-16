@@ -5,28 +5,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>WordBook - An android app for linguists...</title>
 </head>
 <body>
   <div id="nav">
-    <div class="head">
-      <a href="#greeter">WordBook</a>
-    </div>
-    <div class="other">
-      <a href="#gallery">Gallery</a>
-      <a href="#about">About</a>
-      <a href="#privacy">Privacy</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <a href="#greeter">WordBook</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#about">About</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#contact">Contact</a>
+    <a href="javascript:void(0);" class="menuicon" onclick="toggleNavMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
   </div>
-  <div id="greeter">
+  <div id="greeter" class="wall">
     <div class="background"></div>
     <div class="center">
       <h1>WordBook</h1>
       <h3>An Android App for Linguists...</h3>
     </div>
   </div>
-  <div id="gallery" class="gallery-container">
+  <div id="gallery" class="wall gallery-container">
     <h2>Screenshots</h2>
     <div class="gallery">
       <div class="image-container">
@@ -49,7 +49,19 @@
       </div>
     </div>
   </div>
-  <video class="hidden" width="382" height="676" src="videos/usage.mp4" controls />
+  <div id="about" class="wall">
+    <h1 class="wall-header">About</h1>
+  </div>
+  <div id="privacy" class="wall">
+    <h1 class="wall-header">Privacy Policy</h1>
+    <p>
+      We do not collect or store any data. We have nowhere to store it.
+      Furthermore, we don't have any reason to collect or store any data.
+    </p>
+  </div>
+  <div id="contact" class="wall">
+    <h1 class="wall-header">Contact</h1>
+  </div>
   <script>
     var images = document.querySelectorAll(".gallery img");
     images.forEach(el => el.addEventListener("click", e =>
