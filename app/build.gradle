@@ -78,6 +78,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // WorkManager
+    implementation "androidx.work:work-runtime-ktx:$work_version"
     // DataStore
     implementation "androidx.datastore:datastore:$datastore_version"
     implementation  "com.google.protobuf:protobuf-javalite:$protoc_version"

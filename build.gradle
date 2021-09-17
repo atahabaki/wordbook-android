@@ -17,6 +17,7 @@ buildscript {
         protoc_version = "4.0.0-rc-2"
         protobuf_gradle_version = "0.8.16"
         flexbox_version = "3.0.0"
+        work_version = "2.6.0"
     }
     repositories {
         google()
