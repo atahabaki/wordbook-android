@@ -1,0 +1,25 @@
+#contact {
+  background: rgba($color: $crimson, $alpha: .5);
+  & .details {
+    padding: 20px;
+    & p {
+      margin: 20px;
+    }
+    & .socialicons {
+      @include centerTransform();
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      flex-direction: row;
+      text-align: center;
+      & .socialicon {
+        padding: 20px;
+        margin: 20px;
+        & svg {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    }
+  }
+}
