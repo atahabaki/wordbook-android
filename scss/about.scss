@@ -1,0 +1,54 @@
+#about {
+  background: rgba($color: $crimson, $alpha: .5);
+  overflow-y: auto;
+  & .details {
+    padding: 20px;
+    & .socialicons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      flex-direction: row;
+      text-align: center;
+      margin-top: 20px;
+      & .socialicon {
+        padding: 20px;
+        & svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+    & h3 {
+      font-size: 2em;
+      text-align: center;
+      padding: inherit;
+    }
+    & img {
+      display: block;
+      margin: auto;
+      width: 40vw;
+      border-radius: 50%;
+      box-shadow: 0 0 10px 2px rgba(#000, .35);
+    }
+    & p {
+      text-indent: 20px;
+      background: none;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #about .details {
+    & .socialicons .socialicon svg {
+      width: 40px;
+      height: 40px;
+    }
+    & p {
+      width: 50%;
+      margin: auto;
+    }
+    & img {
+      width: 15vw;
+    }
+  }
+}
