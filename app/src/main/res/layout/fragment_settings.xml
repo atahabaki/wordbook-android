@@ -95,5 +95,45 @@
                 android:entries="@array/swipe_operations"
                 android:inputType="none"/>
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/settings_notifications_state"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="20dp"
+            android:text="Notifications"
+            android:textColor="@color/primaryColor"
+            android:ellipsize="end"
+            android:checked="@{!settings.isNotificationsDisabled}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings_swipe_to_left_spinner"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/settings_notifications_period_spinner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="20dp"
+            android:hint="@string/notifications_period"
+            android:enabled="@{!settings.isNotificationsDisabled}"
+            app:helperText="@string/notifications_period_helper"
+            app:boxCornerRadiusBottomStart="0dp"
+            app:boxCornerRadiusBottomEnd="0dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:layout_constraintEnd_toEndOf="@id/settings_swipe_to_right_spinner"
+            app:layout_constraintStart_toStartOf="@id/settings_swipe_to_right_spinner"
+            app:layout_constraintTop_toBottomOf="@id/settings_notifications_state">
+            <AutoCompleteTextView
+                android:id="@+id/settings_notifications_period_complete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:text="@string/period_min_15"
+                android:text="@{ExtIntKt.getNotificationPeriod(settings.notificationsPeriod).period}"
+                android:entries="@array/notifications_periods"
+                android:inputType="none"/>
+        </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
