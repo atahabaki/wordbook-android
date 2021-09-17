@@ -1,4 +1,10 @@
 .wall {
-  width: 100vw;
+  position: relative;
+  width: 100%;
   height: 100vh;
+  overflow: hidden;
+  .wall-header {
+    font-size: 3em;
+    padding: 30px;
+  }
 }

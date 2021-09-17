@@ -1,0 +1,51 @@
+@import 'colors.scss';
+
+#greeter {
+  background-image: url('../images/background_image2.png');
+  background-position: 90% 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  & .center {
+    padding: 50px 0;
+    width: 100%;
+    background: linear-gradient(35deg, rgba(#000,.5), rgba($crimson, .5));
+    border-radius: 12px;
+    text-align: center;
+    margin: auto;
+    h1 {
+      color: #fff;
+      font-weight: 800;
+      font-size: 4em;
+    }
+    h3 {
+      color: #fff;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #greeter {
+    background-position: center right;
+    transition: .3 all ease-in;
+    & .center {
+      transition: inherit;
+      width: unset;
+      padding: 100px;
+      box-shadow: 0 0 50px .1px rgba(#000,.5);
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #greeter {
+    background-position: center right;
+    & .center {
+      left: 25%;
+      background: none;
+      width: unset;
+      box-shadow: none;
+    }
+  }
+}

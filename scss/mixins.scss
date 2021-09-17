@@ -1,0 +1,20 @@
+@mixin position($position, $top, $left, $right, $bottom) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+
+@mixin positionTopLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@mixin centerTransform() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}

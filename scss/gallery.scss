@@ -1,0 +1,42 @@
+@import 'mixins.scss';
+@import 'colors.scss';
+
+#gallery {
+  background: rgba($color: $crimson, $alpha: .85);
+  overflow: auto;
+  &.wall {
+    height: unset;
+  }
+  & .wall-header {
+    color: #fff;
+    height: 20vh;
+  }
+  .gallery {
+    height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0 4px;
+    & img {
+      max-width: 100px;
+      margin: 0 20px 20px;
+      vertical-align: middle;
+      width: 100%;
+      transition: .3s all cubic-bezier(0.755, 0.05, 0.855, 0.06);
+      &.preview {
+        @include centerTransform();
+        z-index: 95;
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 400px) {
+  #gallery .gallery img {
+    max-width: 200px;
+  }
+}
