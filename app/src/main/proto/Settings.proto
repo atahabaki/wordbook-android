@@ -26,6 +26,6 @@ option java_multiple_files = true;
 message Settings {
   int32 swipe_right_action = 1;
   int32 swipe_left_action = 2;
-  bool is_notifications_enabled = 3;
+  bool is_notifications_disabled = 3;
   int32 notifications_period = 4;
 }
