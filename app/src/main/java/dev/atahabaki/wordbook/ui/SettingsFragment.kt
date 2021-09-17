@@ -84,12 +84,7 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             requireContext().settingsDataStore.data.first().apply {
-                binding.settingsSwipeToLeftComplete.setText(
-                    resources.getString(swipeLeftAction.getSwipeOperation().operation)
-                )
-                binding.settingsSwipeToRightComplete.setText(
-                    resources.getString(swipeRightAction.getSwipeOperation().operation)
-                )
+                binding.settings = this
             }
         }
     }
