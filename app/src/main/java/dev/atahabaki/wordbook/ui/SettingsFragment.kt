@@ -82,6 +82,18 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
                     true,
                     binding.settingsSwipeToLeftComplete)
 
+        binding.settingsNotificationsPeriodComplete.apply {
+            setDropDownBackgroundDrawable(dropDownBackground)
+            val adapter = FilterFreeAdapter<String>(requireContext(),
+                        R.layout.swipe_setting_item,
+                        resources.getStringArray(R.array.notifications_periods))
+            setAdapter(adapter)
+            onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
+                this.clearFocus()
+                wordViewModel.updateNotificationsPeriod(i)
+            }
+        }
+
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             requireContext().settingsDataStore.data.first().apply {
                 binding.settings = this
