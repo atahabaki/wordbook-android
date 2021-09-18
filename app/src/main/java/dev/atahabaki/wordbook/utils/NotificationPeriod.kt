@@ -25,9 +25,9 @@ import dev.atahabaki.wordbook.R
 
 enum class NotificationPeriod(val value: Int, @StringRes val period: Int) {
     MIN_15(0, R.string.period_min_15),
-    MIN_30(0, R.string.period_min_30),
-    HOUR_1(0, R.string.period_1_hour),
-    HOURS_2(0, R.string.period_2_hours),
-    HOURS_4(0, R.string.period_4_hours),
-    DAILY(0, R.string.period_daily)
+    MIN_30(1, R.string.period_min_30),
+    HOUR_1(2, R.string.period_1_hour),
+    HOURS_2(3, R.string.period_2_hours),
+    HOURS_4(4, R.string.period_4_hours),
+    DAILY(5, R.string.period_daily)
 }
