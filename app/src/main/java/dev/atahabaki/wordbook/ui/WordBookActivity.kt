@@ -25,6 +25,7 @@ import android.animation.AnimatorListenerAdapter
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewAnimationUtils
@@ -39,6 +40,9 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
@@ -46,13 +50,17 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
+import dev.atahabaki.wordbook.data.settings.settingsDataStore
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
 import dev.atahabaki.wordbook.ui.word.*
 import dev.atahabaki.wordbook.utils.*
+import dev.atahabaki.wordbook.workers.ReminderWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 import kotlin.math.hypot
 
 @AndroidEntryPoint
@@ -77,6 +85,23 @@ class WordBookActivity : AppCompatActivity() {
         findViewById<NavigationView>(R.id.bottom_nav_view).setupWithNavController(navController)
 
         lifecycleScope.launch {
+            applicationContext.settingsDataStore.data.collect {
+                Log.d("notify", "${it.isNotificationsDisabled}")
+                if (it.isNotificationsDisabled) {
+                    WorkManager.getInstance(applicationContext)
+                            .cancelUniqueWork(ReminderWorker.CHANNEL_ID)
+                }
+                else {
+                    val period = it.notificationsPeriod.getNotificationPeriod()
+                    val workReq = PeriodicWorkRequestBuilder<ReminderWorker>(
+                            period.repeatInterval, period.repeatIntervalTimeUnit,
+                            period.flexInterval, period.flexIntervalTimeUnit).build()
+                    WorkManager.getInstance(applicationContext)
+                            .enqueueUniquePeriodicWork(ReminderWorker.CHANNEL_ID,
+                                    ExistingPeriodicWorkPolicy.KEEP,
+                                    workReq)
+                }
+            }
             applicationContext.listQFSDataStore.data.first().apply {
                 when (filter) {
                     Filter.SHOW_ALL.value -> binding.bottomAppBar.menu
