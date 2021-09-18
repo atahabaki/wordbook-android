@@ -102,8 +102,10 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            requireContext().settingsDataStore.data.first().apply {
-                binding.settings = this
+            CoroutineScope(Dispatchers.Main).launch {
+                requireContext().settingsDataStore.data.collect {
+                    binding.settings = it
+                }
             }
         }
     }
