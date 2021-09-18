@@ -36,8 +36,11 @@ import dev.atahabaki.wordbook.adapters.FilterFreeAdapter
 import dev.atahabaki.wordbook.data.settings.settingsDataStore
 import dev.atahabaki.wordbook.databinding.FragmentSettingsBinding
 import dev.atahabaki.wordbook.ui.word.WordViewModel
-import dev.atahabaki.wordbook.utils.getSwipeOperation
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
@@ -92,6 +95,10 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
                 this.clearFocus()
                 wordViewModel.updateNotificationsPeriod(i)
             }
+        }
+        
+        binding.settingsNotificationsState.setOnCheckedChangeListener { _, isChecked ->
+            wordViewModel.updateIsNotificationsDisabled(!isChecked)
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
