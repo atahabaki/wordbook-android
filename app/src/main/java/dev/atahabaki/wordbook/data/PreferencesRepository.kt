@@ -110,4 +110,12 @@ class PreferencesRepository @Inject constructor(
                 .build()
         }
     }
+
+    suspend fun updateIsNotificationsDisabled(isDisabled: Boolean) = withContext(IO) {
+        context.settingsDataStore.updateData { curr ->
+            curr.toBuilder()
+                .setIsNotificationsDisabled(isDisabled)
+                .build()
+        }
+    }
 }
