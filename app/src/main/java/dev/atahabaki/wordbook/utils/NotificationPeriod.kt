@@ -22,12 +22,27 @@ package dev.atahabaki.wordbook.utils
 
 import androidx.annotation.StringRes
 import dev.atahabaki.wordbook.R
+import java.util.concurrent.TimeUnit
 
-enum class NotificationPeriod(val value: Int, @StringRes val period: Int) {
-    MIN_15(0, R.string.period_min_15),
-    MIN_30(1, R.string.period_min_30),
-    HOUR_1(2, R.string.period_1_hour),
-    HOURS_2(3, R.string.period_2_hours),
-    HOURS_4(4, R.string.period_4_hours),
-    DAILY(5, R.string.period_daily)
+enum class NotificationPeriod(val value: Int, @StringRes val period: Int,
+                              val repeatInterval: Long, val repeatIntervalTimeUnit: TimeUnit,
+                              val flexInterval: Long, val flexIntervalTimeUnit: TimeUnit) {
+    MIN_15(0, R.string.period_min_15,
+        15, TimeUnit.MINUTES,
+        5, TimeUnit.MINUTES),
+    MIN_30(1, R.string.period_min_30,
+        30, TimeUnit.MINUTES,
+        10, TimeUnit.MINUTES),
+    HOUR_1(2, R.string.period_1_hour,
+        1, TimeUnit.HOURS,
+        15, TimeUnit.MINUTES),
+    HOURS_2(3, R.string.period_2_hours,
+        2, TimeUnit.HOURS,
+        30, TimeUnit.MINUTES),
+    HOURS_4(4, R.string.period_4_hours,
+        4, TimeUnit.HOURS,
+        1, TimeUnit.HOURS),
+    DAILY(5, R.string.period_daily,
+        1, TimeUnit.DAYS,
+        2, TimeUnit.HOURS),
 }
