@@ -29,6 +29,9 @@ interface WordDao {
     @RawQuery(observedEntities = [Word::class])
     fun getAllWords(query: SupportSQLiteQuery): Flow<List<Word>>
 
+    @Query("SELECT * FROM wordbook ORDER BY RANDOM() LIMIT 1")
+    fun getRandomWord(): Flow<Word>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(word: Word)
 
