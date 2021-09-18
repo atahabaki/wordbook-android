@@ -102,4 +102,12 @@ class PreferencesRepository @Inject constructor(
             }
         }
     }
+
+    suspend fun updateNotificationsPeriod(period: Int) = withContext(IO) {
+        context.settingsDataStore.updateData { curr ->
+            curr.toBuilder()
+                .setNotificationsPeriod(period)
+                .build()
+        }
+    }
 }
