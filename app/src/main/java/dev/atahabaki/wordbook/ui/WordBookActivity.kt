@@ -22,6 +22,8 @@ package dev.atahabaki.wordbook.ui
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -38,11 +40,7 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
@@ -60,7 +58,6 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 import kotlin.math.hypot
 
 @AndroidEntryPoint
@@ -87,19 +84,16 @@ class WordBookActivity : AppCompatActivity() {
         lifecycleScope.launch {
             applicationContext.settingsDataStore.data.collect {
                 Log.d("notify", "${it.isNotificationsDisabled}")
-                if (it.isNotificationsDisabled) {
-                    WorkManager.getInstance(applicationContext)
-                            .cancelUniqueWork(ReminderWorker.CHANNEL_ID)
-                }
-                else {
-                    val period = it.notificationsPeriod.getNotificationPeriod()
-                    val workReq = PeriodicWorkRequestBuilder<ReminderWorker>(
-                            period.repeatInterval, period.repeatIntervalTimeUnit,
-                            period.flexInterval, period.flexIntervalTimeUnit).build()
-                    WorkManager.getInstance(applicationContext)
-                            .enqueueUniquePeriodicWork(ReminderWorker.CHANNEL_ID,
-                                    ExistingPeriodicWorkPolicy.KEEP,
-                                    workReq)
+                applicationContext.toggleReminderWorkers(
+                        it.isNotificationsDisabled,
+                        it.notificationsPeriod.getNotificationPeriod(),
+                        ReminderWorker.CHANNEL_ID)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    applicationContext.toggleReminderNotifications(it.isNotificationsDisabled,
+                            NotificationChannel(ReminderWorker.CHANNEL_ID,
+                                    getString(R.string.reminder_channel_name),
+                                    NotificationManager.IMPORTANCE_DEFAULT).apply {
+                                        description = getString(R.string.reminder_channel_desc)})
                 }
             }
             applicationContext.listQFSDataStore.data.first().apply {
