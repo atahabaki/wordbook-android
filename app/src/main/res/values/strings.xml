@@ -104,6 +104,8 @@
     <string name="period_2_hours">2 hours</string>
     <string name="period_4_hours">4 hours</string>
     <string name="period_daily">Daily</string>
+    <string name="reminder_channel_name">Random Entry Reminders</string>
+    <string name="reminder_channel_desc">Reminds random entries...</string>
     <string-array name="swipe_operations">
         <item>@string/swipe_delete</item>
         <item>@string/swipe_favorite</item>
