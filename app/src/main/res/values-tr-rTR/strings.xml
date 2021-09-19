@@ -75,4 +75,15 @@
     </string>
     <string name="app_full_name">WordBook: Kişisel Sözlük Uygulaması</string>
     <string name="about">Hakkında</string>
+    <string name="notifications">Bildirimler</string>
+    <string name="notifications_period">Tekrar sıklığı</string>
+    <string name="notifications_period_helper">Bir sonraki bildirimin ne zaman gösterileceğini belirler.</string>
+    <string name="period_min_15">15 dakika</string>
+    <string name="period_min_30">30 dakika</string>
+    <string name="period_1_hour">1 saat</string>
+    <string name="period_2_hours">2 saat</string>
+    <string name="period_4_hours">4 saat</string>
+    <string name="period_daily">Günlük</string>
+    <string name="reminder_channel_name">Rastgele Girdi Hatırlatıcıları</string>
+    <string name="reminder_channel_desc">Rastgele girdileri hatırlatır...</string>
 </resources>
