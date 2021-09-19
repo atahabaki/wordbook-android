@@ -22,9 +22,12 @@ package dev.atahabaki.wordbook.ui
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewAnimationUtils
@@ -37,7 +40,6 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -46,11 +48,14 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.data.listqfs.listQFSDataStore
+import dev.atahabaki.wordbook.data.settings.settingsDataStore
 import dev.atahabaki.wordbook.databinding.ActivityWordbookBinding
 import dev.atahabaki.wordbook.ui.word.*
 import dev.atahabaki.wordbook.utils.*
+import dev.atahabaki.wordbook.workers.ReminderWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlin.math.hypot
@@ -77,6 +82,20 @@ class WordBookActivity : AppCompatActivity() {
         findViewById<NavigationView>(R.id.bottom_nav_view).setupWithNavController(navController)
 
         lifecycleScope.launch {
+            applicationContext.settingsDataStore.data.collect {
+                Log.d("notify", "${it.isNotificationsDisabled}")
+                applicationContext.toggleReminderWorkers(
+                        it.isNotificationsDisabled,
+                        it.notificationsPeriod.getNotificationPeriod(),
+                        ReminderWorker.CHANNEL_ID)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    applicationContext.toggleReminderNotifications(it.isNotificationsDisabled,
+                            NotificationChannel(ReminderWorker.CHANNEL_ID,
+                                    getString(R.string.reminder_channel_name),
+                                    NotificationManager.IMPORTANCE_DEFAULT).apply {
+                                        description = getString(R.string.reminder_channel_desc)})
+                }
+            }
             applicationContext.listQFSDataStore.data.first().apply {
                 when (filter) {
                     Filter.SHOW_ALL.value -> binding.bottomAppBar.menu

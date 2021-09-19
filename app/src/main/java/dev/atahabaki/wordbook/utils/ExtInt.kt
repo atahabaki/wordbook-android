@@ -52,3 +52,13 @@ fun Int.getMenuRef(): MenuRef = when(this) {
     MenuRef.LIST_MENU.num -> MenuRef.LIST_MENU
     else -> MenuRef.EMPTY_MENU
 }
+
+fun Int.getNotificationPeriod(): NotificationPeriod = when(this) {
+    NotificationPeriod.MIN_15.value -> NotificationPeriod.MIN_15
+    NotificationPeriod.MIN_30.value -> NotificationPeriod.MIN_30
+    NotificationPeriod.HOUR_1.value -> NotificationPeriod.HOUR_1
+    NotificationPeriod.HOURS_2.value -> NotificationPeriod.HOURS_2
+    NotificationPeriod.HOURS_4.value -> NotificationPeriod.HOURS_4
+    NotificationPeriod.DAILY.value -> NotificationPeriod.DAILY
+    else -> NotificationPeriod.MIN_15
+}

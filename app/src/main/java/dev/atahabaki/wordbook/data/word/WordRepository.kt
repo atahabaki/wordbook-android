@@ -30,6 +30,8 @@ class WordRepository @Inject constructor(
 ) {
     fun getAllWords(query: SupportSQLiteQuery) = wordDao.getAllWords(query)
 
+    fun getRandomWord() = wordDao.getRandomWord()
+
     suspend fun insert(word: Word) = wordDao.insert(word)
 
     suspend fun update(word: Word) = wordDao.update(word)

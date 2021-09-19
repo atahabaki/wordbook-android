@@ -103,6 +103,14 @@ class WordViewModel @Inject constructor(
         preferencesRepository.updateSwipLeftOperation(operation)
     }
 
+    fun updateNotificationsPeriod(period: Int) = CoroutineScope(Dispatchers.IO).launch {
+        preferencesRepository.updateNotificationsPeriod(period)
+    }
+
+    fun updateIsNotificationsDisabled(isDisabled: Boolean) = CoroutineScope(Dispatchers.IO).launch {
+        preferencesRepository.updateIsNotificationsDisabled(isDisabled)
+    }
+
     fun onItemDeleted(word: Word) {
         delete(word)
         _eventsChannel.value = Events.ItemDeletedEvent(word)

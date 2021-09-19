@@ -95,8 +95,27 @@
     <string name="discord_uri" translatable="false">https://discord.com/invite/JDJqVF3uJg</string>
     <string name="telegram" translatable="false">Telegram</string>
     <string name="telegram_uri" translatable="false">https://t.me/atahabakiClub</string>
+    <string name="notifications">Notifications</string>
+    <string name="notifications_period">Repeat interval</string>
+    <string name="notifications_period_helper">Determines when the next notification will be shown.</string>
+    <string name="period_min_15">15 minutes</string>
+    <string name="period_min_30">30 minutes</string>
+    <string name="period_1_hour">1 hour</string>
+    <string name="period_2_hours">2 hours</string>
+    <string name="period_4_hours">4 hours</string>
+    <string name="period_daily">Daily</string>
+    <string name="reminder_channel_name">Random Entry Reminders</string>
+    <string name="reminder_channel_desc">Reminds random entries...</string>
     <string-array name="swipe_operations">
         <item>@string/swipe_delete</item>
         <item>@string/swipe_favorite</item>
+    </string-array>
+    <string-array name="notifications_periods">
+        <item>@string/period_min_15</item>
+        <item>@string/period_min_30</item>
+        <item>@string/period_1_hour</item>
+        <item>@string/period_2_hours</item>
+        <item>@string/period_4_hours</item>
+        <item>@string/period_daily</item>
     </string-array>
 </resources>

@@ -36,8 +36,11 @@ import dev.atahabaki.wordbook.adapters.FilterFreeAdapter
 import dev.atahabaki.wordbook.data.settings.settingsDataStore
 import dev.atahabaki.wordbook.databinding.FragmentSettingsBinding
 import dev.atahabaki.wordbook.ui.word.WordViewModel
-import dev.atahabaki.wordbook.utils.getSwipeOperation
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class SettingsFragment: Fragment(R.layout.fragment_settings) {
 
@@ -82,14 +85,25 @@ class SettingsFragment: Fragment(R.layout.fragment_settings) {
                     true,
                     binding.settingsSwipeToLeftComplete)
 
+        binding.settingsNotificationsPeriodComplete.apply {
+            setDropDownBackgroundDrawable(dropDownBackground)
+            val adapter = FilterFreeAdapter<String>(requireContext(),
+                        R.layout.swipe_setting_item,
+                        resources.getStringArray(R.array.notifications_periods))
+            setAdapter(adapter)
+            onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
+                this.clearFocus()
+                wordViewModel.updateNotificationsPeriod(i)
+            }
+        }
+        
+        binding.settingsNotificationsState.setOnCheckedChangeListener { _, isChecked ->
+            wordViewModel.updateIsNotificationsDisabled(!isChecked)
+        }
+
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            requireContext().settingsDataStore.data.first().apply {
-                binding.settingsSwipeToLeftComplete.setText(
-                    resources.getString(swipeLeftAction.getSwipeOperation().operation)
-                )
-                binding.settingsSwipeToRightComplete.setText(
-                    resources.getString(swipeRightAction.getSwipeOperation().operation)
-                )
+            requireContext().settingsDataStore.data.collect {
+                binding.settings = it
             }
         }
     }
