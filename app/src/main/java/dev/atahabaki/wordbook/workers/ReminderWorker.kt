@@ -22,9 +22,12 @@ package dev.atahabaki.wordbook.workers
 
 import android.content.Context
 import android.util.Log
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.work.CoroutineWorker
 import androidx.work.ListenableWorker
 import androidx.work.WorkerParameters
+import dev.atahabaki.wordbook.R
 import dev.atahabaki.wordbook.data.AppDatabase
 import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.data.word.WordRepository
@@ -46,11 +49,21 @@ class ReminderWorker(
         val word: Word = withContext(IO) {
             wordRepo.getRandomWord().first()
         }
+        Log.d("Worker", "$word")
         return try {
-            Log.d("Worker", "$word")
+            with(NotificationManagerCompat.from(applicationContext)) {
+                notify(word.wordId, buildNotification(word).build())
+            }
             ListenableWorker.Result.success()
         } catch (e: Exception) {
             ListenableWorker.Result.failure()
         }
     }
+
+    private fun buildNotification(word: Word): NotificationCompat.Builder =
+        NotificationCompat.Builder(applicationContext, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_wordbook_shadow)
+                .setContentTitle(word.title)
+                .setContentText(word.meaning)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 }
