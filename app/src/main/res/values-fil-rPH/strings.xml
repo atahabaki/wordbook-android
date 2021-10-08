@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *  WordBook - An android application for those who aims to learn a new language.
+ *  Copyright (C) 2021 A. Taha Baki
+ *
+ *  This file is part of WordBook.
+ *
+ *  WordBook is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  WordBook is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
+ */
+-->
+<resources>
+    <string name="wordbook">Personal na Diksyonaryo</string>
+    <string name="by_author">ni <b>@atahabaki</b></string>
+    <string name="settings">Mga setting</string>
+    <string name="buy_me_coffee">Bilhan mo ako ng kape</string>
+    <string name="feedback">Magbigay ng feedback</string>
+    <string name="search">Maghanap</string>
+    <string name="delete">Tanggalin lahat</string>
+    <string name="filter">Salain</string>
+    <string name="sort">Pagbukud-bukurin ayon</string>
+    <string name="by_title">sa Pamagat</string>
+    <string name="by_meaning">"sa Kahulugan "</string>
+    <string name="asc">A hanggang Z</string>
+    <string name="desc">Z hanggang A</string>
+    <string name="by_creation_date">sa petsa</string>
+    <string name="by_favorite">"sa Paborito "</string>
+    <string name="by_id">sa ID</string>
+    <string name="save">Mag-save</string>
+    <string name="type_meaning">I-type ang kahulugan...</string>
+    <string name="type_word">I-type ang salitang...</string>
+    <string name="show_only_fav">Ipakita lamang ang mga paborito</string>
+    <string name="show_only_not_fav">Ipakita lamang ang hindi mga paborito</string>
+    <string name="show_all">Ipakita lahat</string>
+    <string name="item_deleted">Tinanggal ang %1$s.</string>
+    <string name="undo">Pawalang-bisa</string>
+    <string name="swipe_delete">Tanggalin</string>
+    <string name="swipe_favorite">toggle na paborito</string>
+    <string name="swipe_operations">Pagpapatakbo ng swipe</string>
+    <string name="swipe_left_to">Mag-swipe mula kaliwa upang</string>
+    <string name="swipe_right_to">Mag-swipe mula sa kanan upang</string>
+    <string name="item_invalid">Di-wastong pagpasok</string>
+    <string name="ok">OK lang</string>
+    <string name="title_missing">Nawawala ang pamagat...</string>
+    <string name="meaning_missing">Nawawala ang kahulugan...</string>
+    <string name="title_meaning_missing">Ang pamagat at ang kahulugan ay nawawala ...</string>
+    <string name="delete_everything">Tanggalin lahat?</string>
+    <string name="sure_deleting_all">Tatanggalin ang lahat, at walang paraan upang ma-undo ang operasyong ito. Nais mo pa bang gawin ito?</string>
+    <string name="cancel">Kanselahin</string>
+    <string name="app_full_name">WordBook: Personal na Diksyonaryo App</string>
+    <string name="about">Tungkol sa</string>
+    <string name="notifications">Mga abiso</string>
+    <string name="notifications_period">Ulitin ang agwat</string>
+    <string name="notifications_period_helper">Natutukoy kung kailan ipapakita ang susunod na abiso.</string>
+    <string name="period_min_15">15 minuto</string>
+    <string name="period_min_30">30 minuto</string>
+    <string name="period_1_hour">1 oras</string>
+    <string name="period_2_hours">2 oras</string>
+    <string name="period_4_hours">4 oras</string>
+    <string name="period_daily">Araw-araw</string>
+    <string name="reminder_channel_name">Mga Paalala sa Random na Pagpasok</string>
+    <string name="reminder_channel_desc">Pinapaalala ang mga random na entry ...</string>
+    <string name="app_description">
+        Isang &lt;a href="https://github.com/atahabaki/wordbook-android">
+        open-source&lt;/a>, madaling gamitin na android application para sa mga linguist ng
+        &lt;a href="https://bio.link/atahabaki">&lt;b>@atahabaki&lt;/b>&lt;/a>.
+        &lt;br/>&lt;br/>
+        Narito ang &lt;b>&lt;a href="https://github.com/atahabaki/wordbook-android/blob/dev/LICENSE">LICENSE&lt;/a>&lt;/b>.
+        &lt;br/>&lt;br/>
+        Maaari mong makuha ang &lt;b>source code&lt;/b> mula
+        &lt;a href="https://github.com/atahabaki/wordbook-android">rito&lt;/a>.
+        &lt;br/>&lt;br/>
+        &lt;b>Copyright © 2021 A. Taha Baki&lt;/b>
+    </string>
+</resources>
