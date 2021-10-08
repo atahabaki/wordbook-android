@@ -92,7 +92,7 @@ class WordBookActivity : AppCompatActivity() {
                     applicationContext.toggleReminderNotifications(it.isNotificationsDisabled,
                             NotificationChannel(ReminderWorker.CHANNEL_ID,
                                     getString(R.string.reminder_channel_name),
-                                    NotificationManager.IMPORTANCE_DEFAULT).apply {
+                                    NotificationManager.IMPORTANCE_HIGH).apply {
                                         description = getString(R.string.reminder_channel_desc)})
                 }
             }

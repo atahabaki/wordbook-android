@@ -65,5 +65,5 @@ class ReminderWorker(
                 .setSmallIcon(R.drawable.ic_wordbook_shadow)
                 .setContentTitle(word.title)
                 .setContentText(word.meaning)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
 }
