@@ -21,7 +21,7 @@
  */
 -->
 <resources>
-    <string name="app_name">@string/wordbook</string>
+    <string name="app_name" translatable="false">@string/wordbook</string>
     <string name="wordbook">WordBook</string>
     <string name="by_author">by <b>@atahabaki</b></string>
     <string name="settings">Settings</string>
