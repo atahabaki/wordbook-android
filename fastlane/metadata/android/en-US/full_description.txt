@@ -1,0 +1,3 @@
+A simple, easy-to-use, open-source personal dictionary app for linguists, and language learners. It allows you to jot down as you learn new words, idioms, proverbs... It's simply a dictionary at your fingertips.
+
+By A. Taha Baki (@atahabaki).

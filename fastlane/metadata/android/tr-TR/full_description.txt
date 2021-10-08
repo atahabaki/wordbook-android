@@ -1,0 +1,3 @@
+Dilbilimciler ve dil öğrenenler için basit, kullanımı kolay, açık kaynaklı kişisel bir sözlük uygulaması. Öğrendiğiniz yeni kelimeleri, deyimleri, atasözlerini... not almanıza olanak sağlar. Basitçe, parmaklarınızın ucundaki bir sözlükten ibaret.
+
+A. Taha Baki (@atahabaki).
