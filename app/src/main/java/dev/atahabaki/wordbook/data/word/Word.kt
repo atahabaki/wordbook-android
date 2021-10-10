@@ -22,6 +22,7 @@ package dev.atahabaki.wordbook.data.word
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import dev.atahabaki.wordbook.utils.DICTIONARY_TABLE_NAME
@@ -37,5 +38,7 @@ data class Word(
     val meaning: String,
     @ColumnInfo(name = "is_favorite")
     val isFavorite: Boolean = false,
-    val createdAt: Long = System.currentTimeMillis()
+    val createdAt: Long = System.currentTimeMillis(),
+    @Embedded(prefix = "category_")
+    val category: Category = Category("", 0x00000000)
 ) : Parcelable
