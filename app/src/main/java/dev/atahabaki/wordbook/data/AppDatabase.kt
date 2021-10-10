@@ -24,11 +24,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.data.word.WordDao
 import dev.atahabaki.wordbook.utils.DATABASE_NAME
 
-@Database(entities = [Word::class], version = 1, exportSchema = false)
+@Database(entities = [Word::class], version = 2, exportSchema = true)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun wordDao(): WordDao
 
@@ -41,7 +43,16 @@ abstract class AppDatabase: RoomDatabase() {
             }
         }
 
+        private val MIGRATE_1_2 = object: Migration(1,2) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE wordbook ADD COLUMN category_name TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE wordbook ADD COLUMN category_color INTEGER NOT NULL DEFAULT 0")
+            }
+        }
+
         private fun buildDatabase(context: Context) =
-                Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME).build()
+                Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
+                        .addMigrations(MIGRATE_1_2)
+                        .build()
     }
 }
