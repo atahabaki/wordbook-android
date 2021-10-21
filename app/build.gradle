@@ -35,13 +35,6 @@ android {
 
     buildTypes {
         release {
-            /**
-             * F-Droid stuff...
-             */
-            removeUnusedCode true
-            removeUnusedResources true
-            obfuscate false
-            optimizeCode true
         }
     }
     compileOptions {
