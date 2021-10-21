@@ -21,7 +21,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 4
-        versionName "1.0.3"
+        versionName "1.0.3-fdroid"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,9 +35,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            /**
+             * F-Droid stuff...
+             */
+            removeUnusedCode true
+            removeUnusedResources true
+            obfuscate false
+            optimizeCode true
         }
     }
     compileOptions {
