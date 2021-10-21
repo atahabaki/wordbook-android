@@ -28,7 +28,7 @@ import dev.atahabaki.wordbook.data.word.Word
 import dev.atahabaki.wordbook.data.word.WordDao
 import dev.atahabaki.wordbook.utils.DATABASE_NAME
 
-@Database(entities = [Word::class], version = 1, exportSchema = false)
+@Database(entities = [Word::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun wordDao(): WordDao
 
