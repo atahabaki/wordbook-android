@@ -27,5 +27,6 @@
             <enum name="from right" value="1"/>
         </attr>
         <attr name="swipeActionIcon" format="reference|color"/>
+        <attr name="swipeActionIconBackground" format="reference|color"/>
     </declare-styleable>
 </resources>
