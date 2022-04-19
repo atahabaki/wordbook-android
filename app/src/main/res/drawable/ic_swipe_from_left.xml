@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *  WordBook - An android application for those who aims to learn a new language.
+ *  Copyright (C) 2021 A. Taha Baki
+ *
+ *  This file is part of WordBook.
+ *
+ *  WordBook is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  WordBook is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
+ */
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="25dp"
+    android:viewportWidth="26.458334"
+    android:viewportHeight="6.614584">
+  <path
+      android:pathData="M7.6145,0C7.0605,0 6.6146,0.4459 6.6146,0.9999L6.6146,5.6146C6.6146,6.1686 7.0605,6.6146 7.6145,6.6146L7.9375,6.6146L25.4584,6.6146L26.4583,6.6146L26.4583,5.6146L26.4583,0.9999L26.4583,0L25.4584,0L7.9375,0L7.6145,0z"
+      android:strokeWidth="0"
+      android:fillColor="#808080"/>
+  <path
+      android:pathData="M4.5823,0.8229L11.293,0.8229A0.6135,0.5 0,0 1,11.9065 1.3229L11.9065,1.3229A0.6135,0.5 0,0 1,11.293 1.8229L4.5823,1.8229A0.6135,0.5 0,0 1,3.9688 1.3229L3.9688,1.3229A0.6135,0.5 0,0 1,4.5823 0.8229z"
+      android:strokeWidth="0"
+      android:fillColor="#b3b3b3"/>
+  <path
+      android:pathData="M5.7007,4.7917L10.1743,4.7917A0.409,0.5 0,0 1,10.5833 5.2917L10.5833,5.2917A0.409,0.5 0,0 1,10.1743 5.7917L5.7007,5.7917A0.409,0.5 0,0 1,5.2917 5.2917L5.2917,5.2917A0.409,0.5 0,0 1,5.7007 4.7917z"
+      android:strokeWidth="0"
+      android:fillColor="#b3b3b3"/>
+  <path
+      android:pathData="M7.776,2.8073L13.3906,2.8073A0.5,0.5 0,0 1,13.8906 3.3073L13.8906,3.3073A0.5,0.5 0,0 1,13.3906 3.8073L7.776,3.8073A0.5,0.5 0,0 1,7.276 3.3073L7.276,3.3073A0.5,0.5 0,0 1,7.776 2.8073z"
+      android:strokeWidth="0"
+      android:fillColor="#b3b3b3"/>
+</vector>
