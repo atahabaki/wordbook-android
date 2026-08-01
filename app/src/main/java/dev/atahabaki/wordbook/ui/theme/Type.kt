@@ -1,17 +1,11 @@
 package dev.atahabaki.wordbook.ui.theme
 
 import androidx.compose.material3.Typography
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import dev.atahabaki.wordbook.R
 
-val bodyFontFamily = FontFamily(
-)
+val bodyFontFamily = FontFamily.Monospace
 
-val displayFontFamily = FontFamily(
-)
+val displayFontFamily = FontFamily.SansSerif
 
 // Default Material 3 typography values
 val baseline = Typography()
