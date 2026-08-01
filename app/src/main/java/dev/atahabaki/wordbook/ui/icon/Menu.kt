@@ -19,54 +19,59 @@
  */
 package dev.atahabaki.wordbook.ui.icon
 
+import androidx.compose.material3.Icon
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.group
 import androidx.compose.ui.graphics.vector.path
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 val Menu = ImageVector.Builder(
-            name = "Menu",
-            defaultWidth = 32.dp,
-            defaultHeight = 32.dp,
-            viewportWidth = 32f,
-            viewportHeight = 32f
-        ).apply {
-            group {
-                path(
-                    fill = SolidColor(Color(0xFF000000))
-                ) {
-                    moveTo(5f, 21f)
-                    horizontalLineTo(27f)
-                    verticalLineTo(23f)
-                    horizontalLineTo(5f)
-                    verticalLineTo(21f)
-                    close()
-                }
-            }
-            group {
-                path(
-                    fill = SolidColor(Color(0xFF000000))
-                ) {
-                    moveTo(5f, 9f)
-                    horizontalLineTo(27f)
-                    verticalLineTo(11f)
-                    horizontalLineTo(5f)
-                    verticalLineTo(9f)
-                    close()
-                }
-            }
-            group {
-                path(
-                    fill = SolidColor(Color(0xFF000000))
-                ) {
-                    moveTo(5f, 15f)
-                    horizontalLineTo(27f)
-                    verticalLineTo(17f)
-                    horizontalLineTo(5f)
-                    verticalLineTo(15f)
-                    close()
-                }
-            }
-        }.build()
+    name = "Menu",
+    defaultWidth = 32.dp,
+    defaultHeight = 32.dp,
+    viewportWidth = 32f,
+    viewportHeight = 32f
+).apply {
+    path(
+        fill = SolidColor(Color(0xFF000000))
+    ) {
+        moveTo(5f, 21f)
+        horizontalLineTo(27f)
+        verticalLineTo(23f)
+        horizontalLineTo(5f)
+        verticalLineTo(21f)
+        close()
+    }
+    path(
+        fill = SolidColor(Color(0xFF000000))
+    ) {
+        moveTo(5f, 9f)
+        horizontalLineTo(27f)
+        verticalLineTo(11f)
+        horizontalLineTo(5f)
+        verticalLineTo(9f)
+        close()
+    }
+    path(
+        fill = SolidColor(Color(0xFF000000))
+    ) {
+        moveTo(5f, 15f)
+        horizontalLineTo(27f)
+        verticalLineTo(17f)
+        horizontalLineTo(5f)
+        verticalLineTo(15f)
+        close()
+    }
+}.build()
+
+@Preview
+@Composable
+private fun MenuIcon() {
+    Icon(
+        imageVector = Menu,
+        contentDescription = null
+    )
+}
