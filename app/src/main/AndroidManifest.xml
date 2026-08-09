@@ -1,44 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-/*
- *  WordBook - An android application for those who aims to learn a new language.
- *  Copyright (C) 2021 A. Taha Baki
- *
- *  This file is part of WordBook.
- *
- *  WordBook is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  WordBook is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with WordBook.  If not, see <https://www.gnu.org/licenses/>.
- */
--->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dev.atahabaki.wordbook">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".WordBookApplication"
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WordBook">
-        <activity android:name=".ui.WordBookActivity" android:theme="@style/Theme.WordBook.SplashScreen">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.WordBook">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts"/>
         </activity>
     </application>
+
 </manifest>
